@@ -91,6 +91,11 @@ class MainFragment : PaddingPreferenceFragment() {
                     SettingsRoute.Plugin
                 )
                 addDestinationPreference(
+                    R.string.project_dict,
+                    R.drawable.ic_baseline_list_alt_24,
+                    SettingsRoute.ProjectDict
+                )
+                addDestinationPreference(
                     R.string.advanced,
                     R.drawable.ic_baseline_more_horiz_24,
                     SettingsRoute.Advanced
