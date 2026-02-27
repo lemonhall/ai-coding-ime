@@ -1,6 +1,8 @@
-# fcitx5-android
+# ai-coding-ime
 
-[Fcitx5](https://github.com/fcitx/fcitx5) input method framework and engines ported to Android.
+基于 [fcitx5-android](https://github.com/fcitx5-android/fcitx5-android) 的 fork，增加"项目词库"功能。核心场景：用户在 Android 终端通过 SSH 连接远端项目时，输入法自动加载该项目的 AI 生成词库（`.ime/dict.tsv`），使中英文输入都能感知项目上下文。
+
+上游项目：[Fcitx5](https://github.com/fcitx/fcitx5) input method framework and engines ported to Android.
 
 ## Download
 
@@ -81,10 +83,65 @@ Discuss on Telegram: [@fcitx5_android_group](https://t.me/fcitx5_android_group) 
 
 ## Build
 
-### Dependencies
+### Recommended: Nix (WSL2 / Linux)
+
+项目自带 `flake.nix`，使用 Nix 管理所有构建依赖，无需手动安装 Android SDK/NDK/CMake。
+
+```shell
+# 安装 Nix（如果尚未安装）
+sh <(curl -L https://nixos.org/nix/install) --daemon
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+
+# Clone 并拉取 submodule
+git clone https://github.com/lemonhall/ai-coding-ime.git
+cd ai-coding-ime
+git submodule update --init --recursive
+
+# 进入 dev shell（纯 CLI，不含 Android Studio）
+nix develop .#noAS
+
+# 验证环境（nix shell 不会改变 prompt）
+echo $ANDROID_SDK_ROOT   # 应输出 /nix/store/.../libexec/android-sdk
+echo $JAVA_HOME          # 应输出 /nix/store/.../openjdk-17.0.15+6
+
+# 构建（首次含 C++ 编译，约 55 分钟）
+./gradlew assembleDebug
+```
+
+Nix dev shell 提供的环境：
+
+| 组件 | 版本 |
+|---|---|
+| Android SDK Platform | 35 |
+| Build-Tools | 35.0.1 |
+| Platform-Tools | 35.0.2 |
+| NDK | 28.0.13004108 |
+| CMake | 3.31.6 |
+| JDK | OpenJDK 17.0.15+6 |
+
+构建产物按 CPU 架构分包，位于 `app/build/outputs/apk/debug/`：
+- `org.fcitx.fcitx5.android-{commit}-arm64-v8a-debug.apk`（大多数现代手机）
+- `org.fcitx.fcitx5.android-{commit}-armeabi-v7a-debug.apk`
+- `org.fcitx.fcitx5.android-{commit}-x86_64-debug.apk`
+- `org.fcitx.fcitx5.android-{commit}-x86-debug.apk`
+
+### WSL2 安装到手机
+
+WSL2 中 adb 通常无法直接识别 USB 设备，在 Windows PowerShell 中执行：
+
+```powershell
+# 确认设备（如果 daemon 启动失败，先 taskkill /F /IM adb.exe）
+adb devices
+
+# 安装（注意 WSL 发行版名称，用 wsl -l -q 确认）
+adb install "\\wsl$\Ubuntu-24.04\home\<user>\ai-coding-ime\app\build\outputs\apk\debug\org.fcitx.fcitx5.android-<commit>-arm64-v8a-debug.apk"
+```
+
+### Alternative: Manual SDK Setup
 
 - Android SDK Platform & Build-Tools 35.
-- Android NDK (Side by side) 25 & CMake 3.22.1, they can be installed using SDK Manager in Android Studio or `sdkmanager` command line.
+- Android NDK (Side by side) 28 & CMake 3.31.6, they can be installed using SDK Manager in Android Studio or `sdkmanager` command line.
 - [KDE/extra-cmake-modules](https://github.com/KDE/extra-cmake-modules)
 - GNU Gettext >= 0.20 (for `msgfmt` binary; or install `appstream` if you really have to use gettext <= 0.19.)
 
@@ -106,7 +163,7 @@ Discuss on Telegram: [@fcitx5_android_group](https://t.me/fcitx5_android_group) 
 First, clone this repository and fetch all submodules:
 
 ```shell
-git clone git@github.com:fcitx5-android/fcitx5-android.git
+git clone https://github.com/lemonhall/ai-coding-ime.git
 git submodule update --init --recursive
 ```
 
