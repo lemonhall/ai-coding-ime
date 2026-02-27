@@ -39,6 +39,7 @@ import org.fcitx.fcitx5.android.input.picker.symbolPicker
 import org.fcitx.fcitx5.android.input.popup.PopupComponent
 import org.fcitx.fcitx5.android.input.preedit.PreeditComponent
 import org.fcitx.fcitx5.android.input.wm.InputWindowManager
+import org.fcitx.fcitx5.android.projectdict.ProjectDictBooster
 import org.fcitx.fcitx5.android.utils.unset
 import org.mechdancer.dependency.DynamicScope
 import org.mechdancer.dependency.manager.wrapToUniqueComponent
@@ -108,6 +109,9 @@ class InputView(
     private val symbolPicker = symbolPicker()
     private val emojiPicker = emojiPicker()
     private val emoticonPicker = emoticonPicker()
+
+    // Track current preedit text for ProjectDict query
+    private var currentPreeditText: String = ""
 
     private fun setupScope() {
         scope += this@InputView.wrapToUniqueComponent()
@@ -332,13 +336,19 @@ class InputView(
     override fun handleFcitxEvent(it: FcitxEvent<*>) {
         when (it) {
             is FcitxEvent.CandidateListEvent -> {
-                broadcaster.onCandidateUpdate(it.data)
+                // Boost candidates with ProjectDict
+                val boosted = ProjectDictBooster.boostCandidateList(it, currentPreeditText)
+                broadcaster.onCandidateUpdate(boosted.data)
             }
             is FcitxEvent.ClientPreeditEvent -> {
+                // Update current preedit text
+                currentPreeditText = it.data.toString()
                 preeditEmptyState.updatePreeditEmptyState(clientPreedit = it.data)
                 broadcaster.onClientPreeditUpdate(it.data)
             }
             is FcitxEvent.InputPanelEvent -> {
+                // Update current preedit text from InputPanel
+                currentPreeditText = it.data.preedit.toString()
                 preeditEmptyState.updatePreeditEmptyState(preedit = it.data.preedit)
                 broadcaster.onInputPanelUpdate(it.data)
             }

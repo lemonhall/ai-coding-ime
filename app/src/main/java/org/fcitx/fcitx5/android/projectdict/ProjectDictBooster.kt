@@ -1,0 +1,104 @@
+/*
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ * SPDX-FileCopyrightText: Copyright 2026 MaJing IME Contributors
+ */
+package org.fcitx.fcitx5.android.projectdict
+
+import org.fcitx.fcitx5.android.core.FcitxEvent
+import timber.log.Timber
+
+/**
+ * 项目词库候选词注入器
+ *
+ * 职责：
+ * - 在引擎返回候选词后，混入项目词库的匹配结果
+ * - 支持 Bulk Mode（虚拟键盘）和 Paged Mode（物理键盘）
+ */
+object ProjectDictBooster {
+
+    /**
+     * 增强候选词列表（Bulk Mode）
+     *
+     * @param event 原始候选词事件
+     * @param input 当前输入串
+     * @return 增强后的候选词事件
+     */
+    fun boostCandidateList(
+        event: FcitxEvent.CandidateListEvent,
+        input: String
+    ): FcitxEvent.CandidateListEvent {
+        if (!ProjectDictManager.isLoaded() || input.isEmpty()) {
+            return event
+        }
+
+        // 查询项目词库
+        val projectCandidates = ProjectDictManager.query(input, limit = 5)
+        if (projectCandidates.isEmpty()) {
+            return event
+        }
+
+        Timber.d("ProjectDict: Found ${projectCandidates.size} matches for '$input'")
+
+        // 将项目词库候选词转换为 Fcitx 候选词格式
+        val projectCandidateStrings = projectCandidates.map { entry ->
+            // 格式：词条文本 + 可选的提示
+            if (entry.hint != null) {
+                "${entry.text} [P:${entry.hint}]"
+            } else {
+                "${entry.text} [P]"
+            }
+        }
+
+        // 混合策略：项目词库候选词插入到前部
+        val mergedCandidates = (projectCandidateStrings + event.data.candidates).toTypedArray()
+
+        // 创建新的候选词数据
+        val boostedData = event.data.copy(
+            candidates = mergedCandidates,
+            total = if (event.data.total >= 0) event.data.total + projectCandidateStrings.size else -1
+        )
+
+        return event.copy(data = boostedData)
+    }
+
+    /**
+     * 增强分页候选词（Paged Mode）
+     *
+     * @param event 原始分页候选词事件
+     * @param input 当前输入串
+     * @return 增强后的分页候选词事件
+     */
+    fun boostPagedCandidate(
+        event: FcitxEvent.PagedCandidateEvent,
+        input: String
+    ): FcitxEvent.PagedCandidateEvent {
+        if (!ProjectDictManager.isLoaded() || input.isEmpty()) {
+            return event
+        }
+
+        // 查询项目词库
+        val projectCandidates = ProjectDictManager.query(input, limit = 5)
+        if (projectCandidates.isEmpty()) {
+            return event
+        }
+
+        Timber.d("ProjectDict: Found ${projectCandidates.size} paged matches for '$input'")
+
+        // 将项目词库候选词转换为 Fcitx Candidate 格式
+        val projectCandidateObjects = projectCandidates.map { entry ->
+            val text = entry.text
+            val comment = if (entry.hint != null) "[P:${entry.hint}]" else "[P]"
+            FcitxEvent.Candidate(label = "", text = text, comment = comment)
+        }
+
+        // 混合策略：项目词库候选词插入到前部
+        val mergedCandidates = (projectCandidateObjects + event.data.candidates).toTypedArray()
+
+        // 创建新的候选词数据
+        val boostedData = event.data.copy(
+            candidates = mergedCandidates
+        )
+
+        return event.copy(data = boostedData)
+    }
+}

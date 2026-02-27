@@ -23,6 +23,7 @@ import org.fcitx.fcitx5.android.data.prefs.AppPrefs
 import org.fcitx.fcitx5.android.data.theme.Theme
 import org.fcitx.fcitx5.android.input.candidates.floating.PagedCandidatesUi
 import org.fcitx.fcitx5.android.input.preedit.PreeditUi
+import org.fcitx.fcitx5.android.projectdict.ProjectDictBooster
 import splitties.dimensions.dp
 import splitties.views.dsl.constraintlayout.below
 import splitties.views.dsl.constraintlayout.bottomOfParent
@@ -116,7 +117,10 @@ class CandidatesView(
                 updateUi()
             }
             is FcitxEvent.PagedCandidateEvent -> {
-                paged = it.data
+                // Boost candidates with ProjectDict
+                val currentInput = inputPanel.preedit.toString()
+                val boosted = ProjectDictBooster.boostPagedCandidate(it, currentInput)
+                paged = boosted.data
                 updateUi()
             }
             else -> {}
