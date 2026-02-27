@@ -72,6 +72,8 @@
     <string name="license">License</string>
     <string name="open_source_licenses">Open source licenses</string>
     <string name="licenses_of_third_party_libraries">Licenses of third-party libraries</string>
+    <string name="based_on_project">Based on</string>
+    <string name="upstream_project">Fcitx5 for Android</string>
     <string name="github_repo">GitHub repository</string>
     <string name="expanded_candidate_grid_span_count">Number of expanded candidate spans in grid style</string>
     <string name="no_config_options">Currently no configuration options are available</string>

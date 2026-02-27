@@ -21,6 +21,9 @@ class AboutFragment : PaddingPreferenceFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireContext()).apply {
+            addPreference(R.string.based_on_project, R.string.upstream_project) {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Const.upstreamRepo)))
+            }
             addPreference(R.string.privacy_policy) {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Const.privacyPolicyUrl)))
             }

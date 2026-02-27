@@ -72,6 +72,8 @@
     <string name="license">授權條款</string>
     <string name="open_source_licenses">開放原始碼授權條款</string>
     <string name="licenses_of_third_party_libraries">第三方函式庫的授權條款</string>
+    <string name="based_on_project">基於專案</string>
+    <string name="upstream_project">Fcitx5 for Android</string>
     <string name="github_repo">GitHub 倉庫</string>
     <string name="expanded_candidate_grid_span_count">表格樣式展開候選詞列數</string>
     <string name="no_config_options">目前沒有可用的設定選項</string>
