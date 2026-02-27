@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "project": "ai-coding-ime",
+  "lang": ["zh", "en"],
+  "generated_at": "2026-02-27T12:00:00Z",
+  "description": "Example project dictionary for ai-coding-ime development"
+}

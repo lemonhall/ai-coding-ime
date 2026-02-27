@@ -1,0 +1,21 @@
+# .ime/dict.tsv
+# 项目词库协议 v1
+# 格式：词条<TAB>类型<TAB>权重<TAB>上下文提示(可选)
+#
+# 类型：id=标识符, term=领域术语, abbr=缩写, phrase=常用短语
+# 权重：0-1000，越大越优先
+# 以 # 开头的行为注释
+
+getUserInfo	id	950
+setConfig	id	920
+handleError	id	880
+user_repository	id	850
+ProjectConfig	id	840
+API_BASE_URL	id	800
+数据迁移	term	900	database migration
+项目配置	term	880	project config
+幂等性	term	750	idempotency
+重新部署	phrase	700
+回滚到上一个版本	phrase	650
+cfg	abbr	600	config/configuration
+repo	abbr	580	repository

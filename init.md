@@ -254,7 +254,13 @@ adb install "\\wsl$\Ubuntu-24.04\home\lemonhall\ai-coding-ime\app\build\outputs\
 - NDK: 28.0.13004108
 - JDK: 17
 
-## Phase 1：项目词库协议定义
+## Phase 1：项目词库协议定义 ✅
+
+**状态**：已完成（2026-02-27）
+
+示例文件已创建在项目根目录：
+- `.ime/dict.tsv` - 词库文件示例（13 条词条）
+- `.ime/meta.json` - 元信息文件示例
 
 ### 1.1 词库文件格式
 
