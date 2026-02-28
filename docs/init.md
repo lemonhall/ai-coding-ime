@@ -543,6 +543,10 @@ Slice 1（第一刀）交付门槛：
 - 设计文档：`docs/plan/v2-upstream-context-dictionary-profiles.md`
 - 手工回归：`docs/profile-dict-manual-test.md`
 - 示例词典：`docs/samples/profile-dictionaries/`
+- 运营模板：`docs/profile-dict-ops-template.md`
+- 领域清单：`docs/profile-dict-domain-checklist.md`
+- 执行 backlog：`docs/plan/v3-profile-domain-dictionary-backlog.md`
+- 下一会话指令：`docs/profile-dict-next-session-instruction.md`
 
 ## Phase 4：测试验证
 

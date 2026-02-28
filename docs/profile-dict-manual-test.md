@@ -183,3 +183,106 @@
 
 - 本文档聚焦 `Phase 3.5 / Slice 1`，不覆盖 SSH 联动安全链路（Phase 3.2/3.3）。
 - 若 UI 最终命名与本文不同，以实现名称为准，但能力要求不变。
+
+## 7. D22 移动端开发（`app.android`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + app.android`
+- 边界对照：`base`（关闭 `app.android`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `qiantaifuwu` | `前台服务` | `base + app.android` | Top3 出现目标词 |
+| `lengqidongyouhua` | `冷启动优化` | `base + app.android` | Top3 出现目标词，排序稳定 |
+| `quanxiantanchuang` | `权限弹窗` | `base + app.android` | Top5 出现目标词，不被无关词压制 |
+| `neicunxielou` | `内存泄漏` | `base + app.android` | Top5 出现目标词 |
+| `huidufabu` | `灰度发布` | `base + app.android` | Top5 出现目标词 |
+| `zhediepingshipei` | `折叠屏适配` | `base + app.android` | Top5 出现目标词 |
+| `qiantaifuwu` | `前台服务` | `base` | 目标词较 `base + app.android` 场景明显后移（不应强前移） |
+| `yilaizhuru` | `依赖注入` | `base` | 若命中，排序应弱于 `base + app.android` 场景 |
+
+## 8. D08 Web前端（`frontend`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + frontend`
+- 边界对照：`base`（关闭 `frontend`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `zujianfuyong` | `组件复用` | `base + frontend` | Top3 出现目标词 |
+| `shoupingyouhua` | `首屏优化` | `base + frontend` | Top3 出现目标词，排序稳定 |
+| `xiangyingshibuju` | `响应式布局` | `base + frontend` | Top5 出现目标词 |
+| `fuwuduanxuanran` | `服务端渲染` | `base + frontend` | Top5 出现目标词 |
+| `xunigundong` | `虚拟滚动` | `base + frontend` | Top5 出现目标词，不被无关词压制 |
+| `cuowubianjie` | `错误边界` | `base + frontend` | Top5 出现目标词 |
+| `zujianfuyong` | `组件复用` | `base` | 目标词较 `base + frontend` 场景明显后移（不应强前移） |
+| `fuwugongzuoxiancheng` | `服务工作线程` | `base` | 若命中，排序应弱于 `base + frontend` 场景 |
+
+## 9. D07 Web后端 / API设计（`network.web-backend-api`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + network.web-backend-api`
+- 边界对照：`base`（关闭 `network.web-backend-api`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `jiekouwangguan` | `接口网关` | `base + network.web-backend-api` | Top3 出现目标词 |
+| `midengjian` | `幂等键` | `base + network.web-backend-api` | Top5 出现目标词，排序稳定 |
+| `xianliujiangji` | `限流降级` | `base + network.web-backend-api` | Top5 出现目标词，不被无关词压制 |
+| `lianluzhuizong` | `链路追踪` | `base + network.web-backend-api` | Top5 出现目标词 |
+| `quanxianjianquan` | `权限鉴权` | `base + network.web-backend-api` | Top5 出现目标词 |
+| `rongzaiqiehuan` | `容灾切换` | `base + network.web-backend-api` | Top5 出现目标词 |
+| `jiekouwangguan` | `接口网关` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `jiekouxianliu` | `接口限流` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 10. D18 DevOps / CI/CD / SRE（`engineering.devops-sre`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + engineering.devops-sre`
+- 边界对照：`base`（关闭 `engineering.devops-sre`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `chixujicheng` | `持续集成` | `base + engineering.devops-sre` | Top3 出现目标词 |
+| `liushuixianbianpai` | `流水线编排` | `base + engineering.devops-sre` | Top5 出现目标词，排序稳定 |
+| `lianluzhuizong` | `链路追踪` | `base + engineering.devops-sre` | Top5 出现目标词，不被无关词压制 |
+| `rongzaiqiehuan` | `容灾切换` | `base + engineering.devops-sre` | Top5 出现目标词 |
+| `hundungongcheng` | `混沌工程` | `base + engineering.devops-sre` | Top5 出现目标词 |
+| `jichusheshijidaima` | `基础设施即代码` | `base + engineering.devops-sre` | Top5 出现目标词 |
+| `chixujicheng` | `持续集成` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `fuwujiankong` | `服务监控` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 11. D20 测试工程（`engineering.testing`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + engineering.testing`
+- 边界对照：`base`（关闭 `engineering.testing`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `danyuanceshi` | `单元测试` | `base + engineering.testing` | Top3 出现目标词 |
+| `huiguiceshi` | `回归测试` | `base + engineering.testing` | Top3 出现目标词，排序稳定 |
+| `jiekouceshi` | `接口测试` | `base + engineering.testing` | Top5 出现目标词，不被无关词压制 |
+| `quexiangenzong` | `缺陷跟踪` | `base + engineering.testing` | Top5 出现目标词 |
+| `daimafugailv` | `代码覆盖率` | `base + engineering.testing` | Top5 出现目标词 |
+| `yalicieshi` | `压力测试` | `base + engineering.testing` | Top5 出现目标词 |
+| `danyuanceshi` | `单元测试` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `quexiangenzong` | `缺陷跟踪` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 12. D19 版本控制 / 协作（`engineering.vcs-collaboration`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + engineering.vcs-collaboration`
+- 边界对照：`base`（关闭 `engineering.vcs-collaboration`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `banbenkongzhi` | `版本控制` | `base + engineering.vcs-collaboration` | Top3 出现目标词 |
+| `fenzhicelue` | `分支策略` | `base + engineering.vcs-collaboration` | Top3 出现目标词，排序稳定 |
+| `laquqingqiu` | `拉取请求` | `base + engineering.vcs-collaboration` | Top5 出现目标词，不被无关词压制 |
+| `hebingchongtu` | `合并冲突` | `base + engineering.vcs-collaboration` | Top5 出现目标词 |
+| `daimapingshen` | `代码评审` | `base + engineering.vcs-collaboration` | Top5 出现目标词 |
+| `rebasebianji` | `rebase变基` | `base + engineering.vcs-collaboration` | Top5 出现目标词 |
+| `tijiaomenjin` | `提交门禁` | `base + engineering.vcs-collaboration` | Top5 出现目标词 |
+| `hebingqingqiu` | `合并请求` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `banbenkongzhi` | `版本控制` | `base` | 若命中，排序应弱于开启领域 profile 时 |

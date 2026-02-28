@@ -51,6 +51,10 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
   - `docs/plan/v2-upstream-context-dictionary-profiles.md`
   - `docs/samples/profile-dictionaries/`
   - `docs/profile-dict-manual-test.md`
+  - `docs/profile-dict-ops-template.md`
+  - `docs/profile-dict-domain-checklist.md`
+  - `docs/plan/v3-profile-domain-dictionary-backlog.md`
+  - `docs/profile-dict-next-session-instruction.md`
   - Note: GitHub 承载/云端同步不在 Slice 1 范围内
 
 ### Supported Languages
