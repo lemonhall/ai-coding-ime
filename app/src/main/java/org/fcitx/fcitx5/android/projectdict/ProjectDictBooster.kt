@@ -109,7 +109,12 @@ object ProjectDictBooster {
 
         // 创建新的候选词数据
         val boostedData = event.data.copy(
-            candidates = mergedCandidates
+            candidates = mergedCandidates,
+            cursorIndex = if (event.data.cursorIndex >= 0) {
+                event.data.cursorIndex + projectCandidateObjects.size
+            } else {
+                -1
+            }
         )
 
         return event.copy(data = boostedData)
@@ -121,5 +126,45 @@ object ProjectDictBooster {
 
     fun extractProjectCommitText(candidate: FcitxEvent.Candidate): String? {
         return if (isProjectPagedCandidate(candidate)) candidate.text else null
+    }
+
+    /**
+     * Map a mixed candidate list index (project + fcitx) to native fcitx index (bulk mode).
+     *
+     * [displayIndex] can be either a candidate position, or an offset/count.
+     */
+    fun mapBulkDisplayIndexToEngineIndex(
+        displayIndex: Int,
+        mixedCandidates: Array<String>
+    ): Int {
+        if (displayIndex <= 0) return 0
+        val clamped = displayIndex.coerceAtMost(mixedCandidates.size)
+        var projectCount = 0
+        for (i in 0 until clamped) {
+            if (extractProjectCommitText(mixedCandidates[i]) != null) {
+                projectCount++
+            }
+        }
+        return (clamped - projectCount).coerceAtLeast(0)
+    }
+
+    /**
+     * Map a mixed candidate list index (project + fcitx) to native fcitx index (paged mode).
+     *
+     * [displayIndex] can be either a candidate position, or an offset/count.
+     */
+    fun mapPagedDisplayIndexToEngineIndex(
+        displayIndex: Int,
+        mixedCandidates: Array<FcitxEvent.Candidate>
+    ): Int {
+        if (displayIndex <= 0) return 0
+        val clamped = displayIndex.coerceAtMost(mixedCandidates.size)
+        var projectCount = 0
+        for (i in 0 until clamped) {
+            if (isProjectPagedCandidate(mixedCandidates[i])) {
+                projectCount++
+            }
+        }
+        return (clamped - projectCount).coerceAtLeast(0)
     }
 }

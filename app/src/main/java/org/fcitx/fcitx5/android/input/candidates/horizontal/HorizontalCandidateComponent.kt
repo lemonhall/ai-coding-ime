@@ -87,7 +87,11 @@ class HorizontalCandidateComponent :
     val expandedCandidateOffset = _expandedCandidateOffset.asSharedFlow()
 
     private fun refreshExpanded(childCount: Int) {
-        _expandedCandidateOffset.tryEmit(childCount)
+        val nativeOffset = ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(
+            childCount,
+            adapter.candidates
+        )
+        _expandedCandidateOffset.tryEmit(nativeOffset)
         bar.expandButtonStateMachine.push(
             ExpandedCandidatesUpdated,
             ExpandedCandidatesEmpty to (adapter.total == childCount)
@@ -108,11 +112,15 @@ class HorizontalCandidateComponent :
                         service.currentInputConnection?.commitText(projectText, 1)
                         fcitx.launchOnReady { it.reset() }
                     } else {
-                        fcitx.launchOnReady { it.select(holder.idx) }
+                        val nativeIndex = ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(
+                            holder.idx,
+                            adapter.candidates
+                        )
+                        fcitx.launchOnReady { it.select(nativeIndex) }
                     }
                 }
                 holder.itemView.setOnLongClickListener {
-                    showCandidateActionMenu(holder)
+                    showCandidateActionMenu(holder, candidateIndexIsDisplayIndex = true)
                     true
                 }
             }
@@ -218,8 +226,15 @@ class HorizontalCandidateComponent :
 
     private var candidateActionMenu: PopupMenu? = null
 
-    fun showCandidateActionMenu(holder: CandidateViewHolder) {
-        val idx = holder.idx
+    fun showCandidateActionMenu(
+        holder: CandidateViewHolder,
+        candidateIndexIsDisplayIndex: Boolean = false
+    ) {
+        val idx = if (candidateIndexIsDisplayIndex) {
+            ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(holder.idx, adapter.candidates)
+        } else {
+            holder.idx
+        }
         val text = holder.text
         if (ProjectDictBooster.extractProjectCommitText(text) != null) {
             return

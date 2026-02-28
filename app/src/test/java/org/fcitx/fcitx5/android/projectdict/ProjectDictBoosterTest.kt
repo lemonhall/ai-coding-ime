@@ -27,4 +27,32 @@ class ProjectDictBoosterTest {
         Assert.assertEquals("getUserInfo", ProjectDictBooster.extractProjectCommitText(project))
         Assert.assertEquals(null, ProjectDictBooster.extractProjectCommitText(normal))
     }
+
+    @Test
+    fun mapBulkDisplayIndexToEngineIndexSkipsProjectCandidates() {
+        val mixed = arrayOf(
+            "API_BASE_URL [P]",
+            "安排",
+            "apt"
+        )
+
+        Assert.assertEquals(0, ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(0, mixed))
+        Assert.assertEquals(0, ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(1, mixed))
+        Assert.assertEquals(1, ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(2, mixed))
+        Assert.assertEquals(2, ProjectDictBooster.mapBulkDisplayIndexToEngineIndex(3, mixed))
+    }
+
+    @Test
+    fun mapPagedDisplayIndexToEngineIndexSkipsProjectCandidates() {
+        val mixed = arrayOf(
+            FcitxEvent.Candidate(label = "", text = "API_BASE_URL", comment = "[P]"),
+            FcitxEvent.Candidate(label = "", text = "安排", comment = ""),
+            FcitxEvent.Candidate(label = "", text = "apt", comment = "")
+        )
+
+        Assert.assertEquals(0, ProjectDictBooster.mapPagedDisplayIndexToEngineIndex(0, mixed))
+        Assert.assertEquals(0, ProjectDictBooster.mapPagedDisplayIndexToEngineIndex(1, mixed))
+        Assert.assertEquals(1, ProjectDictBooster.mapPagedDisplayIndexToEngineIndex(2, mixed))
+        Assert.assertEquals(2, ProjectDictBooster.mapPagedDisplayIndexToEngineIndex(3, mixed))
+    }
 }

@@ -107,7 +107,11 @@ class CandidatesView(
                 service.currentInputConnection?.commitText(projectText, 1)
                 fcitx.launchOnReady { it.reset() }
             } else {
-                fcitx.launchOnReady { it.select(index) }
+                val nativeIndex = ProjectDictBooster.mapPagedDisplayIndexToEngineIndex(
+                    index,
+                    paged.candidates
+                )
+                fcitx.launchOnReady { it.select(nativeIndex) }
             }
         },
         onPrevPage = { fcitx.launchOnReady { it.offsetCandidatePage(-1) } },
