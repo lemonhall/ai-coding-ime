@@ -1,0 +1,69 @@
+# 码境输入法示例词库
+# 项目词库协议 v1
+# 格式：词条<TAB>类型<TAB>权重<TAB>上下文提示(可选)
+#
+# 类型：id=标识符, term=领域术语, abbr=缩写, phrase=常用短语
+# 权重：0-1000，越大越优先
+
+# === 英文标识符（函数名、变量名、类名）===
+getUserInfo	id	950
+setConfig	id	920
+handleError	id	880
+fetchData	id	870
+updateState	id	860
+validateInput	id	850
+processRequest	id	840
+renderComponent	id	830
+initializeApp	id	820
+closeConnection	id	810
+user_repository	id	800
+data_manager	id	790
+config_loader	id	780
+error_handler	id	770
+ProjectConfig	id	760
+UserService	id	750
+DataModel	id	740
+API_BASE_URL	id	730
+MAX_RETRY_COUNT	id	720
+DEFAULT_TIMEOUT	id	710
+
+# === 中文领域术语 ===
+数据迁移	term	900	database migration
+项目配置	term	880	project config
+幂等性	term	850	idempotency
+依赖注入	term	840	dependency injection
+响应式编程	term	830	reactive programming
+微服务架构	term	820	microservices
+容器化部署	term	810	containerization
+持续集成	term	800	continuous integration
+单元测试	term	790	unit testing
+代码审查	term	780	code review
+版本控制	term	770	version control
+接口文档	term	760	API documentation
+性能优化	term	750	performance optimization
+异常处理	term	740	exception handling
+并发控制	term	730	concurrency control
+
+# === 常用短语 ===
+重新部署	phrase	700
+回滚到上一个版本	phrase	680
+清空缓存	phrase	660
+重启服务	phrase	640
+查看日志	phrase	620
+更新依赖	phrase	600
+运行测试	phrase	580
+提交代码	phrase	560
+创建分支	phrase	540
+合并请求	phrase	520
+
+# === 缩写 ===
+cfg	abbr	650	config/configuration
+repo	abbr	640	repository
+impl	abbr	630	implementation
+util	abbr	620	utility
+mgr	abbr	610	manager
+svc	abbr	600	service
+ctx	abbr	590	context
+req	abbr	580	request
+res	abbr	570	response
+auth	abbr	560	authentication

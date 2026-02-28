@@ -9,6 +9,10 @@
 ```markdown
 # ai-coding-ime — 项目词库增强输入法 点火文档
 
+## 相关文档
+
+- JNI 容错召回施工计划：`docs/plan/v1-projectdict-jni-fuzzy-recall.md`
+
 ## 项目目标
 
 基于 Fcitx5 Android（https://github.com/fcitx5-android/fcitx5-android）进行 fork 改造，增加"项目词库"功能。核心场景：用户在 Android 终端通过 SSH 连接远端项目时，输入法自动加载该项目的 AI 生成词库（`.ime/dict.tsv`），使中英文输入都能感知项目上下文。
@@ -312,6 +316,7 @@ GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --ultrafast --kotlin
 - Phase 2 ✅ 已完成（提交：`14142249`）
 - Phase 3.1 ✅ 已完成（提交：`19f3a8c6`）
 - Phase 3.2 ⏳ 未开始（SSH 终端联动/Intent 热加载）
+- Phase 3.4 📝 规划中（复用 JNI/libime 容错召回，详见 `docs/plan/v1-projectdict-jni-fuzzy-recall.md`）
 - Phase 4 ⏳ 未开始（ProjectDict 相关测试尚未补齐）
 
 ## Phase 1：项目词库协议定义 ✅
@@ -491,6 +496,22 @@ Extra:
 - 词库内容做基本的大小限制（如 < 1MB），防止 OOM
 - 词条数量上限（如 10000 条），防止查询性能退化
 
+### 3.4 容错召回增强：复用 JNI/libime 能力（计划中）
+
+**状态**：规划中（未开工，目标在 Phase 4 前完成）
+
+目标：
+- 让项目词库对拼音误触输入具备与主拼音更接近的弹性召回能力。
+- 典型目标输入：`hyi`、`huu`、`hyigun`、`huugun` 也能召回“回滚到上一个版本 [P]”。
+
+设计约束：
+- 复用 libime 已有 `Correction + Fuzzy` 能力，不自行在 Kotlin 重写一套拼音纠错算法。
+- 仅允许在 app 层新增最小 JNI 桥接，不改 `lib/*` 与 `plugin/*` 上游/子模块源码。
+- ProjectDict 保持“项目候选在前”的现有混合策略，但要对纠错命中做降权，避免误召回压过精确命中。
+
+文档入口：
+- 施工计划：`docs/plan/v1-projectdict-jni-fuzzy-recall.md`
+
 ## Phase 4：测试验证
 
 **状态**：未开始（当前仓库暂无 `ProjectDictParserTest/ManagerTest/BoosterTest`）
@@ -521,10 +542,11 @@ Extra:
 4. ✅ **Phase 3.1** → 完成手动加载入口（文件/剪贴板）
 5. ⏳ **Phase 4** → 补齐 ProjectDict 单元/集成/性能测试
 6. ⏳ **Phase 3.2** → 与 SSH 终端联动（Intent + 安全校验）
+7. 📝 **Phase 3.4** → 复用 JNI/libime 做 ProjectDict 容错召回（先按 `docs/plan/v1-projectdict-jni-fuzzy-recall.md` 落地）
 
 ## 约束与原则
 
-- 所有改造限制在 Kotlin 层，不碰 C++/JNI 层
+- Phase 2/3.1/3.2/3.3 以 Kotlin 层为主；Phase 3.4 允许在 app JNI 桥接层做最小改动
 - 项目词库功能是纯增量的，不修改任何现有功能的行为
 - 词库未加载时，输入法行为与原版 100% 一致
 - 遵循上游的代码风格和目录结构约定

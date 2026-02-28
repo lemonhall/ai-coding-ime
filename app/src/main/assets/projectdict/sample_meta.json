@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "project": "sample-project",
+  "lang": ["zh", "en"],
+  "generated_at": "2026-02-27T15:00:00Z",
+  "description": "码境输入法示例词库 - 包含常见编程术语和标识符"
+}
