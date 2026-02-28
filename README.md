@@ -120,6 +120,34 @@ echo $JAVA_HOME          # 应输出 /nix/store/.../openjdk-17.0.15+6
 ./gradlew assembleDebug
 ```
 
+### Fast Development Mode (WSL2 / Linux)
+
+日常只改 Kotlin/UI 时，使用仓库内脚本避免反复触发 native 链路：
+
+```shell
+# 默认：单 ABI + 增量友好参数（installDebug）
+./scripts/gradle-dev.sh
+
+# 快速模式：跳过 CMake/native 安装链（仅适用于未改 C++/submodule）
+./scripts/gradle-dev.sh --fast --assemble
+./scripts/gradle-dev.sh --fast --install
+```
+
+默认本机提速配置（`~/.gradle/gradle.properties`）建议为：
+
+```properties
+buildABI=arm64-v8a
+buildTimestamp=0
+org.gradle.daemon=true
+org.gradle.caching=true
+org.gradle.parallel=true
+```
+
+注意：
+- `--fast` 依赖至少一次完整构建产物（native 缓存已存在）。
+- 不要在日常迭代里执行 `clean`，否则会退回接近全量构建。
+- 当前项目的自定义任务与 `org.gradle.configuration-cache=true` 不兼容，请保持关闭。
+
 Nix dev shell 提供的环境：
 
 | 组件 | 版本 |

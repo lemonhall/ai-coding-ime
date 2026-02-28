@@ -254,6 +254,46 @@ adb install "\\wsl$\Ubuntu-24.04\home\lemonhall\ai-coding-ime\app\build\outputs\
 - NDK: 28.0.13004108
 - JDK: 17
 
+### 0.7 开发提速模式（2026-02-28）
+
+问题背景：默认 `assembleDebug` 会走多 ABI + native 任务链，首次或缓存失效时可达 ~53 分钟。
+
+#### 本机提速配置（用户级）
+
+`~/.gradle/gradle.properties`：
+
+```properties
+buildABI=arm64-v8a
+buildTimestamp=0
+org.gradle.daemon=true
+org.gradle.caching=true
+org.gradle.parallel=true
+```
+
+说明：
+- `buildABI=arm64-v8a`：默认仅构建手机目标 ABI（大幅减少 native 任务图）
+- `buildTimestamp=0`：避免每次时间戳变化导致增量失效
+- `configuration-cache` 目前不要开启（项目自定义 `CMakeBuildInstallTask` 不兼容）
+
+#### 仓库脚本（推荐）
+
+新增脚本：`scripts/gradle-dev.sh`
+
+```bash
+# 常规开发（单 ABI + 增量友好参数）
+./scripts/gradle-dev.sh
+
+# 快速模式：跳过 native/CMake 安装链（仅 Kotlin/UI 迭代）
+./scripts/gradle-dev.sh --fast --assemble
+./scripts/gradle-dev.sh --fast --install
+```
+
+#### fast 模式边界
+
+- `--fast` 只适用于“不改 C++、不改 submodule、native 产物已存在”的迭代
+- 如果改了 C++/submodule，或怀疑 native 缓存脏，回到非 fast 模式
+- 不要在日常开发里执行 `clean`，否则会触发接近全量重编译
+
 ## 当前进度（截至 2026-02-28）
 
 - Phase 0 ✅ 已完成（构建、安装与基础验证）
