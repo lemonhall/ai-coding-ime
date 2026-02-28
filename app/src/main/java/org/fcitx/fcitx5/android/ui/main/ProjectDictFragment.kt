@@ -11,13 +11,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.preference.Preference
 import org.fcitx.fcitx5.android.R
 import org.fcitx.fcitx5.android.projectdict.ProjectDictManager
 import org.fcitx.fcitx5.android.ui.common.PaddingPreferenceFragment
 import org.fcitx.fcitx5.android.utils.addPreference
+import org.fcitx.fcitx5.android.utils.setup
 import timber.log.Timber
 
 class ProjectDictFragment : PaddingPreferenceFragment() {
+
+    private var infoPreference: Preference? = null
 
     private val filePickerLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -40,7 +44,12 @@ class ProjectDictFragment : PaddingPreferenceFragment() {
             addPreference(R.string.project_dict_clear) {
                 clearDictionary()
             }
-            addPreference(R.string.project_dict_info, getDictionaryInfo())
+            infoPreference = Preference(requireContext()).apply {
+                setup(
+                    title = getString(R.string.project_dict_info),
+                    summary = getDictionaryInfo()
+                )
+            }.also { addPreference(it) }
         }
     }
 
@@ -62,11 +71,12 @@ class ProjectDictFragment : PaddingPreferenceFragment() {
             }
 
             val projectName = uri.lastPathSegment ?: "unknown"
-            ProjectDictManager.load(content, projectName)
-
-            val entryCount = content.lines().count { line ->
-                val trimmed = line.trim()
-                trimmed.isNotEmpty() && !trimmed.startsWith("#")
+            val entryCount = ProjectDictManager.load(content, projectName)
+            if (entryCount == 0) {
+                showToast(R.string.project_dict_load_error)
+                refreshInfo()
+                Timber.w("ProjectDict: No valid entries found in file: $projectName")
+                return
             }
 
             showToast(getString(R.string.project_dict_load_success, entryCount))
@@ -94,11 +104,12 @@ class ProjectDictFragment : PaddingPreferenceFragment() {
         }
 
         try {
-            ProjectDictManager.load(content, "clipboard")
-
-            val entryCount = content.lines().count { line ->
-                val trimmed = line.trim()
-                trimmed.isNotEmpty() && !trimmed.startsWith("#")
+            val entryCount = ProjectDictManager.load(content, "clipboard")
+            if (entryCount == 0) {
+                showToast(R.string.project_dict_load_error)
+                refreshInfo()
+                Timber.w("ProjectDict: No valid entries found in clipboard content")
+                return
             }
 
             showToast(getString(R.string.project_dict_load_success, entryCount))
@@ -126,10 +137,7 @@ class ProjectDictFragment : PaddingPreferenceFragment() {
     }
 
     private fun refreshInfo() {
-        // Refresh the info preference
-        preferenceScreen.findPreference<androidx.preference.Preference>(
-            getString(R.string.project_dict_info)
-        )?.summary = getDictionaryInfo()
+        infoPreference?.summary = getDictionaryInfo()
     }
 
     private fun showToast(resId: Int) {

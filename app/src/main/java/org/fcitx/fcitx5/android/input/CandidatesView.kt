@@ -100,7 +100,16 @@ class CandidatesView(
 
     private val candidatesUi = PagedCandidatesUi(
         ctx, theme, setupTextView,
-        onCandidateClick = { index -> fcitx.launchOnReady { it.select(index) } },
+        onCandidateClick = { index ->
+            val candidate = paged.candidates.getOrNull(index)
+            val projectText = candidate?.let { ProjectDictBooster.extractProjectCommitText(it) }
+            if (projectText != null) {
+                service.currentInputConnection?.commitText(projectText, 1)
+                fcitx.launchOnReady { it.reset() }
+            } else {
+                fcitx.launchOnReady { it.select(index) }
+            }
+        },
         onPrevPage = { fcitx.launchOnReady { it.offsetCandidatePage(-1) } },
         onNextPage = { fcitx.launchOnReady { it.offsetCandidatePage(1) } }
     )

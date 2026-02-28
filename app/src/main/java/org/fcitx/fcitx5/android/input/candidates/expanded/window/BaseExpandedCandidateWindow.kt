@@ -37,6 +37,7 @@ import org.fcitx.fcitx5.android.input.keyboard.KeyActionListener
 import org.fcitx.fcitx5.android.input.keyboard.KeyboardWindow
 import org.fcitx.fcitx5.android.input.wm.InputWindow
 import org.fcitx.fcitx5.android.input.wm.InputWindowManager
+import org.fcitx.fcitx5.android.projectdict.ProjectDictBooster
 import org.mechdancer.dependency.manager.must
 import splitties.dimensions.dp
 import kotlin.math.max
@@ -140,7 +141,13 @@ abstract class BaseExpandedCandidateWindow<T : BaseExpandedCandidateWindow<T>> :
 
     fun bindCandidateUiViewHolder(holder: CandidateViewHolder) {
         holder.itemView.setOnClickListener {
-            fcitx.launchOnReady { it.select(holder.idx) }
+            val projectText = ProjectDictBooster.extractProjectCommitText(holder.text)
+            if (projectText != null) {
+                service.currentInputConnection?.commitText(projectText, 1)
+                fcitx.launchOnReady { it.reset() }
+            } else {
+                fcitx.launchOnReady { it.select(holder.idx) }
+            }
         }
         holder.itemView.setOnLongClickListener {
             horizontalCandidate.showCandidateActionMenu(holder)

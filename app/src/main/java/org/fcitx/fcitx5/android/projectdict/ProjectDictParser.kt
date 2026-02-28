@@ -33,8 +33,10 @@ object ProjectDictParser {
                 return@forEach
             }
 
-            // 解析 TSV 行
-            val fields = trimmed.split("\t")
+            // 解析词条行：
+            // - 优先按 TAB（规范 TSV）
+            // - 若无 TAB，则回退到空白分隔（兼容手工输入/复制）
+            val fields = parseFields(trimmed)
             if (fields.size < 3) {
                 Timber.w("ProjectDict: Line $lineNumber: insufficient fields (need at least 3), skipping")
                 return@forEach
@@ -68,5 +70,13 @@ object ProjectDictParser {
 
         Timber.i("ProjectDict: Parsed ${entries.size} entries from $lineNumber lines")
         return entries
+    }
+
+    private fun parseFields(line: String): List<String> {
+        if (line.contains('\t')) {
+            return line.split('\t')
+        }
+        // Fallback: split by whitespace, keep the 4th field as "rest of line" (hint may include spaces)
+        return line.split(Regex("\\s+"), limit = 4)
     }
 }

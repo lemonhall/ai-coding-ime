@@ -198,14 +198,20 @@ adb start-server
 # 确认设备
 adb devices
 
-# 安装 APK（注意 WSL 发行版名称，用 wsl -l -q 确认）
-# 本项目实际路径中发行版名为 Ubuntu-24.04
-adb install "\\wsl$\Ubuntu-24.04\home\lemonhall\ai-coding-ime\app\build\outputs\apk\debug\org.fcitx.fcitx5.android-8c82f67b-arm64-v8a-debug.apk"
+# 已验证命令（2026-02-28）
+wsl.exe -e bash -lc 'cp /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/org.fcitx.fcitx5.android-02b1e5ae-arm64-v8a-debug.apk /mnt/c/Users/lemon/Downloads/ime-debug.apk'
+adb install -r "$env:USERPROFILE\Downloads\ime-debug.apk"
 
 # 备选方案：adb over TCP
 #   1. Windows 侧：adb tcpip 5555
 #   2. WSL2 侧：adb connect <宿主机IP>:5555
 #   3. WSL2 侧：./gradlew installDebug
+```
+
+如果 commit 变了，先在 WSL 里查看当前 APK 文件名再替换：
+
+```bash
+ls -la /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/
 ```
 
 ### 0.3.1 在手机上启用输入法
@@ -284,8 +290,12 @@ org.gradle.parallel=true
 ./scripts/gradle-dev.sh
 
 # 快速模式：跳过 native/CMake 安装链（仅 Kotlin/UI 迭代）
-./scripts/gradle-dev.sh --fast --assemble
-./scripts/gradle-dev.sh --fast --install
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --fast --kotlin
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --fast --assemble
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --fast --install
+
+# 更激进（可选）：再跳过 KSP/codegen（仅限未改注解/Room schema）
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --ultrafast --kotlin
 ```
 
 #### fast 模式边界
@@ -293,6 +303,7 @@ org.gradle.parallel=true
 - `--fast` 只适用于“不改 C++、不改 submodule、native 产物已存在”的迭代
 - 如果改了 C++/submodule，或怀疑 native 缓存脏，回到非 fast 模式
 - 不要在日常开发里执行 `clean`，否则会触发接近全量重编译
+- `GRADLE_USER_HOME` 切到一个新目录时，Gradle Wrapper 会重新下载分发包（一次性）；为复用缓存，固定使用 `~/.gradle`
 
 ## 当前进度（截至 2026-02-28）
 

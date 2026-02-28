@@ -39,6 +39,7 @@ import org.fcitx.fcitx5.android.input.dependency.context
 import org.fcitx.fcitx5.android.input.dependency.fcitx
 import org.fcitx.fcitx5.android.input.dependency.inputMethodService
 import org.fcitx.fcitx5.android.input.dependency.theme
+import org.fcitx.fcitx5.android.projectdict.ProjectDictBooster
 import org.fcitx.fcitx5.android.utils.item
 import org.mechdancer.dependency.manager.must
 import splitties.dimensions.dp
@@ -102,7 +103,13 @@ class HorizontalCandidateComponent :
                     flexGrow = layoutFlexGrow
                 }
                 holder.itemView.setOnClickListener {
-                    fcitx.launchOnReady { it.select(holder.idx) }
+                    val projectText = ProjectDictBooster.extractProjectCommitText(holder.text)
+                    if (projectText != null) {
+                        service.currentInputConnection?.commitText(projectText, 1)
+                        fcitx.launchOnReady { it.reset() }
+                    } else {
+                        fcitx.launchOnReady { it.select(holder.idx) }
+                    }
                 }
                 holder.itemView.setOnLongClickListener {
                     showCandidateActionMenu(holder)
@@ -214,6 +221,9 @@ class HorizontalCandidateComponent :
     fun showCandidateActionMenu(holder: CandidateViewHolder) {
         val idx = holder.idx
         val text = holder.text
+        if (ProjectDictBooster.extractProjectCommitText(text) != null) {
+            return
+        }
         val view = holder.ui.root
         candidateActionMenu?.dismiss()
         candidateActionMenu = null

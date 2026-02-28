@@ -129,8 +129,12 @@ echo $JAVA_HOME          # 应输出 /nix/store/.../openjdk-17.0.15+6
 ./scripts/gradle-dev.sh
 
 # 快速模式：跳过 CMake/native 安装链（仅适用于未改 C++/submodule）
-./scripts/gradle-dev.sh --fast --assemble
-./scripts/gradle-dev.sh --fast --install
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --fast --kotlin
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --fast --assemble
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --fast --install
+
+# 更激进（可选）：再跳过 KSP/codegen（仅限未改注解/Room schema 的 Kotlin/UI 迭代）
+GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --ultrafast --kotlin
 ```
 
 默认本机提速配置（`~/.gradle/gradle.properties`）建议为：
@@ -147,6 +151,7 @@ org.gradle.parallel=true
 - `--fast` 依赖至少一次完整构建产物（native 缓存已存在）。
 - 不要在日常迭代里执行 `clean`，否则会退回接近全量构建。
 - 当前项目的自定义任务与 `org.gradle.configuration-cache=true` 不兼容，请保持关闭。
+- `GRADLE_USER_HOME` 变更到一个全新目录时，Gradle Wrapper 会重新下载分发包（一次性）。若想复用缓存，固定为 `~/.gradle`。
 
 Nix dev shell 提供的环境：
 
@@ -167,14 +172,21 @@ Nix dev shell 提供的环境：
 
 ### WSL2 安装到手机
 
-WSL2 中 adb 通常无法直接识别 USB 设备，在 Windows PowerShell 中执行：
+WSL2 中 adb 通常无法直接识别 USB 设备，推荐在 Windows PowerShell 中先把 APK 复制到本地再安装：
 
 ```powershell
 # 确认设备（如果 daemon 启动失败，先 taskkill /F /IM adb.exe）
 adb devices
 
-# 安装（注意 WSL 发行版名称，用 wsl -l -q 确认）
-adb install "\\wsl$\Ubuntu-24.04\home\<user>\ai-coding-ime\app\build\outputs\apk\debug\org.fcitx.fcitx5.android-<commit>-arm64-v8a-debug.apk"
+# 已验证命令（2026-02-28）
+wsl.exe -e bash -lc 'cp /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/org.fcitx.fcitx5.android-02b1e5ae-arm64-v8a-debug.apk /mnt/c/Users/lemon/Downloads/ime-debug.apk'
+adb install -r "$env:USERPROFILE\Downloads\ime-debug.apk"
+```
+
+如果 commit 变了，先在 WSL 里查看当前 APK 文件名再替换：
+
+```bash
+ls -la /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/
 ```
 
 ### Alternative: Manual SDK Setup

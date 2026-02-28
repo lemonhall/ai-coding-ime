@@ -16,18 +16,21 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
 MODE_FAST=0
+MODE_ULTRAFAST=0
 TASK=":app:installDebug"
 EXTRA_ARGS=()
 
 usage() {
   cat <<'EOF'
 Usage:
-  scripts/gradle-dev.sh [--fast] [--assemble|--install|--task <task>] [-- <extra-gradle-args>]
+  scripts/gradle-dev.sh [--fast|--ultrafast] [--kotlin|--assemble|--install|--task <task>] [-- <extra-gradle-args>]
 
 Examples:
   scripts/gradle-dev.sh
+  scripts/gradle-dev.sh --kotlin
   scripts/gradle-dev.sh --assemble
   scripts/gradle-dev.sh --fast --assemble
+  scripts/gradle-dev.sh --ultrafast --kotlin
   scripts/gradle-dev.sh --fast --task :app:installDebug -- --info
 EOF
 }
@@ -36,6 +39,15 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --fast)
       MODE_FAST=1
+      shift
+      ;;
+    --ultrafast)
+      MODE_FAST=1
+      MODE_ULTRAFAST=1
+      shift
+      ;;
+    --kotlin)
+      TASK=":app:compileDebugKotlin"
       shift
       ;;
     --assemble)
@@ -70,6 +82,13 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+# Keep gradle cache in repo workspace by default.
+# This avoids permission prompts and prevents cold-cache rebuilds from /tmp.
+if [[ -z "${GRADLE_USER_HOME:-}" ]]; then
+  export GRADLE_USER_HOME="$ROOT_DIR/.gradle-user-home"
+fi
+mkdir -p "$GRADLE_USER_HOME"
 
 BASE_ARGS=(
   "$TASK"
@@ -116,10 +135,25 @@ FAST_EXCLUDES=(
   "-x" ":lib:fcitx5-chinese-addons:installFcitxHeaders"
 )
 
+ULTRAFAST_EXCLUDES=(
+  "-x" ":app:kspDebugKotlin"
+  "-x" ":codegen:compileKotlin"
+  "-x" ":codegen:compileJava"
+  "-x" ":codegen:processResources"
+  "-x" ":codegen:classes"
+  "-x" ":codegen:jar"
+)
+
+RUN_ARGS=("${BASE_ARGS[@]}")
+
+echo "[gradle-dev] GRADLE_USER_HOME=$GRADLE_USER_HOME"
 if (( MODE_FAST )); then
   echo "[gradle-dev] fast mode enabled: skip native/CMake chain"
-  exec ./gradlew "${BASE_ARGS[@]}" "${FAST_EXCLUDES[@]}" "${EXTRA_ARGS[@]}"
-else
-  exec ./gradlew "${BASE_ARGS[@]}" "${EXTRA_ARGS[@]}"
+  RUN_ARGS+=("${FAST_EXCLUDES[@]}")
+fi
+if (( MODE_ULTRAFAST )); then
+  echo "[gradle-dev] ultrafast mode enabled: skip KSP/codegen (safe only when no annotation/schema changes)"
+  RUN_ARGS+=("${ULTRAFAST_EXCLUDES[@]}")
 fi
 
+exec ./gradlew "${RUN_ARGS[@]}" "${EXTRA_ARGS[@]}"
