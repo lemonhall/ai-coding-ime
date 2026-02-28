@@ -1,12 +1,3 @@
-好，让我先去看看项目里的 nix 配置，确认一下构建方式。
-
-好，我看到项目里有 `flake.nix`、`flake.lock` 和 `shell.nix`。让我看看 `flake.nix` 的内容。
-
-非常好，`flake.nix` 内容完整了。关键信息：NDK 28、CMake 3.31.6、Build-Tools 35.0.1、Platform 35、JDK 17。还有一个 `noAS` dev shell 可以不带 Android Studio。让我关掉浏览器输出文档。
-
-好，信息齐了。完整输出更新后的文档：
-
-```markdown
 # ai-coding-ime — 项目词库增强输入法 点火文档
 
 ## 相关文档
@@ -325,8 +316,9 @@ GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --ultrafast --kotlin
 - Phase 2 ✅ 已完成（提交：`14142249`）
 - Phase 3.1 ✅ 已完成（提交：`19f3a8c6`）
 - Phase 3.2 ⏳ 未开始（SSH 终端联动/Intent 热加载）
-- Phase 3.4 📝 规划中（复用 JNI/libime 容错召回，详见 `docs/plan/v1-projectdict-jni-fuzzy-recall.md`）
-- Phase 4 ⏳ 未开始（ProjectDict 相关测试尚未补齐）
+- Phase 3.3 ⏳ 未开始（调用方签名校验 + payload 限流未实现）
+- Phase 3.4 ✅ 已完成（JNI/libime 容错召回已落地，详见 `docs/plan/v1-projectdict-jni-fuzzy-recall.md`）
+- Phase 4 🚧 进行中（JVM 单测已补齐并通过，集成/性能待补）
 
 ## Phase 1：项目词库协议定义 ✅
 
@@ -429,9 +421,10 @@ data class ProjectDictEntry(
 
 查询逻辑：
 - `id` 类型：前缀匹配（输入 `getU` 匹配 `getUserInfo`），大小写不敏感
-- `term` 类型：当前实现为中文前缀匹配（拼音前缀匹配尚未实现）
+- `term` 类型：中文前缀匹配 + 拼音前缀匹配（全拼/首字母）
 - `abbr` 类型：精确匹配或前缀匹配
-- `phrase` 类型：中文前缀匹配
+- `phrase` 类型：中文前缀匹配 + 拼音前缀匹配（全拼/首字母）
+- 严格匹配未命中时：可走 JNI/libime 容错召回（Phase 3.4）
 
 ### 2.5 ProjectDictBooster — 候选词注入
 
@@ -466,8 +459,8 @@ is FcitxEvent.PagedCandidateEvent -> {
 ```
 
 注意事项：
-- 不要修改 C++ 层和 JNI 层，所有改造限制在 Kotlin 层
-- 候选词注入必须是非阻塞的（在 coroutine 中执行）
+- Phase 2 仅改 Kotlin 层；Phase 3.4 允许在 app JNI 层做最小桥接改动
+- 当前候选查询路径为同步执行；若词库规模增大，需要优先补异步化与性能回归
 - 如果项目词库为空或未加载，行为与原版完全一致（零侵入）
 
 ## Phase 3：词库加载通道
@@ -505,9 +498,9 @@ Extra:
 - 词库内容做基本的大小限制（如 < 1MB），防止 OOM
 - 词条数量上限（如 10000 条），防止查询性能退化
 
-### 3.4 容错召回增强：复用 JNI/libime 能力（计划中）
+### 3.4 容错召回增强：复用 JNI/libime 能力（已完成）
 
-**状态**：规划中（未开工，目标在 Phase 4 前完成）
+**状态**：已完成（2026-02-28）
 
 目标：
 - 让项目词库对拼音误触输入具备与主拼音更接近的弹性召回能力。
@@ -520,16 +513,20 @@ Extra:
 
 文档入口：
 - 施工计划：`docs/plan/v1-projectdict-jni-fuzzy-recall.md`
+- Kotlin 门面：`app/src/main/java/org/fcitx/fcitx5/android/projectdict/ProjectDictNative.kt`
+- JNI 实现：`app/src/main/cpp/native-lib.cpp` (`matchPinyinFuzzyBatchNative`)
+- 管理器接入：`app/src/main/java/org/fcitx/fcitx5/android/projectdict/ProjectDictManager.kt`
 
 ## Phase 4：测试验证
 
-**状态**：未开始（当前仓库暂无 `ProjectDictParserTest/ManagerTest/BoosterTest`）
+**状态**：进行中（JVM 单测已落地并通过；集成测试/性能基准未完成）
 
 ### 4.1 单元测试
 
-- `ProjectDictParserTest`：验证 TSV 解析的正确性和容错性
-- `ProjectDictManagerTest`：验证查询逻辑（前缀匹配、拼音匹配、大小写不敏感）
-- `ProjectDictBoosterTest`：验证候选词混合排序逻辑
+- ✅ `ProjectDictParserTest`：验证 TSV 解析正确性和容错性
+- ✅ `ProjectDictManagerTest`：验证前缀匹配、拼音匹配、JNI 容错召回与排序保护
+- ✅ `ProjectDictBoosterTest`：验证候选词混合与索引映射逻辑
+- 通过命令：`./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"`
 
 ### 4.2 集成测试
 
@@ -549,9 +546,9 @@ Extra:
 2. ✅ **Phase 1** → 定义词库格式，落地 `.ime/dict.tsv` / `.ime/meta.json`
 3. ✅ **Phase 2** → 完成 ProjectDict 核心与候选词注入（Kotlin 层）
 4. ✅ **Phase 3.1** → 完成手动加载入口（文件/剪贴板）
-5. ⏳ **Phase 4** → 补齐 ProjectDict 单元/集成/性能测试
-6. ⏳ **Phase 3.2** → 与 SSH 终端联动（Intent + 安全校验）
-7. 📝 **Phase 3.4** → 复用 JNI/libime 做 ProjectDict 容错召回（先按 `docs/plan/v1-projectdict-jni-fuzzy-recall.md` 落地）
+5. ✅ **Phase 3.4** → 复用 JNI/libime 做 ProjectDict 容错召回
+6. 🚧 **Phase 4** → 持续补齐集成测试与性能基准（单元测试已完成）
+7. ⏳ **Phase 3.2 + 3.3** → 与 SSH 终端联动（Intent + 安全校验）
 
 ## 约束与原则
 
@@ -564,4 +561,3 @@ Extra:
 - WSL2 代理地址：127.0.0.1:7897（本地代理转发）或宿主机局域网 IP（视网络配置而定）
 - Phase 0 完成时间：2026-02-27
 - 文档状态更新时间：2026-02-28
-```

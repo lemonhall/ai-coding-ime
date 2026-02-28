@@ -25,6 +25,8 @@ Key/Input
   -> JNI bridge (app/src/main/cpp/native-lib.cpp)
   -> fcitx/libime native engine
   -> FcitxEvent back to Kotlin
+  -> ProjectDictManager (strict + pinyin prefix match)
+  -> ProjectDictNative (JNI fuzzy/correction fallback on strict miss)
   -> ProjectDictBooster (candidate merge)
   -> InputView/CandidatesView render
 ```
@@ -41,6 +43,15 @@ Key/Input
 - Generated asset descriptor (ignored): `app/src/main/assets/descriptor.json`
 - Android app prefs: `PreferenceManager.getDefaultSharedPreferences(...)`
 - ProjectDict runtime state: in-memory only (`ProjectDictManager`), not durable across process restart
+
+### ProjectDict Status Snapshot (as of 2026-02-28)
+- Done: Phase 1 (protocol), Phase 2 (Kotlin core + candidate injection), Phase 3.1 (manual load), Phase 3.4 (JNI/libime fuzzy recall).
+- Pending: Phase 3.2 (SSH terminal linked auto-load), Phase 3.3 (caller signature verification + payload/entry limits).
+- In progress: Phase 4 (JVM unit tests landed; integration/perf benchmark not done).
+- Focused verification command:
+  - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"`
+- Manual regression doc:
+  - `docs/projectdict-manual-test.md`
 
 ## 2) Code Conventions (Negative Knowledge)
 - Do not run `clean` in daily iteration.
@@ -97,6 +108,8 @@ Key/Input
 - All JVM unit tests: `./gradlew test`
 - Single test example:
   - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.StringEscapeTest"`
+- ProjectDict focused suite:
+  - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"`
 
 ### Instrumentation Tests (device/emulator required)
 - `./gradlew :app:connectedDebugAndroidTest`

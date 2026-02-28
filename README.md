@@ -34,11 +34,18 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
 
 ### Project Dictionary Progress (as of 2026-02-28)
 
-- ✅ Phase 1: 协议定义完成（`.ime/dict.tsv` / `.ime/meta.json`）
-- ✅ Phase 2: Kotlin 核心完成（`ProjectDictParser/Manager/Booster` + 候选词注入）
-- ✅ Phase 3.1: 手动加载完成（设置页支持文件和剪贴板导入）
-- ⏳ Phase 3.2: SSH 终端联动未实现（`ACTION_LOAD_PROJECT_DICT` 仍是草案）
-- ⏳ Phase 4: ProjectDict 相关单元测试/集成测试/性能基准待补齐
+| Phase | Status | Notes |
+|---|---|---|
+| Phase 1 | ✅ Done | 协议定义完成（`.ime/dict.tsv` / `.ime/meta.json`） |
+| Phase 2 | ✅ Done | Kotlin 核心完成（`ProjectDictEntry/Parser/Manager/Booster` + 候选注入） |
+| Phase 3.1 | ✅ Done | 手动加载完成（设置页支持文件和剪贴板导入） |
+| Phase 3.2 | ⏳ Pending | SSH 终端联动未实现（`ACTION_LOAD_PROJECT_DICT` 仍是草案） |
+| Phase 3.3 | ⏳ Pending | 安全校验未实现（调用方签名校验 + 词库 payload 限流） |
+| Phase 3.4 | ✅ Done | JNI/libime 容错召回已落地（`ProjectDictNative` + `native-lib.cpp`） |
+| Phase 4 | 🚧 In progress | JVM 单测已落地并通过；集成测试与性能基准待补齐 |
+
+- Latest focused verification:
+  - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"` (`BUILD SUCCESSFUL`)
 
 ### Supported Languages
 
@@ -65,14 +72,14 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
 - Symbol and Emoji picker
 - Plugin System for loading addons from other installed apk
 - Floating candidates panel when using physical keyboard
-- Project Dictionary (manual load from file/clipboard, candidate boosting with `[P]` labels)
+- Project Dictionary (manual load from file/clipboard, candidate boosting with `[P]` labels, pinyin prefix + JNI fuzzy recall)
 
 ### Planned Features
 
 - Customizable keyboard layout
 - More input methods (via plugin)
-- SSH terminal linked Project Dictionary auto-load
-- Project Dictionary automated tests and performance benchmarks
+- SSH terminal linked Project Dictionary auto-load with trusted-caller verification
+- Project Dictionary integration tests and performance benchmarks
 
 ## Screenshots
 

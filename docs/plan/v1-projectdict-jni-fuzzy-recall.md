@@ -36,13 +36,13 @@
 - `app/src/test/java/org/fcitx/fcitx5/android/projectdict/ProjectDictManagerTest.kt`
   - 新增误触输入召回用例与优先级/误召回保护用例。
 
-## 5. 实施步骤（不开工版）
-1. 定义 JNI 数据契约（输入、批量候选、返回结构）。
-2. 先写 Kotlin 侧测试（红）：误触输入应召回，且不压过精确命中。
-3. 新增 C++ JNI 桥接实现（最小可用，先支持全拼路径）。
-4. 接入 `ProjectDictManager.query()`（绿）：严格匹配 + JNI 补召回 + 降权排序。
-5. 补充边界测试：空输入、非拼音字符、超长输入、词条过多。
-6. 跑回归并记录证据（测试命令与人工场景）。
+## 5. 实施步骤（回填，已落地）
+1. ✅ 定义 JNI 数据契约（输入 + 批量拼音候选 + 逐项代价返回）。
+2. ✅ Kotlin 侧先补测试路径（通过 `ProjectDictNative.setMatcherForTest` 覆盖召回与排序逻辑）。
+3. ✅ 新增 C++ JNI 桥接实现：`matchPinyinFuzzyBatchNative`。
+4. ✅ 接入 `ProjectDictManager.query()`：严格匹配 + JNI 补召回 + 降权排序。
+5. ✅ 边界测试已覆盖：空输入、非拼音输入；`超长输入/超大词库`留在性能专项验证。
+6. 🚧 回归证据：自动化单测已通过；手工“误触召回”场景待补执行记录。
 
 ## 6. 验收标准
 - `hyi`、`huu`、`hyigun`、`huugun` 能召回目标项目词 `[P]`（词库包含“回滚到上一个版本”时）。
@@ -53,6 +53,7 @@
 ## 7. 验证与证据
 ### 自动化
 - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.ProjectDictManagerTest"`
+- `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"`
 
 ### 手工
 - 依据 [`docs/projectdict-manual-test.md`](../projectdict-manual-test.md) 新增“误触召回”场景并执行。
@@ -63,10 +64,13 @@
 - 规则偏差：严格对齐 libime 已有 correction/fuzzy 配置，不自造规则。
 
 ## 9. 里程碑
-- M1：数据契约与测试红用例通过编译。
-- M2：JNI 桥接完成并通过核心误触召回测试。
-- M3：排序稳定、回归通过、文档与测试证据齐全。
+- M1：✅ 数据契约与测试红用例通过编译。
+- M2：✅ JNI 桥接完成并通过核心误触召回测试。
+- M3：🚧 排序稳定、回归通过、文档与测试证据齐全（自动化已达成，手工证据待补）。
 
 ## 10. 状态
-- 当前状态：`Planned (未开工)`
+- 当前状态：`Implemented (2026-02-28)`
+- 代码入口：`ProjectDictNative.kt` / `ProjectDictManager.kt` / `native-lib.cpp`
+- 自动化验证：`projectdict.*` JVM 单测集合通过
+- 剩余缺口：手工误触场景执行记录、性能专项验证
 - 入口文档：[`docs/init.md`](../init.md)
