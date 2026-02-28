@@ -254,6 +254,15 @@ adb install "\\wsl$\Ubuntu-24.04\home\lemonhall\ai-coding-ime\app\build\outputs\
 - NDK: 28.0.13004108
 - JDK: 17
 
+## 当前进度（截至 2026-02-28）
+
+- Phase 0 ✅ 已完成（构建、安装与基础验证）
+- Phase 1 ✅ 已完成（提交：`15b8468a`）
+- Phase 2 ✅ 已完成（提交：`14142249`）
+- Phase 3.1 ✅ 已完成（提交：`19f3a8c6`）
+- Phase 3.2 ⏳ 未开始（SSH 终端联动/Intent 热加载）
+- Phase 4 ⏳ 未开始（ProjectDict 相关测试尚未补齐）
+
 ## Phase 1：项目词库协议定义 ✅
 
 **状态**：已完成（2026-02-27）
@@ -309,7 +318,9 @@ repo	abbr	580	repository
 - 词库文件是幂等的：AI agent 重新生成不会产生副作用
 - 协议层与引擎层解耦：未来换引擎不影响词库格式
 
-## Phase 2：Kotlin 层改造（核心工作）
+## Phase 2：Kotlin 层改造（核心工作）✅
+
+**状态**：已完成（2026-02-27，提交 `14142249`）
 
 ### 2.1 新增文件清单
 
@@ -353,13 +364,15 @@ data class ProjectDictEntry(
 
 查询逻辑：
 - `id` 类型：前缀匹配（输入 `getU` 匹配 `getUserInfo`），大小写不敏感
-- `term` 类型：拼音前缀匹配（输入 `sjqy` 匹配 `数据迁移`）或中文前缀匹配
+- `term` 类型：当前实现为中文前缀匹配（拼音前缀匹配尚未实现）
 - `abbr` 类型：精确匹配或前缀匹配
 - `phrase` 类型：中文前缀匹配
 
 ### 2.5 ProjectDictBooster — 候选词注入
 
-这是最关键的改造点。接入位置在 `FcitxInputMethodService.kt` 的事件处理管线中。
+这是最关键的改造点。当前接入位置在：
+- `InputView.kt`（`CandidateListEvent` / 虚拟键盘模式）
+- `CandidatesView.kt`（`PagedCandidateEvent` / 物理键盘模式）
 
 策略：
 1. 监听 `CandidateListEvent`（Bulk Mode）和 `PagedCandidateEvent`（Paged Mode）
@@ -369,20 +382,21 @@ data class ProjectDictEntry(
 
 接入点分析：
 
-在 `FcitxInputMethodService.kt` 中，事件通过 `Fcitx.eventFlow` 收集并分发：
+当前代码路径（简化）：
 
 ```kotlin
-// 现有代码路径（简化）：
-fcitx.eventFlow.collect { event ->
-    when (event) {
-        is FcitxEvent.CandidateListEvent -> {
-            // 这里是注入点
-            // 原始候选词在 event.data
-            // 可以在这里调用 ProjectDictBooster 混入项目词库候选
-            broadcaster.onCandidateUpdate(boostedCandidates)
-        }
-        // ...
-    }
+// InputView.kt
+is FcitxEvent.CandidateListEvent -> {
+    val boosted = ProjectDictBooster.boostCandidateList(it, currentPreeditText)
+    broadcaster.onCandidateUpdate(boosted.data)
+}
+
+// CandidatesView.kt
+is FcitxEvent.PagedCandidateEvent -> {
+    val currentInput = inputPanel.preedit.toString()
+    val boosted = ProjectDictBooster.boostPagedCandidate(it, currentInput)
+    paged = boosted.data
+    updateUi()
 }
 ```
 
@@ -395,12 +409,16 @@ fcitx.eventFlow.collect { event ->
 
 ### 3.1 初期方案：手动加载
 
+**状态**：已完成（2026-02-27，提交 `19f3a8c6`）
+
 在 app 的设置界面中增加一个"项目词库"入口：
 - 支持从文件选择器导入 `.tsv` 文件
 - 支持从剪贴板粘贴 TSV 内容
-- 显示当前加载的词库信息（项目名、词条数、生成时间）
+- 当前显示词库信息：项目名 + 词条数（`generated_at` 暂未接入 UI）
 
 ### 3.2 进阶方案：与 SSH 终端联动
+
+**状态**：未开始（尚未实现 `ACTION_LOAD_PROJECT_DICT` 接收链路）
 
 这一步依赖柠檬叔自己的 SSH 终端 app。设计思路：
 - SSH 终端 app 检测到 `cd` 到新项目目录时，检查 `.ime/dict.tsv` 是否存在
@@ -424,6 +442,8 @@ Extra:
 
 ## Phase 4：测试验证
 
+**状态**：未开始（当前仓库暂无 `ProjectDictParserTest/ManagerTest/BoosterTest`）
+
 ### 4.1 单元测试
 
 - `ProjectDictParserTest`：验证 TSV 解析的正确性和容错性
@@ -442,16 +462,14 @@ Extra:
 - 查询延迟：单次查询应在 < 5ms 内返回结果
 - 内存占用：1000 条词库的内存增量应 < 1MB
 
-## 开发顺序
+## 开发顺序（已更新）
 
-1. **Phase 0** → 构建跑通，确认原版在 Nova 9 上正常工作
-2. **Phase 1** → 定义词库格式，手写几个测试词库文件
-3. **Phase 2.2 + 2.3** → 实现数据类和 TSV 解析器，写单元测试
-4. **Phase 2.4** → 实现 ProjectDictManager，写单元测试
-5. **Phase 2.5** → 实现 ProjectDictBooster，接入候选词管线（最难的一步）
-6. **Phase 3.1** → 做一个简单的手动加载入口
-7. **Phase 4** → 端到端测试
-8. **Phase 3.2** → 与 SSH 终端联动（后续迭代）
+1. ✅ **Phase 0** → 构建跑通，确认原版在 Nova 9 上正常工作
+2. ✅ **Phase 1** → 定义词库格式，落地 `.ime/dict.tsv` / `.ime/meta.json`
+3. ✅ **Phase 2** → 完成 ProjectDict 核心与候选词注入（Kotlin 层）
+4. ✅ **Phase 3.1** → 完成手动加载入口（文件/剪贴板）
+5. ⏳ **Phase 4** → 补齐 ProjectDict 单元/集成/性能测试
+6. ⏳ **Phase 3.2** → 与 SSH 终端联动（Intent + 安全校验）
 
 ## 约束与原则
 
@@ -463,4 +481,5 @@ Extra:
 - 构建环境：WSL2 Ubuntu 24.04 + Nix 2.33.3（使用项目自带的 flake.nix）
 - WSL2 代理地址：127.0.0.1:7897（本地代理转发）或宿主机局域网 IP（视网络配置而定）
 - Phase 0 完成时间：2026-02-27
+- 文档状态更新时间：2026-02-28
 ```

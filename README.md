@@ -32,6 +32,14 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
 
 ## Project status
 
+### Project Dictionary Progress (as of 2026-02-28)
+
+- ✅ Phase 1: 协议定义完成（`.ime/dict.tsv` / `.ime/meta.json`）
+- ✅ Phase 2: Kotlin 核心完成（`ProjectDictParser/Manager/Booster` + 候选词注入）
+- ✅ Phase 3.1: 手动加载完成（设置页支持文件和剪贴板导入）
+- ⏳ Phase 3.2: SSH 终端联动未实现（`ACTION_LOAD_PROJECT_DICT` 仍是草案）
+- ⏳ Phase 4: ProjectDict 相关单元测试/集成测试/性能基准待补齐
+
 ### Supported Languages
 
 - English (with spell check)
@@ -57,11 +65,14 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
 - Symbol and Emoji picker
 - Plugin System for loading addons from other installed apk
 - Floating candidates panel when using physical keyboard
+- Project Dictionary (manual load from file/clipboard, candidate boosting with `[P]` labels)
 
 ### Planned Features
 
 - Customizable keyboard layout
 - More input methods (via plugin)
+- SSH terminal linked Project Dictionary auto-load
+- Project Dictionary automated tests and performance benchmarks
 
 ## Screenshots
 
