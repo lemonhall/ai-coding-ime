@@ -27,6 +27,18 @@ object ProjectDictManager {
         val fullOptions: List<String>
     )
 
+    private data class FuzzyCandidate(
+        val entry: ProjectDictEntry,
+        val fullPinyin: String
+    )
+
+    private data class FuzzyMatch(
+        val entry: ProjectDictEntry,
+        val correctionCost: Int
+    ) {
+        val score: Int = entry.weight - FUZZY_BASE_PENALTY - correctionCost * FUZZY_COST_PENALTY
+    }
+
     private var entries: List<ProjectDictEntry> = emptyList()
     private var projectName: String? = null
     private val pinyinCache = mutableMapOf<String, List<PinyinTokenSet>>()
@@ -76,7 +88,9 @@ object ProjectDictManager {
 
         // Pinyin preedit may contain separators like apostrophe/space: "ge'tu", "ge tu".
         val normalizedIdentifierInput = normalizeIdentifierInput(input)
-        val results = mutableListOf<ProjectDictEntry>()
+        val normalizedPinyinInput = normalizePinyinInput(input)
+        val strictMatches = mutableListOf<ProjectDictEntry>()
+        val fuzzyCandidatePool = mutableListOf<FuzzyCandidate>()
 
         for (entry in entries) {
             val matched = when (entry.type) {
@@ -105,12 +119,43 @@ object ProjectDictManager {
             }
 
             if (matched) {
-                results.add(entry)
+                strictMatches.add(entry)
+            } else if (shouldTryFuzzy(entry.type, normalizedPinyinInput)) {
+                toRepresentativeFullPinyin(entry.text)?.let { pinyin ->
+                    fuzzyCandidatePool.add(FuzzyCandidate(entry, pinyin))
+                }
             }
         }
 
-        // 按权重降序排列，取前 limit 个
-        return results.sortedByDescending { it.weight }.take(limit)
+        val strictSorted = strictMatches.sortedByDescending { it.weight }
+        if (strictSorted.size >= limit || normalizedPinyinInput.isEmpty()) {
+            return strictSorted.take(limit)
+        }
+
+        val fuzzyCandidates = fuzzyCandidatePool
+            .sortedByDescending { it.entry.weight }
+            .take(MAX_FUZZY_CANDIDATES)
+        if (fuzzyCandidates.isEmpty()) {
+            return strictSorted.take(limit)
+        }
+
+        val fuzzyCosts = ProjectDictNative.matchPinyinFuzzyBatch(
+            normalizedPinyinInput,
+            fuzzyCandidates.map { it.fullPinyin }
+        )
+        val fuzzyMatches = fuzzyCandidates.mapIndexedNotNull { index, candidate ->
+            val cost = fuzzyCosts.getOrNull(index) ?: ProjectDictNative.NO_MATCH
+            if (cost < 0) {
+                null
+            } else {
+                FuzzyMatch(candidate.entry, cost)
+            }
+        }.sortedWith(
+            compareByDescending<FuzzyMatch> { it.score }
+                .thenByDescending { it.entry.weight }
+        ).map { it.entry }
+
+        return (strictSorted + fuzzyMatches).take(limit)
     }
 
     /**
@@ -134,6 +179,50 @@ object ProjectDictManager {
                 }
             }
         }
+    }
+
+    private fun normalizePinyinInput(raw: String): String {
+        return buildString(raw.length) {
+            raw.forEach { ch ->
+                when {
+                    ch in 'A'..'Z' -> append(ch.lowercaseChar())
+                    ch in 'a'..'z' -> append(ch)
+                }
+            }
+        }
+    }
+
+    private fun shouldTryFuzzy(
+        type: ProjectDictEntry.EntryType,
+        normalizedPinyinInput: String
+    ): Boolean {
+        if (normalizedPinyinInput.isEmpty() || normalizedPinyinInput.length > MAX_FUZZY_INPUT_LENGTH) {
+            return false
+        }
+        return type == ProjectDictEntry.EntryType.TERM || type == ProjectDictEntry.EntryType.PHRASE
+    }
+
+    private fun toRepresentativeFullPinyin(text: String): String? {
+        val tokens = pinyinCache.getOrPut(text) { buildPinyinTokenSets(text) }
+        if (tokens.isEmpty()) {
+            return null
+        }
+        val syllables = ArrayList<String>(tokens.size)
+        for (token in tokens) {
+            val option = token.fullOptions.firstOrNull() ?: return null
+            if (!isPinyinSyllable(option)) {
+                return null
+            }
+            syllables.add(option)
+        }
+        return syllables.joinToString("'")
+    }
+
+    private fun isPinyinSyllable(raw: String): Boolean {
+        if (raw.isEmpty()) {
+            return false
+        }
+        return raw.all { it in 'a'..'z' }
     }
 
     private fun matchChineseByPinyin(text: String, normalizedInput: String): Boolean {
@@ -259,4 +348,9 @@ object ProjectDictManager {
         }
         return idx >= input.length
     }
+
+    private const val FUZZY_BASE_PENALTY = 120
+    private const val FUZZY_COST_PENALTY = 30
+    private const val MAX_FUZZY_INPUT_LENGTH = 64
+    private const val MAX_FUZZY_CANDIDATES = 256
 }

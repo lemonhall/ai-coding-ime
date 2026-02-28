@@ -21,6 +21,7 @@ class ProjectDictManagerTest {
 
     @After
     fun tearDown() {
+        ProjectDictNative.setMatcherForTest(null)
         ProjectDictManager.clear()
     }
 
@@ -46,5 +47,51 @@ class ProjectDictManagerTest {
         Assert.assertTrue(termFull.any { it.text == "数据迁移" })
         Assert.assertTrue(termInitial.any { it.text == "数据迁移" })
         Assert.assertTrue(phrase.any { it.text == "回滚到上一个版本" })
+    }
+
+    @Test
+    fun fuzzyInputShouldRecallPhraseFromNativeMatcher() {
+        ProjectDictManager.load(dict, "unit-test")
+        ProjectDictNative.setMatcherForTest { input, pinyins ->
+            Assert.assertEquals("hyigun", input)
+            IntArray(pinyins.size) { idx ->
+                if (pinyins[idx].startsWith("hui'gun")) 2 else -1
+            }
+        }
+
+        val recalled = ProjectDictManager.query("hyigun", limit = 5)
+
+        Assert.assertTrue(recalled.any { it.text == "回滚到上一个版本" })
+    }
+
+    @Test
+    fun exactMatchShouldRankBeforeFuzzyMatch() {
+        ProjectDictManager.load(dict, "unit-test")
+        ProjectDictNative.setMatcherForTest { _, pinyins ->
+            IntArray(pinyins.size) { idx ->
+                if (pinyins[idx].startsWith("shu'ju")) 1 else -1
+            }
+        }
+
+        val ranked = ProjectDictManager.query("huigun", limit = 5)
+
+        Assert.assertFalse(ranked.isEmpty())
+        Assert.assertEquals("回滚到上一个版本", ranked.first().text)
+        Assert.assertTrue(ranked.any { it.text == "数据迁移" })
+    }
+
+    @Test
+    fun nonPinyinInputShouldNotTriggerFuzzyRecall() {
+        ProjectDictManager.load(dict, "unit-test")
+        var invoked = false
+        ProjectDictNative.setMatcherForTest { _, pinyins ->
+            invoked = true
+            IntArray(pinyins.size) { 0 }
+        }
+
+        val results = ProjectDictManager.query("123_", limit = 5)
+
+        Assert.assertFalse(invoked)
+        Assert.assertTrue(results.isEmpty())
     }
 }

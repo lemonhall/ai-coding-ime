@@ -6,9 +6,13 @@
 
 #include <sys/stat.h>
 
+#include <algorithm>
 #include <memory>
 #include <future>
 #include <fstream>
+#include <limits>
+#include <unordered_map>
+#include <vector>
 
 #include <android/log.h>
 
@@ -34,6 +38,8 @@
 #include <clipboard_public.h>
 
 #include <libime/pinyin/pinyindictionary.h>
+#include <libime/pinyin/pinyincorrectionprofile.h>
+#include <libime/pinyin/pinyinencoder.h>
 #include <libime/table/tablebaseddictionary.h>
 
 #include <boost/iostreams/device/file_descriptor.hpp>
@@ -1135,6 +1141,246 @@ Java_org_fcitx_fcitx5_android_core_Key_create(JNIEnv *env, jclass clazz, jint sy
             *JString(env, key.toString(fcitx::KeyStringFormat::Portable)),
             *JString(env, key.toString(fcitx::KeyStringFormat::Localized))
     );
+}
+
+namespace {
+
+constexpr int kProjectDictNoMatch = -1;
+
+struct ProjectDictSegmentOption {
+    char initial;
+    char final;
+    int cost;
+};
+
+struct ProjectDictInputEdge {
+    size_t to;
+    bool isSeparator = false;
+    std::vector<ProjectDictSegmentOption> options;
+};
+
+bool isSeparatorSegment(std::string_view segment) {
+    return !segment.empty() && std::all_of(segment.begin(), segment.end(), [](char ch) {
+        return ch == '\'';
+    });
+}
+
+int fuzzyFlagsCost(libime::PinyinFuzzyFlags flags) {
+    uint32_t bits = static_cast<uint32_t>(flags.toInteger());
+    int count = 0;
+    while (bits) {
+        count += static_cast<int>(bits & 1U);
+        bits >>= 1U;
+    }
+    return count;
+}
+
+libime::PinyinFuzzyFlags projectDictFuzzyFlags() {
+    using F = libime::PinyinFuzzyFlag;
+    libime::PinyinFuzzyFlags flags;
+    flags |= F::VE_UE;
+    flags |= F::CommonTypo;
+    flags |= F::Inner;
+    flags |= F::InnerShort;
+    flags |= F::PartialFinal;
+    flags |= F::Correction;
+    return flags;
+}
+
+const libime::PinyinCorrectionProfile &projectDictCorrectionProfile() {
+    static const libime::PinyinCorrectionProfile profile(
+            libime::BuiltinPinyinCorrectionProfile::Qwerty);
+    return profile;
+}
+
+std::vector<ProjectDictSegmentOption>
+buildProjectDictSegmentOptions(std::string_view segment) {
+    auto matched = libime::PinyinEncoder::stringToSyllablesWithFuzzyFlags(
+            segment, &projectDictCorrectionProfile(), projectDictFuzzyFlags());
+    std::unordered_map<int, int> bestCosts;
+    for (const auto &[initial, finals]: matched) {
+        if (initial == libime::PinyinInitial::Invalid) {
+            continue;
+        }
+        for (const auto &[final, fuzzyFlags]: finals) {
+            if (final == libime::PinyinFinal::Invalid) {
+                continue;
+            }
+            auto initialChar = static_cast<unsigned char>(static_cast<char>(initial));
+            auto finalChar = static_cast<unsigned char>(static_cast<char>(final));
+            int key = (static_cast<int>(initialChar) << 8) | static_cast<int>(finalChar);
+            int cost = fuzzyFlagsCost(fuzzyFlags);
+            auto it = bestCosts.find(key);
+            if (it == bestCosts.end() || cost < it->second) {
+                bestCosts[key] = cost;
+            }
+        }
+    }
+
+    std::vector<ProjectDictSegmentOption> options;
+    options.reserve(bestCosts.size());
+    for (const auto &[key, cost]: bestCosts) {
+        auto initial = static_cast<char>((key >> 8) & 0xFF);
+        auto final = static_cast<char>(key & 0xFF);
+        options.push_back(ProjectDictSegmentOption{initial, final, cost});
+    }
+    return options;
+}
+
+class ProjectDictPinyinMatcher {
+public:
+    explicit ProjectDictPinyinMatcher(std::string input)
+            : graph_(libime::PinyinEncoder::parseUserPinyin(
+            std::move(input),
+            &projectDictCorrectionProfile(),
+            projectDictFuzzyFlags())),
+              inputLength_(graph_.size()),
+              edges_(inputLength_ + 1) {
+        buildEdges();
+    }
+
+    int matchPrefixCost(const std::string &fullPinyin) const {
+        if (fullPinyin.empty()) {
+            return kProjectDictNoMatch;
+        }
+        std::vector<char> encodedTarget;
+        try {
+            encodedTarget = libime::PinyinEncoder::encodeFullPinyinWithFlags(
+                    fullPinyin, libime::PinyinFuzzyFlag::VE_UE);
+        } catch (const std::exception &) {
+            return kProjectDictNoMatch;
+        }
+        if (encodedTarget.empty()) {
+            return kProjectDictNoMatch;
+        }
+
+        const auto targetSyllables = encodedTarget.size() / 2;
+        const int inf = std::numeric_limits<int>::max() / 4;
+        std::vector<int> dp((inputLength_ + 1) * (targetSyllables + 1), inf);
+        auto stateIndex = [targetSyllables](size_t node, size_t syllablePos) {
+            return node * (targetSyllables + 1) + syllablePos;
+        };
+        dp[stateIndex(0, 0)] = 0;
+
+        for (size_t from = 0; from <= inputLength_; from++) {
+            for (size_t pos = 0; pos <= targetSyllables; pos++) {
+                int current = dp[stateIndex(from, pos)];
+                if (current >= inf) {
+                    continue;
+                }
+                for (const auto &edge: edges_[from]) {
+                    if (edge.isSeparator) {
+                        auto &next = dp[stateIndex(edge.to, pos)];
+                        if (current < next) {
+                            next = current;
+                        }
+                        continue;
+                    }
+                    if (pos >= targetSyllables) {
+                        continue;
+                    }
+                    char targetInitial = encodedTarget[pos * 2];
+                    char targetFinal = encodedTarget[pos * 2 + 1];
+                    for (const auto &option: edge.options) {
+                        if (option.initial != targetInitial ||
+                            option.final != targetFinal) {
+                            continue;
+                        }
+                        int nextCost = current + option.cost;
+                        auto &next = dp[stateIndex(edge.to, pos + 1)];
+                        if (nextCost < next) {
+                            next = nextCost;
+                        }
+                    }
+                }
+            }
+        }
+
+        int best = inf;
+        for (size_t consumed = 1; consumed <= targetSyllables; consumed++) {
+            best = std::min(best, dp[stateIndex(inputLength_, consumed)]);
+        }
+        return best >= inf ? kProjectDictNoMatch : best;
+    }
+
+private:
+    void buildEdges() {
+        for (size_t idx = 0; idx <= inputLength_; idx++) {
+            auto nodes = graph_.nodes(idx);
+            if (nodes.begin() == nodes.end()) {
+                continue;
+            }
+            const auto &node = *nodes.begin();
+            for (const auto &next: node.nexts()) {
+                auto segment = graph_.segment(node, next);
+                if (segment.empty()) {
+                    continue;
+                }
+                if (isSeparatorSegment(segment)) {
+                    edges_[idx].push_back(ProjectDictInputEdge{
+                            next.index(),
+                            true,
+                            {}
+                    });
+                    continue;
+                }
+                auto options = buildProjectDictSegmentOptions(segment);
+                if (options.empty()) {
+                    continue;
+                }
+                edges_[idx].push_back(ProjectDictInputEdge{
+                        next.index(),
+                        false,
+                        std::move(options)
+                });
+            }
+        }
+    }
+
+    libime::SegmentGraph graph_;
+    size_t inputLength_;
+    std::vector<std::vector<ProjectDictInputEdge>> edges_;
+};
+
+} // namespace
+
+extern "C"
+JNIEXPORT jintArray JNICALL
+Java_org_fcitx_fcitx5_android_projectdict_ProjectDictNative_matchPinyinFuzzyBatchNative(
+        JNIEnv *env, jclass clazz, jstring input, jobjectArray candidatePinyins) {
+    FCITX_UNUSED(clazz);
+
+    if (!input || !candidatePinyins) {
+        return nullptr;
+    }
+
+    try {
+        const auto inputText = std::string(*CString(env, input));
+        const jsize size = env->GetArrayLength(candidatePinyins);
+        jintArray resultArray = env->NewIntArray(size);
+        std::vector<jint> results(static_cast<size_t>(size), kProjectDictNoMatch);
+        if (size <= 0 || inputText.empty()) {
+            env->SetIntArrayRegion(resultArray, 0, size, results.data());
+            return resultArray;
+        }
+
+        ProjectDictPinyinMatcher matcher(inputText);
+        for (jsize i = 0; i < size; i++) {
+            jstring pinyinObject = reinterpret_cast<jstring>(env->GetObjectArrayElement(candidatePinyins, i));
+            if (!pinyinObject) {
+                continue;
+            }
+            auto candidate = std::string(*CString(env, pinyinObject));
+            env->DeleteLocalRef(pinyinObject);
+            results[static_cast<size_t>(i)] = matcher.matchPrefixCost(candidate);
+        }
+
+        env->SetIntArrayRegion(resultArray, 0, size, results.data());
+        return resultArray;
+    } catch (const std::exception &e) {
+        throwJavaException(env, e.what());
+        return nullptr;
+    }
 }
 
 extern "C"
