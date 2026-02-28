@@ -26,8 +26,17 @@
 - `profile.backend.go.txt`
 - `profile.backend.rust.txt`
 - `profile.app.android.txt`
+- `profile.client.desktop-cross-platform.txt`
+- `profile.client.game-dev.txt`
+- `profile.network.web-backend-api.txt`
+- `profile.engineering.devops-sre.txt`
+- `profile.engineering.testing.txt`
+- `profile.engineering.package-build.txt`
+- `profile.engineering.vcs-collaboration.txt`
+- `profile.domain.editor-ide-tooling.txt`
 - `profile.business.crm.txt`
 - `profile.business.erp.txt`
+- `profile.business.hrm.txt`
 
 ## 4. 测试场景
 
@@ -286,3 +295,91 @@
 | `tijiaomenjin` | `提交门禁` | `base + engineering.vcs-collaboration` | Top5 出现目标词 |
 | `hebingqingqiu` | `合并请求` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
 | `banbenkongzhi` | `版本控制` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 13. D21 包管理 / 构建系统（`engineering.package-build`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + engineering.package-build`
+- 边界对照：`base`（关闭 `engineering.package-build`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `baoguanli` | `包管理` | `base + engineering.package-build` | Top3 出现目标词 |
+| `goujianxitong` | `构建系统` | `base + engineering.package-build` | Top3 出现目标词，排序稳定 |
+| `zenglianggoujian` | `增量构建` | `base + engineering.package-build` | Top5 出现目标词 |
+| `yilaisuoding` | `依赖锁定` | `base + engineering.package-build` | Top5 出现目标词，不被无关词压制 |
+| `goujianhuancun` | `构建缓存` | `base + engineering.package-build` | Top5 出现目标词 |
+| `gongjiancangku` | `工件仓库` | `base + engineering.package-build` | Top5 出现目标词 |
+| `gongyingliananquan` | `供应链安全` | `base + engineering.package-build` | Top5 出现目标词 |
+| `baoguanli` | `包管理` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `goujianxitong` | `构建系统` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 14. D23 桌面应用 / 跨平台GUI（`client.desktop-cross-platform`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + client.desktop-cross-platform`
+- 边界对照：`base`（关闭 `client.desktop-cross-platform`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `duochuangkou` | `多窗口` | `base + client.desktop-cross-platform` | Top3 出现目标词 |
+| `xitongtuopan` | `系统托盘` | `base + client.desktop-cross-platform` | Top3 出现目标词，排序稳定 |
+| `gaofenpingshipei` | `高分屏适配` | `base + client.desktop-cross-platform` | Top5 出现目标词，不被无关词压制 |
+| `zidonggengxin` | `自动更新` | `base + client.desktop-cross-platform` | Top5 出现目标词 |
+| `chajianshichang` | `插件市场` | `base + client.desktop-cross-platform` | Top5 出现目标词 |
+| `danshilisuo` | `单实例锁` | `base + client.desktop-cross-platform` | Top5 出现目标词 |
+| `tuozhuaishangchuan` | `拖拽上传` | `base + client.desktop-cross-platform` | Top5 出现目标词 |
+| `duochuangkou` | `多窗口` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `xitongtuopan` | `系统托盘` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 15. D48 编辑器 / IDE / 开发者工具（`domain.editor-ide-tooling`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + domain.editor-ide-tooling`
+- 边界对照：`base`（关闭 `domain.editor-ide-tooling`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `daimabianji` | `代码编辑` | `base + domain.editor-ide-tooling` | Top3 出现目标词 |
+| `minglingmianban` | `命令面板` | `base + domain.editor-ide-tooling` | Top5 出现目标词，排序稳定 |
+| `yuyanfuwuqi` | `语言服务器` | `base + domain.editor-ide-tooling` | Top5 出现目标词，不被无关词压制 |
+| `duandiantiaoshi` | `断点调试` | `base + domain.editor-ide-tooling` | Top5 出现目标词 |
+| `chongmingmingfuhao` | `重命名符号` | `base + domain.editor-ide-tooling` | Top5 出现目标词 |
+| `chajianshichang` | `插件市场` | `base + domain.editor-ide-tooling` | Top5 出现目标词 |
+| `daimabianji` | `代码编辑` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `yuyanfuwuqi` | `语言服务器` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 16. D24 游戏开发（`client.game-dev`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + client.game-dev`
+- 边界对照：`base`（关闭 `client.game-dev`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `youxiyinqing` | `游戏引擎` | `base + client.game-dev` | Top3 出现目标词 |
+| `guanqiasheji` | `关卡设计` | `base + client.game-dev` | Top5 出现目标词，排序稳定 |
+| `zhensuobu` | `帧锁步` | `base + client.game-dev` | Top5 出现目标词，不被无关词压制 |
+| `xingweishu` | `行为树` | `base + client.game-dev` | Top5 出现目标词 |
+| `neigouxitong` | `内购系统` | `base + client.game-dev` | Top5 出现目标词 |
+| `ziyuanregeng` | `资源热更` | `base + client.game-dev` | Top5 出现目标词 |
+| `youxiyinqing` | `游戏引擎` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `neigouxitong` | `内购系统` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 17. D53 HRM / 人力资源系统（`business.hrm`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + business.hrm`
+- 边界对照：`base`（关闭 `business.hrm`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `renliziyuanxitong` | `人力资源系统` | `base + business.hrm` | Top3 出现目标词 |
+| `zhaopinxuqiu` | `招聘需求` | `base + business.hrm` | Top5 出现目标词，排序稳定 |
+| `zhuanzhengshenpi` | `转正审批` | `base + business.hrm` | Top5 出现目标词，不被无关词压制 |
+| `xinzifa` | `薪资发放` | `base + business.hrm` | Top5 出现目标词 |
+| `jixiaoguanli` | `绩效管理` | `base + business.hrm` | Top5 出现目标词 |
+| `qingjiashenpi` | `请假审批` | `base + business.hrm` | Top5 出现目标词 |
+| `kpi` | `KPI` | `base + business.hrm` | Top5 出现目标词，并可与“关键结果/绩效目标”共现 |
+| `renliziyuanxitong` | `人力资源系统` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `xinzifa` | `薪资发放` | `base` | 若命中，排序应弱于开启领域 profile 时 |

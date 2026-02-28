@@ -7,6 +7,7 @@
   - `docs/profile-dict-domain-checklist.md`
   - `docs/plan/v3-profile-domain-dictionary-backlog.md`
   - `docs/profile-dict-ops-template.md`
+- 说明：本文保留归档时的“50 领域”原始表达，当前执行口径以 `docs/profile-dict-domain-checklist.md` 的 `D01-D74` 为准。
 
 ---
 

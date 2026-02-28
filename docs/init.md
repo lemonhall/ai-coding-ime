@@ -539,6 +539,11 @@ Slice 1（第一刀）交付门槛：
 - 提供独立人工测试指引，确保 UI/启停/重载可被直接验收。
 - GitHub 承载的云端词典同步不在 Slice 1 范围内，后续阶段再评估。
 
+当前矩阵状态（2026-02-28）：
+- 领域范围：`D01-D74`（技术 + 商业）
+- 状态汇总：`DONE=11`，`SEEDED=2`，`TODO=61`
+- 进度面板：`docs/profile-dict-domain-checklist.md`
+
 文档入口：
 - 设计文档：`docs/plan/v2-upstream-context-dictionary-profiles.md`
 - 手工回归：`docs/profile-dict-manual-test.md`

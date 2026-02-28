@@ -4,6 +4,7 @@
 - 上位点火文档：[`docs/init.md`](../init.md)
 - 对应阶段：`Phase 3.5 上游词库分层激活（Context-Aware Profiles）`
 - 当前状态：`Slice 1 Implemented (2026-02-28)`，自动 context 激活待施工（Slice 2）
+- 范围说明：本文是 Slice 1 设计基线；当前领域矩阵扩展请以 `docs/profile-dict-domain-checklist.md`（`D01-D74`）为准
 
 ## 1. 背景与问题
 当前 ProjectDict 通过候选前插方式增强项目词召回，命中能力强，但在日常输入中容易显得“过于强势”。本阶段目标不是继续增强前插策略，而是回到上游已有能力：使用拼音词典本身的排序机制（`cost`）来做更自然、更温和的词汇引导。

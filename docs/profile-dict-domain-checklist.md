@@ -1,4 +1,4 @@
-# Profile 词库领域 Checklist（50 Domains）
+# Profile 词库领域 Checklist（74 Domains）
 
 用途：把“一个领域一个领域产出 200-500 词词典”变成可持续推进的任务面板。  
 配套文档：
@@ -14,6 +14,9 @@
 - `DOING`：进行中
 - `DONE`：已完成（并通过回归）
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
+
+进度快照（2026-02-28）：
+- `DONE=11`，`SEEDED=2`，`TODO=61`
 
 ---
 
@@ -56,15 +59,15 @@
 | D18 | DevOps / CI/CD / SRE | `engineering.devops-sre` | 200-500 | DONE (`engineering.devops-sre`, 363) |
 | D19 | 版本控制 / 协作 | `engineering.vcs-collaboration` | 200-500 | DONE (`engineering.vcs-collaboration`, 250) |
 | D20 | 测试工程 | `engineering.testing` | 200-500 | DONE (`engineering.testing`, 297) |
-| D21 | 包管理 / 构建系统 | `engineering.package-build` | 200-500 | TODO |
+| D21 | 包管理 / 构建系统 | `engineering.package-build` | 200-500 | DONE (`engineering.package-build`, 270) |
 
 ## E. 客户端与用户界面
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
 | D22 | 移动端开发（Android/iOS） | `client.mobile` | 200-500 | DONE (`app.android`, 350) |
-| D23 | 桌面应用 / 跨平台GUI | `client.desktop-cross-platform` | 200-500 | TODO |
-| D24 | 游戏开发 | `client.game-dev` | 200-500 | TODO |
+| D23 | 桌面应用 / 跨平台GUI | `client.desktop-cross-platform` | 200-500 | DONE (`client.desktop-cross-platform`, 270) |
+| D24 | 游戏开发 | `client.game-dev` | 200-500 | DONE (`client.game-dev`, 300) |
 | D25 | 图形学 / 渲染 | `client.graphics-rendering` | 200-500 | TODO |
 
 ## F. AI / ML / 数据科学
@@ -108,9 +111,53 @@
 | D45 | 音视频处理 / 流媒体 | `domain.audio-video-streaming` | 200-500 | TODO |
 | D46 | GIS / 地理信息 | `domain.gis` | 200-500 | TODO |
 | D47 | 机器人 / ROS | `domain.robotics-ros` | 200-500 | TODO |
-| D48 | 编辑器 / IDE / 开发者工具 | `domain.editor-ide-tooling` | 200-500 | TODO |
+| D48 | 编辑器 / IDE / 开发者工具 | `domain.editor-ide-tooling` | 200-500 | DONE (`domain.editor-ide-tooling`, 272) |
 | D49 | 数据可视化 | `domain.data-visualization` | 200-500 | TODO |
 | D50 | 低代码 / DSL / 配置语言 | `domain.lowcode-dsl-config` | 200-500 | TODO |
+
+## J. 企业软件与业务系统
+
+| ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
+|---|---|---|---|---|
+| D51 | ERP / 企业资源计划 | `business.erp` | 200-500 | SEEDED (`business.erp`, 6) |
+| D52 | CRM / 客户关系管理 | `business.crm` | 200-500 | SEEDED (`business.crm`, 6) |
+| D53 | HRM / 人力资源系统 | `business.hrm` | 200-500 | DONE (`business.hrm`, 300) |
+| D54 | 财务 / 支付 / 结算 | `business.finance-payments` | 200-500 | TODO |
+| D55 | 供应链 / 物流 / WMS | `business.supply-chain-logistics-wms` | 200-500 | TODO |
+| D56 | 电商平台 | `business.ecommerce-platform` | 200-500 | TODO |
+| D57 | OA / 协同办公 / 工作流 | `business.oa-workflow` | 200-500 | TODO |
+
+## K. 互联网产品与运营
+
+| ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
+|---|---|---|---|---|
+| D58 | 产品管理 | `product.management` | 200-500 | TODO |
+| D59 | 增长 / 用户运营 | `product.growth-operations` | 200-500 | TODO |
+| D60 | 广告与营销技术（AdTech/MarTech） | `product.adtech-martech` | 200-500 | TODO |
+| D61 | 内容 / 社区运营 | `product.content-community-ops` | 200-500 | TODO |
+| D62 | SEO / SEM / ASO | `product.seo-sem-aso` | 200-500 | TODO |
+| D63 | 数据分析 / BI | `product.analytics-bi` | 200-500 | TODO |
+| D64 | A/B测试 / 实验平台 | `product.ab-testing` | 200-500 | TODO |
+
+## L. 垂直行业
+
+| ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
+|---|---|---|---|---|
+| D65 | 金融科技（FinTech） | `industry.fintech` | 200-500 | TODO |
+| D66 | 保险科技（InsurTech） | `industry.insurtech` | 200-500 | TODO |
+| D67 | 医疗健康（HealthTech） | `industry.healthtech` | 200-500 | TODO |
+| D68 | 教育科技（EdTech） | `industry.edtech` | 200-500 | TODO |
+| D69 | 房产 / PropTech | `industry.proptech` | 200-500 | TODO |
+| D70 | 出行 / 地图 / LBS | `industry.mobility-lbs` | 200-500 | TODO |
+| D71 | SaaS / 订阅制商业 | `industry.saas-subscription` | 200-500 | TODO |
+
+## M. 合规 / 治理 / 标准
+
+| ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
+|---|---|---|---|---|
+| D72 | 数据隐私与合规 | `compliance.data-privacy` | 200-500 | TODO |
+| D73 | 信息安全合规 | `compliance.infosec` | 200-500 | TODO |
+| D74 | 行业监管（中国特色） | `compliance.cn-regulation` | 200-500 | TODO |
 
 ---
 

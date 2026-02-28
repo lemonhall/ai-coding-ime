@@ -33,13 +33,18 @@ object ProfileDictionaryCatalog {
         ProfileCatalogEntry(profileId = "network.web-backend-api", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "engineering.devops-sre", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "engineering.testing", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "engineering.package-build", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "engineering.vcs-collaboration", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "backend.java", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "backend.go", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "backend.rust", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "app.android", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "client.desktop-cross-platform", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "client.game-dev", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "domain.editor-ide-tooling", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "business.crm", defaultEnabled = false),
-        ProfileCatalogEntry(profileId = "business.erp", defaultEnabled = false)
+        ProfileCatalogEntry(profileId = "business.erp", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "business.hrm", defaultEnabled = false)
     )
 
     fun assetFileName(profileId: String): String = "$PROFILE_PREFIX.$profileId.txt"

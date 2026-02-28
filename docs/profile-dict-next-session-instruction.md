@@ -2,6 +2,11 @@
 
 用途：每次新会话直接复制本页指令，稳定推进一个领域一个领域的词库建设。
 
+当前矩阵（2026-02-28）：
+- 领域范围：`D01-D74`
+- 当前状态：`DONE=11`，`SEEDED=2`，`TODO=61`
+- 统一进度看板：`docs/profile-dict-domain-checklist.md`
+
 先读：
 
 - [`docs/profile-dict-domain-checklist.md`](./profile-dict-domain-checklist.md)

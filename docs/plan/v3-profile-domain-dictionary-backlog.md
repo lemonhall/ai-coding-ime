@@ -9,7 +9,14 @@
 
 ## Goal
 
-将 50 个技术子领域逐步沉淀为可维护的 profile 词库，每个领域 200-500 词，并形成可复现的回归闭环。
+将 74 个技术+商业子领域逐步沉淀为可维护的 profile 词库，每个领域 200-500 词，并形成可复现的回归闭环。
+
+## Progress Snapshot（as of 2026-02-28）
+
+- DONE: 11 / 74
+- SEEDED: 2 / 74（`business.erp`、`business.crm`）
+- TODO: 61 / 74
+- 当前优先：先把 SEEDED 扩展到 200-500，再推进剩余 TODO。
 
 ## Scope
 
@@ -36,17 +43,17 @@
 
 ### Wave 1：现有种子扩展（优先）
 
-- [ ] D08 Web前端（从 SEEDED 扩展到 200-500）
-- [ ] D22 移动端开发（从 SEEDED 扩展到 200-500）
-- [ ] D07 Web后端 / API设计
-- [ ] D18 DevOps / CI/CD / SRE
-- [ ] D20 测试工程
+- [x] D08 Web前端（DONE: `frontend`, 378）
+- [x] D22 移动端开发（DONE: `app.android`, 350）
+- [x] D07 Web后端 / API设计（DONE: `network.web-backend-api`, 356）
+- [x] D18 DevOps / CI/CD / SRE（DONE: `engineering.devops-sre`, 363）
+- [x] D20 测试工程（DONE: `engineering.testing`, 297）
 
 ### Wave 2：基础工程能力
 
 - [ ] D17 软件工程 / 架构模式
-- [ ] D19 版本控制 / 协作
-- [ ] D21 包管理 / 构建系统
+- [x] D19 版本控制 / 协作（DONE: `engineering.vcs-collaboration`, 250）
+- [x] D21 包管理 / 构建系统（DONE: `engineering.package-build`, 270）
 - [ ] D11 关系型数据库
 - [ ] D12 NoSQL / NewSQL
 
@@ -88,12 +95,12 @@
 - [ ] D32 强化学习
 - [ ] D15 编译器 / 解释器
 - [ ] D16 编程语言理论（PLT）
-- [ ] D48 编辑器 / IDE / 开发者工具
+- [x] D48 编辑器 / IDE / 开发者工具（DONE: `domain.editor-ide-tooling`, 272）
 
 ### Wave 8：客户端图形
 
-- [ ] D23 桌面应用 / 跨平台GUI
-- [ ] D24 游戏开发
+- [x] D23 桌面应用 / 跨平台GUI（DONE: `client.desktop-cross-platform`, 270）
+- [x] D24 游戏开发（DONE: `client.game-dev`, 300）
 - [ ] D25 图形学 / 渲染
 - [ ] D49 数据可视化
 - [ ] D45 音视频处理 / 流媒体
@@ -113,6 +120,45 @@
 - [ ] D46 GIS / 地理信息
 - [ ] D47 机器人 / ROS
 - [ ] D50 低代码 / DSL / 配置语言
+
+### Wave 11：企业软件（核心业务流）
+
+- [ ] D51 ERP / 企业资源计划（SEEDED -> 200-500）
+- [x] D53 HRM / 人力资源系统（DONE: `business.hrm`, 300）
+- [ ] D54 财务 / 支付 / 结算
+- [ ] D55 供应链 / 物流 / WMS
+- [ ] D56 电商平台
+
+### Wave 12：企业软件（协同与客户）
+
+- [ ] D52 CRM / 客户关系管理（SEEDED -> 200-500）
+- [ ] D57 OA / 协同办公 / 工作流
+- [ ] D58 产品管理
+- [ ] D59 增长 / 用户运营
+- [ ] D63 数据分析 / BI
+
+### Wave 13：运营与营销
+
+- [ ] D60 广告与营销技术（AdTech/MarTech）
+- [ ] D61 内容 / 社区运营
+- [ ] D62 SEO / SEM / ASO
+- [ ] D64 A/B测试 / 实验平台
+- [ ] D71 SaaS / 订阅制商业
+
+### Wave 14：垂直行业
+
+- [ ] D65 金融科技（FinTech）
+- [ ] D66 保险科技（InsurTech）
+- [ ] D67 医疗健康（HealthTech）
+- [ ] D68 教育科技（EdTech）
+- [ ] D69 房产 / PropTech
+
+### Wave 15：垂直与合规
+
+- [ ] D70 出行 / 地图 / LBS
+- [ ] D72 数据隐私与合规
+- [ ] D73 信息安全合规
+- [ ] D74 行业监管（中国特色）
 
 ## 风险与约束
 

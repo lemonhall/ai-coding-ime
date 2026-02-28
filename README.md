@@ -55,6 +55,7 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
   - `docs/profile-dict-domain-checklist.md`
   - `docs/plan/v3-profile-domain-dictionary-backlog.md`
   - `docs/profile-dict-next-session-instruction.md`
+  - Profile 矩阵状态（2026-02-28）：`D01-D74`，`DONE=11`，`SEEDED=2`，`TODO=61`
   - Note: GitHub 承载/云端同步不在 Slice 1 范围内
 
 ### Supported Languages

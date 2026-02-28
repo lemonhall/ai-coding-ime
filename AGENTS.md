@@ -51,6 +51,9 @@ Key/Input
 - In progress: Phase 4 (JVM unit tests landed; integration/perf benchmark not done).
 - Focused verification command:
   - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"`
+- Profile domain matrix:
+  - `D01-D74` (`DONE=11`, `SEEDED=2`, `TODO=61`)
+  - source of truth: `docs/profile-dict-domain-checklist.md`
 - Manual regression doc:
   - `docs/projectdict-manual-test.md`
   - `docs/profile-dict-manual-test.md` (for Phase 3.5 slice 1)
