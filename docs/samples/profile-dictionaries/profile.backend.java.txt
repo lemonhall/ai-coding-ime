@@ -1,0 +1,6 @@
+事务传播 shi'wu'chuan'bo 0.20
+线程池饱和 xian'cheng'chi'bao'he 0.18
+接口幂等 jie'kou'mi'deng 0.19
+连接泄漏 lian'jie'xie'lou 0.21
+对象映射 dui'xiang'ying'she 0.17
+垃圾回收 la'ji'hui'shou 0.16

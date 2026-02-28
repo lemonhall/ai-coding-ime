@@ -42,10 +42,16 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
 | Phase 3.2 | ⏳ Pending | SSH 终端联动未实现（`ACTION_LOAD_PROJECT_DICT` 仍是草案） |
 | Phase 3.3 | ⏳ Pending | 安全校验未实现（调用方签名校验 + 词库 payload 限流） |
 | Phase 3.4 | ✅ Done | JNI/libime 容错召回已落地（`ProjectDictNative` + `native-lib.cpp`） |
+| Phase 3.5 | ✅ Slice 1 Done | 上游词库分层激活第一刀已落地（UI 启停 + 应用重载 + 内置词典 ready + 重导入按钮 + 手工回归） |
 | Phase 4 | 🚧 In progress | JVM 单测已落地并通过；集成测试与性能基准待补齐 |
 
 - Latest focused verification:
   - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"` (`BUILD SUCCESSFUL`)
+- Phase 3.5 slice-1 artifacts:
+  - `docs/plan/v2-upstream-context-dictionary-profiles.md`
+  - `docs/samples/profile-dictionaries/`
+  - `docs/profile-dict-manual-test.md`
+  - Note: GitHub 承载/云端同步不在 Slice 1 范围内
 
 ### Supported Languages
 

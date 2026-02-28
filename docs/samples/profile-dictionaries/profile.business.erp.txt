@@ -1,0 +1,6 @@
+采购订单 cai'gou'ding'dan 0.19
+库存周转 ku'cun'zhou'zhuan 0.18
+生产排程 sheng'chan'pai'cheng 0.20
+财务对账 cai'wu'dui'zhang 0.17
+主数据治理 zhu'shu'ju'zhi'li 0.21
+成本归集 cheng'ben'gui'ji 0.16

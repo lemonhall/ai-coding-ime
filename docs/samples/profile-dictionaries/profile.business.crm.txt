@@ -1,0 +1,6 @@
+客户线索 ke'hu'xian'suo 0.18
+商机跟进 shang'ji'gen'jin 0.19
+销售漏斗 xiao'shou'lou'dou 0.17
+回访记录 hui'fang'ji'lu 0.16
+触达策略 chu'da'ce'lue 0.18
+客诉工单 ke'su'gong'dan 0.20

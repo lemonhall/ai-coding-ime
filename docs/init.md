@@ -318,6 +318,7 @@ GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --ultrafast --kotlin
 - Phase 3.2 ⏳ 未开始（SSH 终端联动/Intent 热加载）
 - Phase 3.3 ⏳ 未开始（调用方签名校验 + payload 限流未实现）
 - Phase 3.4 ✅ 已完成（JNI/libime 容错召回已落地，详见 `docs/plan/v1-projectdict-jni-fuzzy-recall.md`）
+- Phase 3.5 ✅ Slice 1 已完成（手动启停 + 应用重载 + 内置词典 ready + 重导入）
 - Phase 4 🚧 进行中（JVM 单测已补齐并通过，集成/性能待补）
 
 ## Phase 1：项目词库协议定义 ✅
@@ -517,6 +518,32 @@ Extra:
 - JNI 实现：`app/src/main/cpp/native-lib.cpp` (`matchPinyinFuzzyBatchNative`)
 - 管理器接入：`app/src/main/java/org/fcitx/fcitx5/android/projectdict/ProjectDictManager.kt`
 
+### 3.5 上游词库分层激活（Context-Aware Profiles）
+
+**状态**：Slice 1 已完成（2026-02-28），自动 context 激活待施工
+
+目标：
+- 仅使用上游词库能力做“词汇强调”，不继续扩大 ProjectDict 前插候选策略。
+- 将“全局词库”拆成多份 profile（如 `base/frontend/react/backend/java/go/rust/android/crm/erp`）。
+- 基于项目上下文（例如 `.ime/meta.json` 的 tags）自动激活词库子集，降低无关词干扰。
+
+原则：
+- 复用现有 `PinyinDictionary` 与 `.dict/.dict.disable` 启停机制，不改 `lib/*` 与 `plugin/*`。
+- 通过词典 `cost` 做温和排序引导，不依赖“重复加词”来提权。
+- 切换过程做差量启停 + 单次 `reloadPinyinDict()`，避免频繁重载抖动。
+
+Slice 1（第一刀）交付门槛：
+- 提供可见 UI 入口：可手动启停 profile 词典并应用重载。
+- 提供首批内置词典资产：安装并启动后即 ready，无需手工导入。
+- 提供“重导入内置词典”入口：当开发调词后可一键覆盖本地旧 profile。
+- 提供独立人工测试指引，确保 UI/启停/重载可被直接验收。
+- GitHub 承载的云端词典同步不在 Slice 1 范围内，后续阶段再评估。
+
+文档入口：
+- 设计文档：`docs/plan/v2-upstream-context-dictionary-profiles.md`
+- 手工回归：`docs/profile-dict-manual-test.md`
+- 示例词典：`docs/samples/profile-dictionaries/`
+
 ## Phase 4：测试验证
 
 **状态**：进行中（JVM 单测已落地并通过；集成测试/性能基准未完成）
@@ -547,12 +574,14 @@ Extra:
 3. ✅ **Phase 2** → 完成 ProjectDict 核心与候选词注入（Kotlin 层）
 4. ✅ **Phase 3.1** → 完成手动加载入口（文件/剪贴板）
 5. ✅ **Phase 3.4** → 复用 JNI/libime 做 ProjectDict 容错召回
-6. 🚧 **Phase 4** → 持续补齐集成测试与性能基准（单元测试已完成）
-7. ⏳ **Phase 3.2 + 3.3** → 与 SSH 终端联动（Intent + 安全校验）
+6. ✅ **Phase 3.5** → Slice 1 已落地（UI 启停 + 应用重载 + 启动即 ready + 重导入入口 + 手工回归）
+7. 🚧 **Phase 4** → 持续补齐集成测试与性能基准（单元测试已完成）
+8. ⏳ **Phase 3.2 + 3.3** → 与 SSH 终端联动（Intent + 安全校验）
 
 ## 约束与原则
 
 - Phase 2/3.1/3.2/3.3 以 Kotlin 层为主；Phase 3.4 允许在 app JNI 桥接层做最小改动
+- Phase 3.5 优先复用上游词库启停/重载能力，避免继续增强 ProjectDict 前插“强干预”路径
 - 项目词库功能是纯增量的，不修改任何现有功能的行为
 - 词库未加载时，输入法行为与原版 100% 一致
 - 遵循上游的代码风格和目录结构约定

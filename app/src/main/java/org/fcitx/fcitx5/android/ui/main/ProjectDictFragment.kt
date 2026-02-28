@@ -15,7 +15,9 @@ import androidx.preference.Preference
 import org.fcitx.fcitx5.android.R
 import org.fcitx.fcitx5.android.projectdict.ProjectDictManager
 import org.fcitx.fcitx5.android.ui.common.PaddingPreferenceFragment
+import org.fcitx.fcitx5.android.ui.main.settings.SettingsRoute
 import org.fcitx.fcitx5.android.utils.addPreference
+import org.fcitx.fcitx5.android.utils.navigateWithAnim
 import org.fcitx.fcitx5.android.utils.setup
 import timber.log.Timber
 
@@ -35,6 +37,9 @@ class ProjectDictFragment : PaddingPreferenceFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireContext()).apply {
+            addPreference(R.string.project_dict_profiles_title, R.string.project_dict_profiles_summary) {
+                navigateWithAnim(SettingsRoute.ProjectDictProfiles)
+            }
             addPreference(R.string.project_dict_load_from_file) {
                 pickFile()
             }

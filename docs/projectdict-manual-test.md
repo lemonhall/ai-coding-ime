@@ -243,3 +243,8 @@ okTwo	abbr	700	ok
 5. 场景 13 -> 14（拼音与容错召回）
 
 完成这 14 项后，基本可以覆盖当前 ProjectDict 的核心手工回归面。
+
+## 7. 相关文档
+
+- `Phase 3.5`（上游 profile 词库启停）请参考：
+  - `docs/profile-dict-manual-test.md`

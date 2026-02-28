@@ -24,6 +24,7 @@ import org.fcitx.fcitx5.android.ui.main.LicensesFragment
 import org.fcitx.fcitx5.android.ui.main.MainFragment
 import org.fcitx.fcitx5.android.ui.main.PluginFragment
 import org.fcitx.fcitx5.android.ui.main.ProjectDictFragment
+import org.fcitx.fcitx5.android.ui.main.ProjectDictProfilesFragment
 import org.fcitx.fcitx5.android.ui.main.settings.addon.AddonConfigFragment
 import org.fcitx.fcitx5.android.ui.main.settings.addon.AddonListFragment
 import org.fcitx.fcitx5.android.ui.main.settings.behavior.AdvancedSettingsFragment
@@ -86,6 +87,9 @@ sealed class SettingsRoute : Parcelable {
 
     @Serializable
     data object ProjectDict : SettingsRoute()
+
+    @Serializable
+    data object ProjectDictProfiles : SettingsRoute()
 
     @Serializable
     data object Advanced : SettingsRoute()
@@ -228,6 +232,9 @@ sealed class SettingsRoute : Parcelable {
             }
             fragment<ProjectDictFragment, ProjectDict> {
                 label = ctx.getString(R.string.project_dict)
+            }
+            fragment<ProjectDictProfilesFragment, ProjectDictProfiles> {
+                label = ctx.getString(R.string.project_dict_profiles_title)
             }
             fragment<AdvancedSettingsFragment, Advanced> {
                 label = ctx.getString(R.string.advanced)

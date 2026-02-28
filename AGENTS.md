@@ -46,12 +46,16 @@ Key/Input
 
 ### ProjectDict Status Snapshot (as of 2026-02-28)
 - Done: Phase 1 (protocol), Phase 2 (Kotlin core + candidate injection), Phase 3.1 (manual load), Phase 3.4 (JNI/libime fuzzy recall).
+- Done: Phase 3.5 Slice 1 (UI toggles + apply/reload + startup-ready bundled dictionaries + built-in reimport + manual regression doc).
 - Pending: Phase 3.2 (SSH terminal linked auto-load), Phase 3.3 (caller signature verification + payload/entry limits).
 - In progress: Phase 4 (JVM unit tests landed; integration/perf benchmark not done).
 - Focused verification command:
   - `./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*"`
 - Manual regression doc:
   - `docs/projectdict-manual-test.md`
+  - `docs/profile-dict-manual-test.md` (for Phase 3.5 slice 1)
+- Sample profile dictionaries:
+  - `docs/samples/profile-dictionaries/`
 
 ## 2) Code Conventions (Negative Knowledge)
 - Do not run `clean` in daily iteration.

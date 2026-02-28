@@ -1,0 +1,6 @@
+编译缓存 bian'yi'huan'cun 0.05
+代码审查 dai'ma'shen'cha 0.06
+单元测试 dan'yuan'ce'shi 0.06
+持续集成 chi'xu'ji'cheng 0.07
+回归验证 hui'gui'yan'zheng 0.06
+发布回滚 fa'bu'hui'gun 0.08
