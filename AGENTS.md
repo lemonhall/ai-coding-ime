@@ -108,8 +108,10 @@ Key/Input
 - Verbose logs: `./gradlew :app:assembleDebug --info`
 
 ### Windows-side ADB install (WSL output APK)
-- `wsl.exe -e bash -lc 'cp /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/org.fcitx.fcitx5.android-<commit>-arm64-v8a-debug.apk /mnt/c/Users/lemon/Downloads/ime-debug.apk'`
+- `wsl.exe -e bash -lc 'cp "$(ls -t /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/*arm64-v8a-debug.apk | head -n1)" /mnt/c/Users/lemon/Downloads/ime-debug.apk'`
 - `adb install -r "$env:USERPROFILE\Downloads\ime-debug.apk"`
+- Optional automation script (run in Windows PowerShell): `.\scripts\install-latest-apk.ps1 -WslRepoPath /home/lemonhall/ai-coding-ime`
+- Optional one-command build+install: `.\scripts\install-latest-apk.ps1 -WslRepoPath /home/lemonhall/ai-coding-ime -Build`
 
 ## 4) Repo Safety / Permissions
 - Prefer Linux binaries inside WSL2; avoid unnecessary cross-boundary Windows tooling from WSL.

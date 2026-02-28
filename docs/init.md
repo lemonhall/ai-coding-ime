@@ -202,8 +202,8 @@ adb start-server
 # 确认设备
 adb devices
 
-# 已验证命令（2026-02-28）
-wsl.exe -e bash -lc 'cp /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/org.fcitx.fcitx5.android-02b1e5ae-arm64-v8a-debug.apk /mnt/c/Users/lemon/Downloads/ime-debug.apk'
+# 复制 WSL 中最新的 arm64-v8a debug APK 到 Windows Downloads
+wsl.exe -e bash -lc 'cp "$(ls -t /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/*arm64-v8a-debug.apk | head -n1)" /mnt/c/Users/lemon/Downloads/ime-debug.apk'
 adb install -r "$env:USERPROFILE\Downloads\ime-debug.apk"
 
 # 备选方案：adb over TCP
@@ -212,10 +212,19 @@ adb install -r "$env:USERPROFILE\Downloads\ime-debug.apk"
 #   3. WSL2 侧：./gradlew installDebug
 ```
 
-如果 commit 变了，先在 WSL 里查看当前 APK 文件名再替换：
+建议每次安装前先看时间戳，确认是刚构建出来的产物：
 
 ```bash
 ls -la /home/lemonhall/ai-coding-ime/app/build/outputs/apk/debug/
+```
+
+也可以用仓库脚本一键安装（在 Windows PowerShell 中执行）：
+
+```powershell
+.\scripts\install-latest-apk.ps1 -WslRepoPath /home/lemonhall/ai-coding-ime
+
+# 如需从 Windows 一键触发 WSL 编译 + 安装
+.\scripts\install-latest-apk.ps1 -WslRepoPath /home/lemonhall/ai-coding-ime -Build
 ```
 
 ### 0.3.1 在手机上启用输入法
