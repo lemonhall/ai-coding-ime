@@ -11,12 +11,12 @@
 
 将 74 个技术+商业子领域逐步沉淀为可维护的 profile 词库，每个领域 200-500 词，并形成可复现的回归闭环。
 
-## Progress Snapshot（as of 2026-02-28）
+## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 11 / 74
-- SEEDED: 2 / 74（`business.erp`、`business.crm`）
-- TODO: 61 / 74
-- 当前优先：先把 SEEDED 扩展到 200-500，再推进剩余 TODO。
+- DONE: 20 / 74
+- SEEDED: 0 / 74
+- TODO: 54 / 74
+- 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
 
@@ -59,11 +59,11 @@
 
 ### Wave 3：基础设施与平台
 
-- [ ] D39 云计算 / IaaS
-- [ ] D40 容器与编排
-- [ ] D41 消息队列 / 事件流
-- [ ] D42 可观测性 / 监控
-- [ ] D43 IaC / 基础设施即代码
+- [x] D39 云计算 / IaaS（DONE: `infra.cloud-iaas`, 230）
+- [x] D40 容器与编排（DONE: `infra.containers-orchestration`, 230）
+- [x] D41 消息队列 / 事件流（DONE: `infra.mq-event-streaming`, 230）
+- [x] D42 可观测性 / 监控（DONE: `infra.observability-monitoring`, 230）
+- [x] D43 IaC / 基础设施即代码（DONE: `infra.iac`, 230）
 
 ### Wave 4：系统底层
 

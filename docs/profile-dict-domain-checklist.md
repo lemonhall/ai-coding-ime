@@ -15,8 +15,8 @@
 - `DONE`：已完成（并通过回归）
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
-进度快照（2026-02-28）：
-- `DONE=11`，`SEEDED=2`，`TODO=61`
+进度快照（2026-03-01）：
+- `DONE=20`，`SEEDED=0`，`TODO=54`
 
 ---
 
@@ -44,7 +44,7 @@
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D11 | 关系型数据库 | `data.relational-db` | 200-500 | TODO |
+| D11 | 关系型数据库 | `data.relational-db` | 200-500 | DONE (`data.relational-db`, 360) |
 | D12 | NoSQL / NewSQL | `data.nosql-newsql` | 200-500 | TODO |
 | D13 | 数据工程 / ETL / 大数据 | `data.engineering-etl` | 200-500 | TODO |
 | D14 | 搜索引擎 / 信息检索 | `data.search-ir` | 200-500 | TODO |
@@ -55,7 +55,7 @@
 |---|---|---|---|---|
 | D15 | 编译器 / 解释器 | `engineering.compiler-interpreter` | 200-500 | TODO |
 | D16 | 编程语言理论（PLT） | `engineering.plt` | 200-500 | TODO |
-| D17 | 软件工程 / 架构模式 | `engineering.software-architecture` | 200-500 | TODO |
+| D17 | 软件工程 / 架构模式 | `engineering.software-architecture` | 200-500 | DONE (`engineering.software-architecture`, 260) |
 | D18 | DevOps / CI/CD / SRE | `engineering.devops-sre` | 200-500 | DONE (`engineering.devops-sre`, 363) |
 | D19 | 版本控制 / 协作 | `engineering.vcs-collaboration` | 200-500 | DONE (`engineering.vcs-collaboration`, 250) |
 | D20 | 测试工程 | `engineering.testing` | 200-500 | DONE (`engineering.testing`, 297) |
@@ -97,11 +97,11 @@
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D39 | 云计算 / IaaS | `infra.cloud-iaas` | 200-500 | TODO |
-| D40 | 容器与编排 | `infra.containers-orchestration` | 200-500 | TODO |
-| D41 | 消息队列 / 事件流 | `infra.mq-event-streaming` | 200-500 | TODO |
-| D42 | 可观测性 / 监控 | `infra.observability-monitoring` | 200-500 | TODO |
-| D43 | IaC / 基础设施即代码 | `infra.iac` | 200-500 | TODO |
+| D39 | 云计算 / IaaS | `infra.cloud-iaas` | 200-500 | DONE (`infra.cloud-iaas`, 230) |
+| D40 | 容器与编排 | `infra.containers-orchestration` | 200-500 | DONE (`infra.containers-orchestration`, 230) |
+| D41 | 消息队列 / 事件流 | `infra.mq-event-streaming` | 200-500 | DONE (`infra.mq-event-streaming`, 230) |
+| D42 | 可观测性 / 监控 | `infra.observability-monitoring` | 200-500 | DONE (`infra.observability-monitoring`, 230) |
+| D43 | IaC / 基础设施即代码 | `infra.iac` | 200-500 | DONE (`infra.iac`, 230) |
 
 ## I. 特定领域应用
 
@@ -119,8 +119,8 @@
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D51 | ERP / 企业资源计划 | `business.erp` | 200-500 | SEEDED (`business.erp`, 6) |
-| D52 | CRM / 客户关系管理 | `business.crm` | 200-500 | SEEDED (`business.crm`, 6) |
+| D51 | ERP / 企业资源计划 | `business.erp` | 200-500 | DONE (`business.erp`, 338) |
+| D52 | CRM / 客户关系管理 | `business.crm` | 200-500 | DONE (`business.crm`, 300) |
 | D53 | HRM / 人力资源系统 | `business.hrm` | 200-500 | DONE (`business.hrm`, 300) |
 | D54 | 财务 / 支付 / 结算 | `business.finance-payments` | 200-500 | TODO |
 | D55 | 供应链 / 物流 / WMS | `business.supply-chain-logistics-wms` | 200-500 | TODO |

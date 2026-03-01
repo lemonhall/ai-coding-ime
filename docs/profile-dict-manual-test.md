@@ -383,3 +383,167 @@
 | `kpi` | `KPI` | `base + business.hrm` | Top5 出现目标词，并可与“关键结果/绩效目标”共现 |
 | `renliziyuanxitong` | `人力资源系统` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
 | `xinzifa` | `薪资发放` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 18. D52 CRM / 客户关系管理（`business.crm`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + business.crm`
+- 边界对照：`base`（关闭 `business.crm`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `kehuxiansuo` | `客户线索` | `base + business.crm` | Top3 出现目标词 |
+| `xiansuozhuanhua` | `线索转化` | `base + business.crm` | Top5 出现目标词，排序稳定 |
+| `shangjigenjin` | `商机跟进` | `base + business.crm` | Top5 出现目标词，不被无关词压制 |
+| `xiaoshouloudou` | `销售漏斗` | `base + business.crm` | Top5 出现目标词 |
+| `baojiadan` | `报价单` | `base + business.crm` | Top5 出现目标词 |
+| `gongdanliuzhuan` | `工单流转` | `base + business.crm` | Top5 出现目标词 |
+| `kehuquanjing` | `客户全景` | `base + business.crm` | Top5 出现目标词 |
+| `kesugongdan` | `客诉工单` | `base + business.crm` | Top3 出现目标词，且排序稳定 |
+| `kehuxiansuo` | `客户线索` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `shangjigenjin` | `商机跟进` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 19. D51 ERP / 企业资源计划（`business.erp`）专项回归 Query（2026-02-28）
+
+激活组合说明：
+- 正向命中：`base + business.erp`
+- 边界对照：`base`（关闭 `business.erp`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `qiyeziyuanjihua` | `企业资源计划` | `base + business.erp` | Top3 出现目标词 |
+| `caigoudingdan` | `采购订单` | `base + business.erp` | Top3 出现目标词，排序稳定 |
+| `kucunzhouzhuan` | `库存周转` | `base + business.erp` | Top5 出现目标词，不被无关词压制 |
+| `shengchanpaicheng` | `生产排程` | `base + business.erp` | Top5 出现目标词 |
+| `chengbenhesuan` | `成本核算` | `base + business.erp` | Top5 出现目标词 |
+| `yingfuzhangkuan` | `应付账款` | `base + business.erp` | Top5 出现目标词 |
+| `zhushujuzhili` | `主数据治理` | `base + business.erp` | Top5 出现目标词，且排序稳定 |
+| `qiyeziyuanjihua` | `企业资源计划` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `caigouduizhang` | `采购对账` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 20. D17 软件工程 / 架构模式（`engineering.software-architecture`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + engineering.software-architecture`
+- 边界对照：`base`（关闭 `engineering.software-architecture`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `weifuwujiagou` | `微服务架构` | `base + engineering.software-architecture` | Top3 出现目标词 |
+| `liubianxingjiagou` | `六边形架构` | `base + engineering.software-architecture` | Top5 出现目标词，排序稳定 |
+| `xianjieshangxiawen` | `限界上下文` | `base + engineering.software-architecture` | Top5 出现目标词，不被无关词压制 |
+| `shijianqudongjiagou` | `事件驱动架构` | `base + engineering.software-architecture` | Top5 出现目标词 |
+| `jiaoshazhemoshi` | `绞杀者模式` | `base + engineering.software-architecture` | Top5 出现目标词 |
+| `qiyueceshi` | `契约测试` | `base + engineering.software-architecture` | Top5 出现目标词 |
+| `jiagoupingshen` | `架构评审` | `base + engineering.software-architecture` | Top5 出现目标词 |
+| `huigunyuanan` | `回滚预案` | `base + engineering.software-architecture` | Top5 出现目标词 |
+| `weifuwujiagou` | `微服务架构` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `xianjieshangxiawen` | `限界上下文` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 21. D11 关系型数据库（`data.relational-db`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + data.relational-db`
+- 边界对照：`base`（关闭 `data.relational-db`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `guanxixingshujuku` | `关系型数据库` | `base + data.relational-db` | Top3 出现目标词 |
+| `zhujiansuoyin` | `主键索引` | `base + data.relational-db` | Top3 出现目标词，排序稳定 |
+| `shiwubianjie` | `事务边界` | `base + data.relational-db` | Top5 出现目标词 |
+| `kechongfudu` | `可重复读` | `base + data.relational-db` | Top5 出现目标词，不被无关词压制 |
+| `fuzhiyanchi` | `复制延迟` | `base + data.relational-db` | Top5 出现目标词 |
+| `zaixianddl` | `在线DDL` | `base + data.relational-db` | Top5 出现目标词 |
+| `manchaxunrizhi` | `慢查询日志` | `base + data.relational-db` | Top5 出现目标词，排序稳定 |
+| `zhujiansuoyin` | `主键索引` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+| `fuzhiyanchi` | `复制延迟` | `base` | 若命中，排序应弱于开启领域 profile 时 |
+
+## 22. D39 云计算 / IaaS（`infra.cloud-iaas`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + infra.cloud-iaas`
+- 边界对照：`base`（关闭 `infra.cloud-iaas`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `yunjisuan` | `云计算` | `base + infra.cloud-iaas` | Top3 出现目标词 |
+| `jichusheshijifuwu` | `基础设施即服务` | `base + infra.cloud-iaas` | Top5 出现目标词，排序稳定 |
+| `xuniji` | `虚拟机` | `base + infra.cloud-iaas` | Top5 出现目标词 |
+| `rongzaiqiehuan` | `容灾切换` | `base + infra.cloud-iaas` | Top5 出现目标词，不被无关词压制 |
+| `yunpankuaizhao` | `云盘快照` | `base + infra.cloud-iaas` | Top5 出现目标词 |
+| `xunisiyouyun` | `虚拟私有云` | `base + infra.cloud-iaas` | Top5 出现目标词 |
+| `shenfenyufangwenguanli` | `身份与访问管理` | `base + infra.cloud-iaas` | Top8 出现目标词 |
+| `duozuhugeli` | `多租户隔离` | `base + infra.cloud-iaas` | Top8 出现目标词 |
+| `xuniji` | `虚拟机` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 23. D40 容器与编排（`infra.containers-orchestration`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + infra.containers-orchestration`
+- 边界对照：`base`（关闭 `infra.containers-orchestration`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `rongqibianpai` | `容器编排` | `base + infra.containers-orchestration` | Top3 出现目标词 |
+| `gundonggengxin` | `滚动更新` | `base + infra.containers-orchestration` | Top5 出现目标词，排序稳定 |
+| `jiqunzidongkuorong` | `集群自动扩容` | `base + infra.containers-orchestration` | Top5 出现目标词 |
+| `wanggeyaoce` | `网格遥测` | `base + infra.containers-orchestration` | Top5 出现目标词，不被无关词压制 |
+| `shuangxiangjiamirenzheng` | `双向加密认证` | `base + infra.containers-orchestration` | Top5 出现目标词 |
+| `rongqijianchadian` | `容器检查点` | `base + infra.containers-orchestration` | Top5 出现目标词 |
+| `zidingyikongzhiqi` | `自定义控制器` | `base + infra.containers-orchestration` | Top5 出现目标词 |
+| `duozuhugeli` | `多租户隔离` | `base + infra.containers-orchestration` | Top5 出现目标词 |
+| `rongqibianpai` | `容器编排` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 24. D41 消息队列 / 事件流（`infra.mq-event-streaming`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + infra.mq-event-streaming`
+- 边界对照：`base`（关闭 `infra.mq-event-streaming`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xiaoxiduilie` | `消息队列` | `base + infra.mq-event-streaming` | Top3 出现目标词 |
+| `shijianliu` | `事件流` | `base + infra.mq-event-streaming` | Top3 出现目标词，排序稳定 |
+| `sixinjiaohuanji` | `死信交换机` | `base + infra.mq-event-streaming` | Top5 出现目标词 |
+| `fenquzaijunheng` | `分区再均衡` | `base + infra.mq-event-streaming` | Top5 出现目标词，不被无关词压制 |
+| `shiwuhuicha` | `事务回查` | `base + infra.mq-event-streaming` | Top5 出现目标词 |
+| `fajianxiangmoshi` | `发件箱模式` | `base + infra.mq-event-streaming` | Top5 出现目标词 |
+| `biangengshujubuhuo` | `变更数据捕获` | `base + infra.mq-event-streaming` | Top5 出现目标词 |
+| `bianpai` | `编排引擎` | `base + infra.mq-event-streaming` | Top5 出现目标词 |
+| `xiaoxiduilie` | `消息队列` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 25. D42 可观测性 / 监控（`infra.observability-monitoring`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + infra.observability-monitoring`
+- 边界对照：`base`（关闭 `infra.observability-monitoring`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `keguancexing` | `可观测性` | `base + infra.observability-monitoring` | Top3 出现目标词 |
+| `yaocecaiji` | `遥测采集` | `base + infra.observability-monitoring` | Top5 出现目标词，排序稳定 |
+| `baifenweiyanchi` | `百分位延迟` | `base + infra.observability-monitoring` | Top5 出现目标词 |
+| `jiegouhuarizhi` | `结构化日志` | `base + infra.observability-monitoring` | Top5 出现目标词，不被无关词压制 |
+| `lianluzhuizong` | `链路追踪` | `base + infra.observability-monitoring` | Top5 出现目标词 |
+| `gaojingyizhi` | `告警抑制` | `base + infra.observability-monitoring` | Top5 出现目标词 |
+| `cuowuyusuan` | `错误预算` | `base + infra.observability-monitoring` | Top5 出现目标词 |
+| `zhenshiyonghujiankong` | `真实用户监控` | `base + infra.observability-monitoring` | Top5 出现目标词 |
+| `keguancexing` | `可观测性` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 26. D43 IaC / 基础设施即代码（`infra.iac`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + infra.iac`
+- 边界对照：`base`（关闭 `infra.iac`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `jichusheshijidaima` | `基础设施即代码` | `base + infra.iac` | Top3 出现目标词 |
+| `shengmingshibushu` | `声明式部署` | `base + infra.iac` | Top5 出现目标词，排序稳定 |
+| `zhuangtaisuoding` | `状态锁定` | `base + infra.iac` | Top5 出现目标词 |
+| `piaoyijiance` | `漂移检测` | `base + infra.iac` | Top5 出现目标词，不被无关词压制 |
+| `mokuaibanbensuoding` | `模块版本锁定` | `base + infra.iac` | Top5 出现目标词 |
+| `qiangzhibiaoqiancelue` | `强制标签策略` | `base + infra.iac` | Top5 出现目标词 |
+| `xunisiyouyun` | `虚拟私有云` | `base + infra.iac` | Top5 出现目标词 |
+| `duojiqunfabu` | `多集群发布` | `base + infra.iac` | Top5 出现目标词 |
+| `jichusheshijidaima` | `基础设施即代码` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
