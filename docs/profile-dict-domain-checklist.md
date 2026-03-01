@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=60`，`DOING=0`，`SEEDED=0`，`TODO=14`
+- `DONE=66`，`DOING=0`，`SEEDED=0`，`TODO=8`
 
 ---
 
@@ -134,17 +134,17 @@
 | D58 | 产品管理 | `product.management` | 200-500 | DONE (`product.management`, 220) |
 | D59 | 增长 / 用户运营 | `product.growth-operations` | 200-500 | DONE (`product.growth-operations`, 220) |
 | D60 | 广告与营销技术（AdTech/MarTech） | `product.adtech-martech` | 200-500 | DONE (`product.adtech-martech`, 240) |
-| D61 | 内容 / 社区运营 | `product.content-community-ops` | 200-500 | TODO |
-| D62 | SEO / SEM / ASO | `product.seo-sem-aso` | 200-500 | TODO |
-| D63 | 数据分析 / BI | `product.analytics-bi` | 200-500 | TODO |
-| D64 | A/B测试 / 实验平台 | `product.ab-testing` | 200-500 | TODO |
+| D61 | 内容 / 社区运营 | `product.content-community-ops` | 200-500 | DONE (`product.content-community-ops`, 220) |
+| D62 | SEO / SEM / ASO | `product.seo-sem-aso` | 200-500 | DONE (`product.seo-sem-aso`, 220) |
+| D63 | 数据分析 / BI | `product.analytics-bi` | 200-500 | DONE (`product.analytics-bi`, 220) |
+| D64 | A/B测试 / 实验平台 | `product.ab-testing` | 200-500 | DONE (`product.ab-testing`, 220) |
 
 ## L. 垂直行业
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D65 | 金融科技（FinTech） | `industry.fintech` | 200-500 | TODO |
-| D66 | 保险科技（InsurTech） | `industry.insurtech` | 200-500 | TODO |
+| D65 | 金融科技（FinTech） | `industry.fintech` | 200-500 | DONE (`industry.fintech`, 220) |
+| D66 | 保险科技（InsurTech） | `industry.insurtech` | 200-500 | DONE (`industry.insurtech`, 220) |
 | D67 | 医疗健康（HealthTech） | `industry.healthtech` | 200-500 | TODO |
 | D68 | 教育科技（EdTech） | `industry.edtech` | 200-500 | TODO |
 | D69 | 房产 / PropTech | `industry.proptech` | 200-500 | TODO |

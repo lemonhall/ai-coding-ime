@@ -13,9 +13,9 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 60 / 74
+- DONE: 66 / 74
 - SEEDED: 0 / 74
-- TODO: 14 / 74
+- TODO: 8 / 74
 - 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
@@ -135,20 +135,20 @@
 - [x] D57 OA / 协同办公 / 工作流（DONE: `business.oa-workflow`, 240）
 - [x] D58 产品管理（DONE: `product.management`, 220）
 - [x] D59 增长 / 用户运营（DONE: `product.growth-operations`, 220）
-- [ ] D63 数据分析 / BI
+- [x] D63 数据分析 / BI（DONE: `product.analytics-bi`, 220）
 
 ### Wave 13：运营与营销
 
 - [x] D60 广告与营销技术（AdTech/MarTech）（DONE: `product.adtech-martech`, 240）
-- [ ] D61 内容 / 社区运营
-- [ ] D62 SEO / SEM / ASO
-- [ ] D64 A/B测试 / 实验平台
+- [x] D61 内容 / 社区运营（DONE: `product.content-community-ops`, 220）
+- [x] D62 SEO / SEM / ASO（DONE: `product.seo-sem-aso`, 220）
+- [x] D64 A/B测试 / 实验平台（DONE: `product.ab-testing`, 220）
 - [ ] D71 SaaS / 订阅制商业
 
 ### Wave 14：垂直行业
 
-- [ ] D65 金融科技（FinTech）
-- [ ] D66 保险科技（InsurTech）
+- [x] D65 金融科技（FinTech）（DONE: `industry.fintech`, 220）
+- [x] D66 保险科技（InsurTech）（DONE: `industry.insurtech`, 220）
 - [ ] D67 医疗健康（HealthTech）
 - [ ] D68 教育科技（EdTech）
 - [ ] D69 房产 / PropTech

@@ -1165,3 +1165,99 @@
 | `duochudianguiyin` | `多触点归因` | `base + product.adtech-martech` | Top5 出现目标词 |
 | `liuliangfanzuobi` | `流量反作弊` | `base + product.adtech-martech` | Top5 出现目标词 |
 | `chengxuhuaguanggao` | `程序化广告` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 67. D61 内容 / 社区运营（`product.content-community-ops`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.content-community-ops`
+- 边界对照：`base`（关闭 `product.content-community-ops`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `neirongyunying` | `内容运营` | `base + product.content-community-ops` | Top3 出现目标词 |
+| `huatiyunying` | `话题运营` | `base + product.content-community-ops` | Top5 出现目标词 |
+| `fengxianneirong` | `风险内容` | `base + product.content-community-ops` | Top5 出现目标词 |
+| `jubaochuli` | `举报处理` | `base + product.content-community-ops` | Top5 出现目标词 |
+| `shengmingzhouqiguanli` | `生命周期管理` | `base + product.content-community-ops` | Top5 出现目标词 |
+| `shequyunying` | `社区运营` | `base + product.content-community-ops` | Top5 出现目标词 |
+| `neirongyunying` | `内容运营` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 68. D62 SEO / SEM / ASO（`product.seo-sem-aso`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.seo-sem-aso`
+- 边界对照：`base`（关闭 `product.seo-sem-aso`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `sousuoyinqingyouhua` | `搜索引擎优化` | `base + product.seo-sem-aso` | Top3 出现目标词 |
+| `guifanbiaoqian` | `规范标签` | `base + product.seo-sem-aso` | Top5 出现目标词 |
+| `foudinguanjianci` | `否定关键词` | `base + product.seo-sem-aso` | Top5 出现目标词 |
+| `shujuqudongguiyin` | `数据驱动归因` | `base + product.seo-sem-aso` | Top5 出现目标词 |
+| `yingyongjietuyouhua` | `应用截图优化` | `base + product.seo-sem-aso` | Top5 出现目标词 |
+| `pingfenyupinglun` | `评分与评论` | `base + product.seo-sem-aso` | Top5 出现目标词 |
+| `sousuoyinqingyouhua` | `搜索引擎优化` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 69. D63 数据分析 / BI（`product.analytics-bi`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.analytics-bi`
+- 边界对照：`base`（关闭 `product.analytics-bi`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `zhibiaokoujing` | `指标口径` | `base + product.analytics-bi` | Top3 出现目标词 |
+| `shucangxiaofeiceng` | `数仓消费层` | `base + product.analytics-bi` | Top5 出现目标词 |
+| `baobiaozhongxin` | `报表中心` | `base + product.analytics-bi` | Top5 出现目标词 |
+| `loudoufenxi` | `漏斗分析` | `base + product.analytics-bi` | Top5 出现目标词 |
+| `guiyinchuangkou` | `归因窗口` | `base + product.analytics-bi` | Top5 出现目标词 |
+| `maidiancaiji` | `埋点采集` | `base + product.analytics-bi` | Top5 出现目标词 |
+| `zhibiaokoujing` | `指标口径` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 70. D64 A/B测试 / 实验平台（`product.ab-testing`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.ab-testing`
+- 边界对照：`base`（关闭 `product.ab-testing`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `suijifenliu` | `随机分流` | `base + product.ab-testing` | Top3 出现目标词 |
+| `yangbenliangguji` | `样本量估计` | `base + product.ab-testing` | Top5 出现目标词 |
+| `xianzhuxingshuiping` | `显著性水平` | `base + product.ab-testing` | Top5 出现目标词 |
+| `hulanzhibiao` | `护栏指标` | `base + product.ab-testing` | Top5 出现目标词 |
+| `shiyianjiankong` | `实验监控` | `base + product.ab-testing` | Top5 出现目标词 |
+| `huiguncelue` | `回滚策略` | `base + product.ab-testing` | Top5 出现目标词 |
+| `suijifenliu` | `随机分流` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 71. D65 金融科技（FinTech）（`industry.fintech`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.fintech`
+- 边界对照：`base`（关闭 `industry.fintech`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `juhezhifu` | `聚合支付` | `base + industry.fintech` | Top3 出现目标词 |
+| `qingsuanchongpao` | `清算重跑` | `base + industry.fintech` | Top5 出现目标词 |
+| `qianbaoshouquan` | `钱包授权` | `base + industry.fintech` | Top5 出现目标词 |
+| `fanxiqianjiance` | `反洗钱监测` | `base + industry.fintech` | Top5 出现目标词 |
+| `jufushensu` | `拒付申诉` | `base + industry.fintech` | Top5 出现目标词 |
+| `huilvsuoding` | `汇率锁定` | `base + industry.fintech` | Top5 出现目标词 |
+| `juhezhifu` | `聚合支付` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 72. D66 保险科技（InsurTech）（`industry.insurtech`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.insurtech`
+- 边界对照：`base`（关闭 `industry.insurtech`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `hebao` | `核保` | `base + industry.insurtech` | Top3 出现目标词 |
+| `hebaoyinqing` | `核保引擎` | `base + industry.insurtech` | Top5 出现目标词 |
+| `lipeifanqizha` | `理赔反欺诈` | `base + industry.insurtech` | Top5 出现目标词 |
+| `zaibaoxianfenchu` | `再保险分出` | `base + industry.insurtech` | Top5 出现目标词 |
+| `jingsuanzhunbeijin` | `精算准备金` | `base + industry.insurtech` | Top5 出现目标词 |
+| `chelianwangdingjia` | `车联网定价` | `base + industry.insurtech` | Top5 出现目标词 |
+| `hebao` | `核保` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
