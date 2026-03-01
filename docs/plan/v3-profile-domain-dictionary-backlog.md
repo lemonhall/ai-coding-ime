@@ -13,9 +13,9 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 54 / 74
+- DONE: 60 / 74
 - SEEDED: 0 / 74
-- TODO: 20 / 74
+- TODO: 14 / 74
 - 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
@@ -126,20 +126,20 @@
 - [ ] D51 ERP / 企业资源计划（SEEDED -> 200-500）
 - [x] D53 HRM / 人力资源系统（DONE: `business.hrm`, 300）
 - [x] D54 财务 / 支付 / 结算（DONE: `business.finance-payments`, 220）
-- [ ] D55 供应链 / 物流 / WMS
-- [ ] D56 电商平台
+- [x] D55 供应链 / 物流 / WMS（DONE: `business.supply-chain-logistics-wms`, 230）
+- [x] D56 电商平台（DONE: `business.ecommerce-platform`, 220）
 
 ### Wave 12：企业软件（协同与客户）
 
 - [ ] D52 CRM / 客户关系管理（SEEDED -> 200-500）
-- [ ] D57 OA / 协同办公 / 工作流
-- [ ] D58 产品管理
-- [ ] D59 增长 / 用户运营
+- [x] D57 OA / 协同办公 / 工作流（DONE: `business.oa-workflow`, 240）
+- [x] D58 产品管理（DONE: `product.management`, 220）
+- [x] D59 增长 / 用户运营（DONE: `product.growth-operations`, 220）
 - [ ] D63 数据分析 / BI
 
 ### Wave 13：运营与营销
 
-- [ ] D60 广告与营销技术（AdTech/MarTech）
+- [x] D60 广告与营销技术（AdTech/MarTech）（DONE: `product.adtech-martech`, 240）
 - [ ] D61 内容 / 社区运营
 - [ ] D62 SEO / SEM / ASO
 - [ ] D64 A/B测试 / 实验平台

@@ -1069,3 +1069,99 @@
 | `fapiaogouxuan` | `发票勾选` | `base + business.finance-payments` | Top5 出现目标词 |
 | `jufushensu` | `拒付申诉` | `base + business.finance-payments` | Top5 出现目标词 |
 | `jiesuangize` | `结算规则` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 61. D55 供应链 / 物流 / WMS（`business.supply-chain-logistics-wms`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + business.supply-chain-logistics-wms`
+- 边界对照：`base`（关闭 `business.supply-chain-logistics-wms`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `gongyinglian` | `供应链` | `base + business.supply-chain-logistics-wms` | Top3 出现目标词 |
+| `cangkukuwei` | `仓库库位` | `base + business.supply-chain-logistics-wms` | Top5 出现目标词 |
+| `rukuguozhang` | `入库过账` | `base + business.supply-chain-logistics-wms` | Top5 出现目标词 |
+| `zhaiguojianxuan` | `摘果拣选` | `base + business.supply-chain-logistics-wms` | Top5 出现目标词 |
+| `kechengnuokucun` | `可承诺库存` | `base + business.supply-chain-logistics-wms` | Top5 出现目标词 |
+| `nixiangwuliu` | `逆向物流` | `base + business.supply-chain-logistics-wms` | Top5 出现目标词 |
+| `gongyinglian` | `供应链` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 62. D56 电商平台（`business.ecommerce-platform`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + business.ecommerce-platform`
+- 边界对照：`base`（关闭 `business.ecommerce-platform`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `dianshangpingtai` | `电商平台` | `base + business.ecommerce-platform` | Top3 出现目标词 |
+| `shangjiaruzhu` | `商家入驻` | `base + business.ecommerce-platform` | Top3 出现目标词 |
+| `youhuiquan` | `优惠券` | `base + business.ecommerce-platform` | Top5 出现目标词 |
+| `zhibodaihuo` | `直播带货` | `base + business.ecommerce-platform` | Top5 出现目标词 |
+| `dingdanqueren` | `订单确认` | `base + business.ecommerce-platform` | Top5 出现目标词 |
+| `wuliuguiji` | `物流轨迹` | `base + business.ecommerce-platform` | Top5 出现目标词 |
+| `dianshangpingtai` | `电商平台` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 63. D57 OA / 协同办公 / 工作流（`business.oa-workflow`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + business.oa-workflow`
+- 边界对照：`base`（关闭 `business.oa-workflow`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xietongbangong` | `协同办公` | `base + business.oa-workflow` | Top3 出现目标词 |
+| `daibanzhongxin` | `待办中心` | `base + business.oa-workflow` | Top5 出现目标词 |
+| `liuchengjianmo` | `流程建模` | `base + business.oa-workflow` | Top5 出现目标词 |
+| `shenpijilu` | `审批记录` | `base + business.oa-workflow` | Top5 出现目标词 |
+| `biaodansheji` | `表单设计` | `base + business.oa-workflow` | Top5 出现目标词 |
+| `feiyongbaoxiao` | `费用报销` | `base + business.oa-workflow` | Top5 出现目标词 |
+| `xietongbangong` | `协同办公` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 64. D58 产品管理（`product.management`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.management`
+- 边界对照：`base`（关闭 `product.management`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `chanpinguanli` | `产品管理` | `base + product.management` | Top3 出现目标词 |
+| `chanpinluxiantu` | `产品路线图` | `base + product.management` | Top5 出现目标词 |
+| `xuqiuyouxianji` | `需求优先级` | `base + product.management` | Top5 出现目标词 |
+| `yonghuyanjiu` | `用户研究` | `base + product.management` | Top5 出现目标词 |
+| `jingpinfenxi` | `竞品分析` | `base + product.management` | Top5 出现目标词 |
+| `beijixingzhibiao` | `北极星指标` | `base + product.management` | Top5 出现目标词 |
+| `chanpinguanli` | `产品管理` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 65. D59 增长 / 用户运营（`product.growth-operations`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.growth-operations`
+- 边界对照：`base`（关闭 `product.growth-operations`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `zengzhangfeilun` | `增长飞轮` | `base + product.growth-operations` | Top3 出现目标词 |
+| `laxincuhuo` | `拉新促活` | `base + product.growth-operations` | Top5 出现目标词 |
+| `huokechengben` | `获客成本` | `base + product.growth-operations` | Top5 出现目标词 |
+| `liucunlv` | `留存率` | `base + product.growth-operations` | Top5 出现目标词 |
+| `yonghufenqun` | `用户分群` | `base + product.growth-operations` | Top5 出现目标词 |
+| `zidonghuachuda` | `自动化触达` | `base + product.growth-operations` | Top5 出现目标词 |
+| `zengzhangfeilun` | `增长飞轮` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 66. D60 广告与营销技术（AdTech/MarTech）（`product.adtech-martech`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + product.adtech-martech`
+- 边界对照：`base`（关闭 `product.adtech-martech`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `chengxuhuaguanggao` | `程序化广告` | `base + product.adtech-martech` | Top3 出现目标词 |
+| `chongdingxiangguanggao` | `重定向广告` | `base + product.adtech-martech` | Top5 出现目标词 |
+| `shujuguanlipingtai` | `数据管理平台` | `base + product.adtech-martech` | Top5 出现目标词 |
+| `guanggaozhichuhuibao` | `广告支出回报` | `base + product.adtech-martech` | Top5 出现目标词 |
+| `duochudianguiyin` | `多触点归因` | `base + product.adtech-martech` | Top5 出现目标词 |
+| `liuliangfanzuobi` | `流量反作弊` | `base + product.adtech-martech` | Top5 出现目标词 |
+| `chengxuhuaguanggao` | `程序化广告` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |

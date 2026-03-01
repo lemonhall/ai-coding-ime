@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=54`，`DOING=0`，`SEEDED=0`，`TODO=20`
+- `DONE=60`，`DOING=0`，`SEEDED=0`，`TODO=14`
 
 ---
 
@@ -123,17 +123,17 @@
 | D52 | CRM / 客户关系管理 | `business.crm` | 200-500 | DONE (`business.crm`, 300) |
 | D53 | HRM / 人力资源系统 | `business.hrm` | 200-500 | DONE (`business.hrm`, 300) |
 | D54 | 财务 / 支付 / 结算 | `business.finance-payments` | 200-500 | DONE (`business.finance-payments`, 220) |
-| D55 | 供应链 / 物流 / WMS | `business.supply-chain-logistics-wms` | 200-500 | TODO |
-| D56 | 电商平台 | `business.ecommerce-platform` | 200-500 | TODO |
-| D57 | OA / 协同办公 / 工作流 | `business.oa-workflow` | 200-500 | TODO |
+| D55 | 供应链 / 物流 / WMS | `business.supply-chain-logistics-wms` | 200-500 | DONE (`business.supply-chain-logistics-wms`, 230) |
+| D56 | 电商平台 | `business.ecommerce-platform` | 200-500 | DONE (`business.ecommerce-platform`, 220) |
+| D57 | OA / 协同办公 / 工作流 | `business.oa-workflow` | 200-500 | DONE (`business.oa-workflow`, 240) |
 
 ## K. 互联网产品与运营
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D58 | 产品管理 | `product.management` | 200-500 | TODO |
-| D59 | 增长 / 用户运营 | `product.growth-operations` | 200-500 | TODO |
-| D60 | 广告与营销技术（AdTech/MarTech） | `product.adtech-martech` | 200-500 | TODO |
+| D58 | 产品管理 | `product.management` | 200-500 | DONE (`product.management`, 220) |
+| D59 | 增长 / 用户运营 | `product.growth-operations` | 200-500 | DONE (`product.growth-operations`, 220) |
+| D60 | 广告与营销技术（AdTech/MarTech） | `product.adtech-martech` | 200-500 | DONE (`product.adtech-martech`, 240) |
 | D61 | 内容 / 社区运营 | `product.content-community-ops` | 200-500 | TODO |
 | D62 | SEO / SEM / ASO | `product.seo-sem-aso` | 200-500 | TODO |
 | D63 | 数据分析 / BI | `product.analytics-bi` | 200-500 | TODO |

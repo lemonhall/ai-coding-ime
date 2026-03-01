@@ -85,7 +85,13 @@ object ProfileDictionaryCatalog {
         ProfileCatalogEntry(profileId = "business.crm", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "business.erp", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "business.finance-payments", defaultEnabled = false),
-        ProfileCatalogEntry(profileId = "business.hrm", defaultEnabled = false)
+        ProfileCatalogEntry(profileId = "business.hrm", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "business.supply-chain-logistics-wms", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "business.ecommerce-platform", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "business.oa-workflow", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "product.management", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "product.growth-operations", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "product.adtech-martech", defaultEnabled = false)
     )
 
     fun assetFileName(profileId: String): String = "$PROFILE_PREFIX.$profileId.txt"
