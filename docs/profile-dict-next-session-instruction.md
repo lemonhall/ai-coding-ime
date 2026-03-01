@@ -1,11 +1,12 @@
-# 下一会话执行指令（单领域词库产出）
+# 下一会话执行指令（词库维护 / 回归）
 
-用途：每次新会话直接复制本页指令，稳定推进一个领域一个领域的词库建设。
+用途：在 `D01-D74` 已全部落地后，指导后续会话做质量维护、调词和回归。
 
-当前矩阵（2026-02-28）：
+当前矩阵（2026-03-01）：
 - 领域范围：`D01-D74`
-- 当前状态：`DONE=11`，`SEEDED=2`，`TODO=61`
+- 当前状态：`DONE=74`，`DOING=0`，`SEEDED=0`，`TODO=0`
 - 统一进度看板：`docs/profile-dict-domain-checklist.md`
+- 实现侧 catalog 现状：`79` 项（`74` 领域 + `5` 个非领域兼容 profile）
 
 先读：
 
@@ -15,41 +16,37 @@
 
 ---
 
-## 可直接复制给新会话的 Prompt
+## 可直接复制给新会话的 Prompt（维护模式）
 
 ```text
-请按以下要求执行“单领域 profile 词库产出”任务（一次只做 1 个领域）：
+请按以下要求执行“单领域 profile 词库维护”任务（一次只做 1 个领域）：
 
 1) 先读取：
 - docs/profile-dict-domain-checklist.md
 - docs/plan/v3-profile-domain-dictionary-backlog.md
 - docs/profile-dict-ops-template.md
 
-2) 选择 checklist 中一个状态为 TODO 或 SEEDED 的领域，把它先改成 DOING。
+2) 从 checklist 里任选 1 个已完成领域（DONE），作为本次维护对象。
 
-3) 为该领域产出词库文件（200-500 条）：
+3) 在不改领域边界的前提下，对该领域词库做维护（例如补词、去噪、调 cost）：
 - docs/samples/profile-dictionaries/profile.<slug>.txt
-词条格式必须是：
-词条 pinyin cost
 
-4) 同步词库到内置资产：
+4) 同步到内置资产：
 - app/src/main/assets/projectdict/profile-dictionaries/profile.<slug>.txt
 
-5) 如果 <slug> 是新增领域（不在 catalog 中），请同步更新：
+5) 若本次涉及非领域兼容 profile（`base` / `frontend.react` / `backend.java` / `backend.go` / `backend.rust`），同步确认：
 - app/src/main/java/org/fcitx/fcitx5/android/projectdict/profile/ProfileDictionaryService.kt
-里的 ProfileDictionaryCatalog.entries（默认 defaultEnabled=false；base 例外）。
+里的 catalog 条目与资产文件一致。
 
-6) 在 docs/profile-dict-manual-test.md 追加至少 5 条该领域的回归 query（含期望）。
+6) 在 docs/profile-dict-manual-test.md 为该领域补充或更新至少 5 条回归 query（含期望）。
 
-7) 把 checklist 中该领域状态从 DOING 改为 DONE，并记录实际词条数。
-
-8) 运行验证：
+7) 运行验证：
 - ./gradlew :app:testDebugUnitTest --tests "org.fcitx.fcitx5.android.projectdict.*" --console=plain
 
-9) 最后输出：
-- 本次选的领域 ID/名称
+8) 最后输出：
+- 本次维护的领域 ID/名称
 - 新增或修改的文件列表
-- 实际词条数
+- 词条变更摘要（新增/删除/调权）
 - 回归 query 摘要
 - 验证命令结果
 ```
@@ -58,7 +55,7 @@
 
 ## 会话后自检
 
-- 只完成了 1 个领域（没有跨领域扩张）
-- 词条数在 200-500
+- 只维护了 1 个领域（没有跨领域扩张）
 - 资产与样例目录文件一致
-- checklist/backlog/手工回归文档已更新
+- 回归 query 和验证命令已执行
+- 如有状态变化，checklist/backlog 已同步

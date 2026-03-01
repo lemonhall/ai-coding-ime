@@ -1,7 +1,24 @@
 {
   "version": 1,
   "project": "ai-coding-ime",
-  "lang": ["zh", "en"],
-  "generated_at": "2026-02-27T12:00:00Z",
-  "description": "Example project dictionary for ai-coding-ime development"
+  "lang": [
+    "zh",
+    "en"
+  ],
+  "generated_at": "2026-03-01T07:05:00Z",
+  "description": "Manual ProjectDict profile selection (D01-D74 constrained)",
+  "dict_profiles": [
+    "engineering.testing",
+    "engineering.package-build",
+    "app.android",
+    "domain.editor-ide-tooling",
+    "engineering.software-architecture"
+  ],
+  "tags": [
+    "engineering.testing",
+    "engineering.package-build",
+    "app.android",
+    "domain.editor-ide-tooling",
+    "engineering.software-architecture"
+  ]
 }

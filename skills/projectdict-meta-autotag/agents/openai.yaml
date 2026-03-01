@@ -1,0 +1,4 @@
+interface:
+  display_name: "ProjectDict Meta Autotag"
+  short_description: "Select 5 D01-D74 profiles for .ime/meta.json with mandatory engineering.testing and validate format"
+  default_prompt: "Analyze this project, choose exactly 5 D01-D74 dict_profiles (must include engineering.testing), write .ime/meta.json, then run validate_meta.py."

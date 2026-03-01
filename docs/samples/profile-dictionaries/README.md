@@ -3,26 +3,17 @@
 本目录提供“按上下文激活词库 profile”功能的词典源文件，格式为 libime 拼音文本词典（`词条 pinyin cost`）。
 当前领域矩阵已扩展到 `D01-D74`（技术 + 商业），本目录存放已落地 profile。
 
-## 文件清单
+## 文件清单（现状）
 
-- `profile.base.txt`
-- `profile.frontend.txt`
-- `profile.frontend.react.txt`
-- `profile.backend.java.txt`
-- `profile.backend.go.txt`
-- `profile.backend.rust.txt`
-- `profile.app.android.txt`
-- `profile.business.crm.txt`
-- `profile.business.erp.txt`
-- `profile.business.hrm.txt`
-- `profile.engineering.devops-sre.txt`
-- `profile.engineering.testing.txt`
-- `profile.engineering.package-build.txt`
-- `profile.engineering.vcs-collaboration.txt`
-- `profile.network.web-backend-api.txt`
-- `profile.client.desktop-cross-platform.txt`
-- `profile.client.game-dev.txt`
-- `profile.domain.editor-ide-tooling.txt`
+- 领域词典：`74` 份（对应 `D01-D74`，文件名 `profile.<slug>.txt`）。
+- 非领域兼容词典：`5` 份（`base`、`frontend.react`、`backend.java`、`backend.go`、`backend.rust`）。
+- 当前总量：`79` 份（与 `ProfileDictionaryCatalog` 对齐）。
+
+可用命令快速核对数量：
+
+```bash
+ls app/src/main/assets/projectdict/profile-dictionaries/profile.*.txt | wc -l
+```
 
 ## 启动即 Ready（目标形态）
 

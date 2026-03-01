@@ -17,6 +17,7 @@
 
 进度快照（2026-03-01）：
 - `DONE=74`，`DOING=0`，`SEEDED=0`，`TODO=0`
+- 说明：本面板只追踪 `D01-D74` 领域。实现侧 `ProfileDictionaryCatalog` 目前共 `79` 项，额外 `5` 项为非领域兼容 profile（`base`、`frontend.react`、`backend.java`、`backend.go`、`backend.rust`）。
 
 ---
 

@@ -539,9 +539,10 @@ Slice 1（第一刀）交付门槛：
 - 提供独立人工测试指引，确保 UI/启停/重载可被直接验收。
 - GitHub 承载的云端词典同步不在 Slice 1 范围内，后续阶段再评估。
 
-当前矩阵状态（2026-02-28）：
+当前矩阵状态（2026-03-01）：
 - 领域范围：`D01-D74`（技术 + 商业）
-- 状态汇总：`DONE=11`，`SEEDED=2`，`TODO=61`
+- 状态汇总：`DONE=74`，`DOING=0`，`SEEDED=0`，`TODO=0`
+- 实现侧 catalog：`79` 项（`74` 领域 + `5` 个非领域兼容 profile：`base`、`frontend.react`、`backend.java`、`backend.go`、`backend.rust`）
 - 进度面板：`docs/profile-dict-domain-checklist.md`
 
 文档入口：
@@ -598,4 +599,4 @@ Slice 1（第一刀）交付门槛：
 - 构建环境：WSL2 Ubuntu 24.04 + Nix 2.33.3（使用项目自带的 flake.nix）
 - WSL2 代理地址：127.0.0.1:7897（本地代理转发）或宿主机局域网 IP（视网络配置而定）
 - Phase 0 完成时间：2026-02-27
-- 文档状态更新时间：2026-02-28
+- 文档状态更新时间：2026-03-01
