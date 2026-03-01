@@ -58,6 +58,28 @@ In case you want Fcitx5 on other platforms: [macOS](https://github.com/fcitx-con
   - Profile 矩阵状态（2026-02-28）：`D01-D74`，`DONE=11`，`SEEDED=2`，`TODO=61`
   - Note: GitHub 承载/云端同步不在 Slice 1 范围内
 
+## Project Dictionary Meta Intent Demo
+
+下面是一次完整的联动演示（SSH -> IME profile 激活 -> 输入候选变化）：
+
+1. 词库激活前，输入 `luyouquchong`，候选会出现“路由驱虫”：
+
+![词库激活前](dic_active_before.png)
+
+2. 在 SSH 中切换到目标目录，且目录下存在 `.ime/meta.json`；SSH app 自动探测并把 meta 信息发送给本机输入法后台。
+
+3. 输入法后台收到后自动激活对应词典（如下图）：
+
+![Android 词典激活状态](android_dic.png)
+
+4. 激活后继续使用拼音输入法，再次输入 `luyouquchong`，候选中可以看到“路由去重”：
+
+![词库激活后](dic_active_after.png)
+
+5. 对应词典文件如下图：
+
+![词典文件](dics.png)
+
 ### Supported Languages
 
 - English (with spell check)
