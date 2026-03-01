@@ -13,9 +13,9 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 42 / 74
+- DONE: 48 / 74
 - SEEDED: 0 / 74
-- TODO: 32 / 74
+- TODO: 26 / 74
 - 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
@@ -108,15 +108,15 @@
 ### Wave 9：科学计算
 
 - [x] D33 数值计算 / 科学计算（DONE: `science.scientific-computing`, 220）
-- [ ] D34 物理仿真 / 有限元
-- [ ] D35 信号处理 / DSP
-- [ ] D36 计算几何 / CAD
-- [ ] D37 生物信息学
+- [x] D34 物理仿真 / 有限元（DONE: `science.physics-simulation-fem`, 220）
+- [x] D35 信号处理 / DSP（DONE: `science.signal-processing-dsp`, 220）
+- [x] D36 计算几何 / CAD（DONE: `science.computational-geometry-cad`, 220）
+- [x] D37 生物信息学（DONE: `science.bioinformatics`, 220）
 
 ### Wave 10：专项应用
 
-- [ ] D38 量子计算
-- [ ] D44 区块链 / Web3
+- [x] D38 量子计算（DONE: `science.quantum-computing`, 220）
+- [x] D44 区块链 / Web3（DONE: `domain.blockchain-web3`, 220）
 - [ ] D46 GIS / 地理信息
 - [ ] D47 机器人 / ROS
 - [ ] D50 低代码 / DSL / 配置语言

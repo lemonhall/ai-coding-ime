@@ -883,3 +883,99 @@
 | `mcmccaiyang` | `MCMC采样` | `base + science.scientific-computing` | Top5 出现目标词 |
 | `cfltiaojian` | `CFL条件` | `base + science.scientific-computing` | Top5 出现目标词 |
 | `shuzhijifen` | `数值积分` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 49. D34 物理仿真 / 有限元（`science.physics-simulation-fem`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + science.physics-simulation-fem`
+- 边界对照：`base`（关闭 `science.physics-simulation-fem`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `youxianyuanfa` | `有限元法` | `base + science.physics-simulation-fem` | Top3 出现目标词 |
+| `wanggeshoulianxing` | `网格收敛性` | `base + science.physics-simulation-fem` | Top5 出现目标词，排序稳定 |
+| `jiechufenxi` | `接触分析` | `base + science.physics-simulation-fem` | Top5 出现目标词 |
+| `liugouhe` | `流固耦合` | `base + science.physics-simulation-fem` | Top5 出现目标词 |
+| `duowulichangouhe` | `多物理场耦合` | `base + science.physics-simulation-fem` | Top5 出现目标词 |
+| `duanlieyundu` | `断裂韧度` | `base + science.physics-simulation-fem` | Top5 出现目标词 |
+| `jiechufenxi` | `接触分析` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 50. D35 信号处理 / DSP（`science.signal-processing-dsp`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + science.signal-processing-dsp`
+- 边界对照：`base`（关闭 `science.signal-processing-dsp`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `fft` | `快速傅里叶变换` | `base + science.signal-processing-dsp` | Top3 出现目标词 |
+| `fir` | `有限冲激响应滤波器` | `base + science.signal-processing-dsp` | Top5 出现目标词 |
+| `iir` | `无限冲激响应滤波器` | `base + science.signal-processing-dsp` | Top5 出现目标词，排序稳定 |
+| `lms` | `最小均方算法` | `base + science.signal-processing-dsp` | Top5 出现目标词 |
+| `kalman` | `卡尔曼滤波` | `base + science.signal-processing-dsp` | Top5 出现目标词 |
+| `wavelet` | `小波变换` | `base + science.signal-processing-dsp` | Top5 出现目标词 |
+| `fft` | `快速傅里叶变换` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 51. D36 计算几何 / CAD（`science.computational-geometry-cad`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + science.computational-geometry-cad`
+- 边界对照：`base`（关闭 `science.computational-geometry-cad`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `tubao` | `凸包算法` | `base + science.computational-geometry-cad` | Top3 出现目标词 |
+| `delaoneisanjiaopoufen` | `德劳内三角剖分` | `base + science.computational-geometry-cad` | Top5 出现目标词 |
+| `caotuqiujieqi` | `草图求解器` | `base + science.computational-geometry-cad` | Top5 出现目标词 |
+| `nurbs` | `NURBS曲面` | `base + science.computational-geometry-cad` | Top5 出现目标词 |
+| `ganshejiancha` | `干涉检查` | `base + science.computational-geometry-cad` | Top5 出现目标词 |
+| `stepjiaohuan` | `STEP交换` | `base + science.computational-geometry-cad` | Top5 出现目标词 |
+| `nurbs` | `NURBS曲面` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 52. D37 生物信息学（`science.bioinformatics`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + science.bioinformatics`
+- 边界对照：`base`（关闭 `science.bioinformatics`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `shengwuxinxixue` | `生物信息学` | `base + science.bioinformatics` | Top3 出现目标词 |
+| `danxibaozhuanluzuxue` | `单细胞转录组学` | `base + science.bioinformatics` | Top5 出现目标词 |
+| `quanjiyinzuguanlianfenxi` | `全基因组关联分析` | `base + science.bioinformatics` | Top5 出现目标词，排序稳定 |
+| `baomidingniaopiaolingdao` | `胞嘧啶鸟嘌呤岛` | `base + science.bioinformatics` | Top5 出现目标词 |
+| `xunhuanzhongliutuoyanghetanghesuan` | `循环肿瘤脱氧核糖核酸` | `base + science.bioinformatics` | Top5 出现目标词 |
+| `tujiyinzubidui` | `图基因组比对` | `base + science.bioinformatics` | Top5 出现目标词 |
+| `shengwuxinxixue` | `生物信息学` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 53. D38 量子计算（`science.quantum-computing`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + science.quantum-computing`
+- 边界对照：`base`（关闭 `science.quantum-computing`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `liangzijisuan` | `量子计算` | `base + science.quantum-computing` | Top3 出现目标词 |
+| `liangzijiuchuo` | `量子纠错` | `base + science.quantum-computing` | Top5 出现目标词 |
+| `xiaoersuanfa` | `肖尔算法` | `base + science.quantum-computing` | Top5 出现目标词 |
+| `biaomianma` | `表面码` | `base + science.quantum-computing` | Top5 出现目标词 |
+| `chaodaoliangzibite` | `超导量子比特` | `base + science.quantum-computing` | Top5 出现目标词 |
+| `liangzixianluqiege` | `量子线路切割` | `base + science.quantum-computing` | Top5 出现目标词 |
+| `liangzijisuan` | `量子计算` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 54. D44 区块链 / Web3（`domain.blockchain-web3`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + domain.blockchain-web3`
+- 边界对照：`base`（关闭 `domain.blockchain-web3`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `qukuailian` | `区块链` | `base + domain.blockchain-web3` | Top3 出现目标词 |
+| `gongzuoliangzhengming` | `工作量证明` | `base + domain.blockchain-web3` | Top5 出现目标词 |
+| `zhinengheyue` | `智能合约` | `base + domain.blockchain-web3` | Top5 出现目标词，排序稳定 |
+| `liudongxingwakuang` | `流动性挖矿` | `base + domain.blockchain-web3` | Top5 出现目标词 |
+| `kualianqiao` | `跨链桥` | `base + domain.blockchain-web3` | Top5 出现目标词 |
+| `keyanzhengpingzheng` | `可验证凭证` | `base + domain.blockchain-web3` | Top5 出现目标词 |
+| `qukuailian` | `区块链` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |

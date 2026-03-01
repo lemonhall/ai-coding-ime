@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=42`，`DOING=0`，`SEEDED=0`，`TODO=32`
+- `DONE=48`，`DOING=0`，`SEEDED=0`，`TODO=26`
 
 ---
 
@@ -87,11 +87,11 @@
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
 | D33 | 数值计算 / 科学计算 | `science.scientific-computing` | 200-500 | DONE (`science.scientific-computing`, 220) |
-| D34 | 物理仿真 / 有限元 | `science.physics-simulation-fem` | 200-500 | TODO |
-| D35 | 信号处理 / DSP | `science.signal-processing-dsp` | 200-500 | TODO |
-| D36 | 计算几何 / CAD | `science.computational-geometry-cad` | 200-500 | TODO |
-| D37 | 生物信息学 | `science.bioinformatics` | 200-500 | TODO |
-| D38 | 量子计算 | `science.quantum-computing` | 200-500 | TODO |
+| D34 | 物理仿真 / 有限元 | `science.physics-simulation-fem` | 200-500 | DONE (`science.physics-simulation-fem`, 220) |
+| D35 | 信号处理 / DSP | `science.signal-processing-dsp` | 200-500 | DONE (`science.signal-processing-dsp`, 220) |
+| D36 | 计算几何 / CAD | `science.computational-geometry-cad` | 200-500 | DONE (`science.computational-geometry-cad`, 220) |
+| D37 | 生物信息学 | `science.bioinformatics` | 200-500 | DONE (`science.bioinformatics`, 220) |
+| D38 | 量子计算 | `science.quantum-computing` | 200-500 | DONE (`science.quantum-computing`, 220) |
 
 ## H. 基础设施与平台
 
@@ -107,7 +107,7 @@
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D44 | 区块链 / Web3 | `domain.blockchain-web3` | 200-500 | TODO |
+| D44 | 区块链 / Web3 | `domain.blockchain-web3` | 200-500 | DONE (`domain.blockchain-web3`, 220) |
 | D45 | 音视频处理 / 流媒体 | `domain.audio-video-streaming` | 200-500 | TODO |
 | D46 | GIS / 地理信息 | `domain.gis` | 200-500 | TODO |
 | D47 | 机器人 / ROS | `domain.robotics-ros` | 200-500 | TODO |
