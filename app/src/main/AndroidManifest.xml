@@ -146,6 +146,14 @@
             </intent-filter>
         </service>
 
+        <receiver
+            android:name=".projectdict.ProjectMetaIntentReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.lsl.lemonhall.fcitx5.action.APPLY_PROJECT_META" />
+            </intent-filter>
+        </receiver>
+
         <provider
             android:name=".provider.FcitxDataProvider"
             android:authorities="${applicationId}.provider"

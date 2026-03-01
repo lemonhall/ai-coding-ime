@@ -65,7 +65,7 @@ badWeight	id	abc
 okTwo	abbr	700	ok
 ```
 
-## 4. 测试场景（14 个）
+## 4. 测试场景（15 个）
 
 ### 场景 1：从剪贴板加载词库 A
 
@@ -228,10 +228,24 @@ okTwo	abbr	700	ok
 - 误触输入也能召回 `回滚到上一个版本 [P]`。
 - 若同时存在精确命中，精确命中排序应高于容错召回。
 
+---
+
+### 场景 15：Meta Intent 5 秒限流
+
+操作：
+1. 确保 IME 安装包名为 `com.lsl.lemonhall.fcitx5` 且应用已启动过一次。
+2. 连续快速发送 3 次广播（1 秒内）：
+   `adb shell am broadcast -a com.lsl.lemonhall.fcitx5.action.APPLY_PROJECT_META -p com.lsl.lemonhall.fcitx5 --es meta_json '{"version":1,"dict_profiles":["app.android"]}'`
+3. 观察日志（可选）：`adb logcat | grep ProjectMeta`。
+
+期望：
+- 仅第一条广播进入处理链，后两条在窗口内被限流忽略。
+- 不弹窗、不崩溃、不打断当前输入。
+- 超过 5 秒后再次发送，同类广播可重新生效。
+
 ## 5. 已知限制（当前实现）
 
-- 尚未实现与 SSH 终端联动的自动词库热加载（`Phase 3.2`）。
-- 尚未实现 Intent 调用方签名校验与 payload 限流（`Phase 3.3`）。
+- 调用方签名校验尚未实现（`Phase 3.3` 后续项）；当前为开放 Intent + 防御式限流方案。
 - 尚未建立 ProjectDict 的集成测试与性能基准自动化（`Phase 4.2/4.3`）。
 
 ## 6. 建议执行顺序
@@ -242,7 +256,7 @@ okTwo	abbr	700	ok
 4. 场景 12（容错）
 5. 场景 13 -> 14（拼音与容错召回）
 
-完成这 14 项后，基本可以覆盖当前 ProjectDict 的核心手工回归面。
+完成这 15 项后，基本可以覆盖当前 ProjectDict 的核心手工回归面。
 
 ## 7. 相关文档
 

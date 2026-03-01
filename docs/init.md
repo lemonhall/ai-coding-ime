@@ -309,14 +309,14 @@ GRADLE_USER_HOME=$HOME/.gradle ./scripts/gradle-dev.sh --ultrafast --kotlin
 - 不要在日常开发里执行 `clean`，否则会触发接近全量重编译
 - `GRADLE_USER_HOME` 切到一个新目录时，Gradle Wrapper 会重新下载分发包（一次性）；为复用缓存，固定使用 `~/.gradle`
 
-## 当前进度（截至 2026-02-28）
+## 当前进度（截至 2026-03-01）
 
 - Phase 0 ✅ 已完成（构建、安装与基础验证）
 - Phase 1 ✅ 已完成（提交：`15b8468a`）
 - Phase 2 ✅ 已完成（提交：`14142249`）
 - Phase 3.1 ✅ 已完成（提交：`19f3a8c6`）
-- Phase 3.2 ⏳ 未开始（SSH 终端联动/Intent 热加载）
-- Phase 3.3 ⏳ 未开始（调用方签名校验 + payload 限流未实现）
+- Phase 3.2 ✅ 已完成（SSH 终端联动 `meta_json`/Intent 热加载）
+- Phase 3.3 🚧 进行中（开放 Intent + 5 秒限流已落地；调用方签名校验待后续）
 - Phase 3.4 ✅ 已完成（JNI/libime 容错召回已落地，详见 `docs/plan/v1-projectdict-jni-fuzzy-recall.md`）
 - Phase 3.5 ✅ Slice 1 已完成（手动启停 + 应用重载 + 内置词典 ready + 重导入）
 - Phase 4 🚧 进行中（JVM 单测已补齐并通过，集成/性能待补）
@@ -477,27 +477,25 @@ is FcitxEvent.PagedCandidateEvent -> {
 
 ### 3.2 进阶方案：与 SSH 终端联动
 
-**状态**：未开始（尚未实现 `ACTION_LOAD_PROJECT_DICT` 接收链路）
+**状态**：已完成（2026-03-01，`ACTION_APPLY_PROJECT_META` 接收链路已落地）
 
 这一步依赖柠檬叔自己的 SSH 终端 app。设计思路：
-- SSH 终端 app 检测到 `cd` 到新项目目录时，检查 `.ime/dict.tsv` 是否存在
-- 如果存在，通过 Android Intent 或 ContentProvider 将词库内容传递给输入法
-- 输入法收到后调用 `ProjectDictManager.load()` 热加载
+- SSH 终端 app 检测到项目上下文变化后，读取 `.ime/meta.json`（若缺失则发送 `base-only`）
+- 通过 Android Intent 发送 `meta_json` 字符串到 IME
+- IME 收到后执行：5 秒限流 -> 解析 `dict_profiles`（缺失回退 `tags`）-> `applySelection` -> 条件 `reloadPinyinDict()`
 
-Intent 协议草案：
+Intent 协议（v1）：
 ```
-Action: org.fcitx.fcitx5.android.ACTION_LOAD_PROJECT_DICT
+Action: com.lsl.lemonhall.fcitx5.action.APPLY_PROJECT_META
 Extra:
-  - "project_name": String
-  - "dict_content": String (TSV 内容)
-  - "meta_json": String (可选)
+  - "meta_json": String (完整 `.ime/meta.json` JSON 字符串)
 ```
 
 ### 3.3 安全考虑
 
-- Intent 接收端需要验证调用方签名，防止恶意 app 注入词库
-- 词库内容做基本的大小限制（如 < 1MB），防止 OOM
-- 词条数量上限（如 10000 条），防止查询性能退化
+- 当前采用开放通道防御式方案：5 秒全局限流 + payload 长度上限 + 非法输入静默丢弃
+- 本轮不做调用方签名校验（后续可按风险升级为权限或签名方案）
+- 目标是在不打断输入的前提下，将滥用风险降到可控范围
 
 ### 3.4 容错召回增强：复用 JNI/libime 能力（已完成）
 
@@ -586,7 +584,7 @@ Slice 1（第一刀）交付门槛：
 5. ✅ **Phase 3.4** → 复用 JNI/libime 做 ProjectDict 容错召回
 6. ✅ **Phase 3.5** → Slice 1 已落地（UI 启停 + 应用重载 + 启动即 ready + 重导入入口 + 手工回归）
 7. 🚧 **Phase 4** → 持续补齐集成测试与性能基准（单元测试已完成）
-8. ⏳ **Phase 3.2 + 3.3** → 与 SSH 终端联动（Intent + 安全校验）
+8. 🚧 **Phase 3.3** → 安全策略增量（签名/权限校验待后续评估）
 
 ## 约束与原则
 
