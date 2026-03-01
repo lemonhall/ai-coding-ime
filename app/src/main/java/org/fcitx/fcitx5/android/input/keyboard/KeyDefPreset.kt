@@ -125,6 +125,58 @@ class LayoutSwitchKey(
     )
 )
 
+class TabKey(
+    percentWidth: Float = 0.1f,
+    variant: Variant = Variant.Alternative
+) : KeyDef(
+    Appearance.Image(
+        src = R.drawable.ic_baseline_keyboard_tab_24,
+        percentWidth = percentWidth,
+        variant = variant
+    ),
+    setOf(
+        Behavior.Press(KeyAction.SymAction(KeySym(FcitxKeyMapping.FcitxKey_Tab)))
+    )
+)
+
+class EscKey(
+    percentWidth: Float = 0.08f,
+    variant: Variant = Variant.Alternative
+) : KeyDef(
+    Appearance.Text(
+        displayText = "ESC",
+        textSize = 13f,
+        textStyle = Typeface.BOLD,
+        percentWidth = percentWidth,
+        variant = variant,
+        margin = false
+    ),
+    setOf(
+        Behavior.Press(KeyAction.SymAction(KeySym(FcitxKeyMapping.FcitxKey_Escape)))
+    )
+)
+
+class ModifierToggleKey(
+    displayText: String,
+    modifier: KeyAction.Modifier,
+    viewId: Int,
+    percentWidth: Float = 0.08f,
+    variant: Variant = Variant.Alternative
+) : KeyDef(
+    Appearance.Text(
+        displayText = displayText,
+        textSize = 13f,
+        textStyle = Typeface.BOLD,
+        percentWidth = percentWidth,
+        variant = variant,
+        margin = false,
+        viewId = viewId
+    ),
+    setOf(
+        Behavior.Press(KeyAction.ModifierToggleAction(modifier))
+    )
+)
+
 class BackspaceKey(
     percentWidth: Float = 0.15f,
     variant: Variant = Variant.Alternative

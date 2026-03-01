@@ -23,6 +23,12 @@ sealed class KeyAction {
 
     data class CapsAction(val lock: Boolean) : KeyAction()
 
+    enum class Modifier {
+        Ctrl, Alt
+    }
+
+    data class ModifierToggleAction(val modifier: Modifier) : KeyAction()
+
     data object QuickPhraseAction : KeyAction()
 
     data object UnicodeAction : KeyAction()

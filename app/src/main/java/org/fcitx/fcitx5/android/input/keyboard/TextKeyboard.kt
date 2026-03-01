@@ -44,6 +44,7 @@ class TextKeyboard(
                 AlphabetKey("P", "0")
             ),
             listOf(
+                TabKey(),
                 AlphabetKey("A", "@"),
                 AlphabetKey("S", "*"),
                 AlphabetKey("D", "+"),
@@ -72,6 +73,11 @@ class TextKeyboard(
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 ReturnKey()
+            ),
+            listOf(
+                EscKey(),
+                ModifierToggleKey("CTL", KeyAction.Modifier.Ctrl, R.id.button_ctrl),
+                ModifierToggleKey("ALT", KeyAction.Modifier.Alt, R.id.button_alt)
             )
         )
     }
@@ -82,6 +88,8 @@ class TextKeyboard(
     val lang: ImageKeyView by lazy { findViewById(R.id.button_lang) }
     val space: TextKeyView by lazy { findViewById(R.id.button_space) }
     val `return`: ImageKeyView by lazy { findViewById(R.id.button_return) }
+    val ctrl: TextKeyView by lazy { findViewById(R.id.button_ctrl) }
+    val alt: TextKeyView by lazy { findViewById(R.id.button_alt) }
 
     private val showLangSwitchKey = AppPrefs.getInstance().keyboard.showLangSwitchKey
 
@@ -102,6 +110,7 @@ class TextKeyboard(
     }
 
     private var capsState: CapsState = CapsState.None
+    private val modifierState = ModifierStateTracker()
 
     private fun transformAlphabet(c: String): String {
         return when (capsState) {
@@ -115,7 +124,13 @@ class TextKeyboard(
 
     override fun onAction(action: KeyAction, source: KeyActionListener.Source) {
         var transformed = action
+        var modifierConsumed = false
         when (action) {
+            is KeyAction.ModifierToggleAction -> {
+                modifierState.toggle(action.modifier)
+                updateModifierKeys()
+                return
+            }
             is KeyAction.FcitxKeyAction -> when (source) {
                 KeyActionListener.Source.Keyboard -> {
                     when (capsState) {
@@ -143,16 +158,33 @@ class TextKeyboard(
                     }
                 }
             }
+            is KeyAction.SymAction -> {
+                if (modifierState.hasEnabled) {
+                    transformed = action.copy(states = modifierState.applyAndConsume(action.states, clearVirtual = true))
+                    modifierConsumed = true
+                }
+            }
             is KeyAction.CapsAction -> switchCapsState(action.lock)
             else -> {}
         }
+        if (transformed is KeyAction.FcitxKeyAction) {
+            if (modifierState.hasEnabled) {
+                transformed = transformed.copy(states = modifierState.applyAndConsume(transformed.states, clearVirtual = true))
+                modifierConsumed = true
+            }
+        }
         super.onAction(transformed, source)
+        if (modifierConsumed) {
+            updateModifierKeys()
+        }
     }
 
     override fun onAttach() {
         capsState = CapsState.None
+        modifierState.reset()
         updateCapsButtonIcon()
         updateAlphabetKeys()
+        updateModifierKeys()
     }
 
     override fun onReturnDrawableUpdate(returnDrawable: Int) {
@@ -249,6 +281,18 @@ class TextKeyboard(
                 }
             }
         }
+    }
+
+    private fun updateModifierKeys() {
+        updateModifierKey(ctrl, "CTL", modifierState.ctrlEnabled)
+        updateModifierKey(alt, "ALT", modifierState.altEnabled)
+    }
+
+    private fun updateModifierKey(key: TextKeyView, label: String, enabled: Boolean) {
+        key.mainText.text = if (enabled) "$label*" else label
+        key.mainText.setTextColor(
+            if (enabled) theme.accentKeyTextColor else theme.altKeyTextColor
+        )
     }
 
 }
