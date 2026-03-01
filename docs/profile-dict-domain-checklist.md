@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=36`，`DOING=0`，`SEEDED=0`，`TODO=38`
+- `DONE=42`，`DOING=0`，`SEEDED=0`，`TODO=32`
 
 ---
 
@@ -47,14 +47,14 @@
 | D11 | 关系型数据库 | `data.relational-db` | 200-500 | DONE (`data.relational-db`, 360) |
 | D12 | NoSQL / NewSQL | `data.nosql-newsql` | 200-500 | DONE (`data.nosql-newsql`, 220) |
 | D13 | 数据工程 / ETL / 大数据 | `data.engineering-etl` | 200-500 | DONE (`data.engineering-etl`, 220) |
-| D14 | 搜索引擎 / 信息检索 | `data.search-ir` | 200-500 | TODO |
+| D14 | 搜索引擎 / 信息检索 | `data.search-ir` | 200-500 | DONE (`data.search-ir`, 220) |
 
 ## D. 编程语言与工程
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D15 | 编译器 / 解释器 | `engineering.compiler-interpreter` | 200-500 | TODO |
-| D16 | 编程语言理论（PLT） | `engineering.plt` | 200-500 | TODO |
+| D15 | 编译器 / 解释器 | `engineering.compiler-interpreter` | 200-500 | DONE (`engineering.compiler-interpreter`, 220) |
+| D16 | 编程语言理论（PLT） | `engineering.plt` | 200-500 | DONE (`engineering.plt`, 220) |
 | D17 | 软件工程 / 架构模式 | `engineering.software-architecture` | 200-500 | DONE (`engineering.software-architecture`, 260) |
 | D18 | DevOps / CI/CD / SRE | `engineering.devops-sre` | 200-500 | DONE (`engineering.devops-sre`, 363) |
 | D19 | 版本控制 / 协作 | `engineering.vcs-collaboration` | 200-500 | DONE (`engineering.vcs-collaboration`, 250) |
@@ -68,7 +68,7 @@
 | D22 | 移动端开发（Android/iOS） | `client.mobile` | 200-500 | DONE (`app.android`, 350) |
 | D23 | 桌面应用 / 跨平台GUI | `client.desktop-cross-platform` | 200-500 | DONE (`client.desktop-cross-platform`, 270) |
 | D24 | 游戏开发 | `client.game-dev` | 200-500 | DONE (`client.game-dev`, 300) |
-| D25 | 图形学 / 渲染 | `client.graphics-rendering` | 200-500 | TODO |
+| D25 | 图形学 / 渲染 | `client.graphics-rendering` | 200-500 | DONE (`client.graphics-rendering`, 220) |
 
 ## F. AI / ML / 数据科学
 
@@ -80,13 +80,13 @@
 | D29 | 计算机视觉 | `ai.computer-vision` | 200-500 | DONE (`ai.computer-vision`, 220) |
 | D30 | 推荐系统 | `ai.recommender-systems` | 200-500 | DONE (`ai.recommender-systems`, 220) |
 | D31 | MLOps / 模型工程 | `ai.mlops` | 200-500 | DONE (`ai.mlops`, 220) |
-| D32 | 强化学习 | `ai.reinforcement-learning` | 200-500 | TODO |
+| D32 | 强化学习 | `ai.reinforcement-learning` | 200-500 | DONE (`ai.reinforcement-learning`, 220) |
 
 ## G. 科学计算与仿真
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D33 | 数值计算 / 科学计算 | `science.scientific-computing` | 200-500 | TODO |
+| D33 | 数值计算 / 科学计算 | `science.scientific-computing` | 200-500 | DONE (`science.scientific-computing`, 220) |
 | D34 | 物理仿真 / 有限元 | `science.physics-simulation-fem` | 200-500 | TODO |
 | D35 | 信号处理 / DSP | `science.signal-processing-dsp` | 200-500 | TODO |
 | D36 | 计算几何 / CAD | `science.computational-geometry-cad` | 200-500 | TODO |

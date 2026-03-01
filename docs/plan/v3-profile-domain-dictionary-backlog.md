@@ -13,9 +13,9 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 36 / 74
+- DONE: 42 / 74
 - SEEDED: 0 / 74
-- TODO: 38 / 74
+- TODO: 32 / 74
 - 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
@@ -78,7 +78,7 @@
 - [x] D06 计算机网络 / 协议栈（DONE: `network.protocols`, 220）
 - [x] D09 网络安全 / 密码学（DONE: `network.security-crypto`, 220）
 - [x] D10 分布式系统（DONE: `network.distributed-systems`, 220）
-- [ ] D14 搜索引擎 / 信息检索
+- [x] D14 搜索引擎 / 信息检索（DONE: `data.search-ir`, 220）
 - [x] D13 数据工程 / ETL / 大数据（DONE: `data.engineering-etl`, 220）
 
 ### Wave 6：AI 核心
@@ -92,22 +92,22 @@
 ### Wave 7：AI 工程化
 
 - [x] D31 MLOps / 模型工程（DONE: `ai.mlops`, 220）
-- [ ] D32 强化学习
-- [ ] D15 编译器 / 解释器
-- [ ] D16 编程语言理论（PLT）
+- [x] D32 强化学习（DONE: `ai.reinforcement-learning`, 220）
+- [x] D15 编译器 / 解释器（DONE: `engineering.compiler-interpreter`, 220）
+- [x] D16 编程语言理论（PLT）（DONE: `engineering.plt`, 220）
 - [x] D48 编辑器 / IDE / 开发者工具（DONE: `domain.editor-ide-tooling`, 272）
 
 ### Wave 8：客户端图形
 
 - [x] D23 桌面应用 / 跨平台GUI（DONE: `client.desktop-cross-platform`, 270）
 - [x] D24 游戏开发（DONE: `client.game-dev`, 300）
-- [ ] D25 图形学 / 渲染
+- [x] D25 图形学 / 渲染（DONE: `client.graphics-rendering`, 220）
 - [ ] D49 数据可视化
 - [ ] D45 音视频处理 / 流媒体
 
 ### Wave 9：科学计算
 
-- [ ] D33 数值计算 / 科学计算
+- [x] D33 数值计算 / 科学计算（DONE: `science.scientific-computing`, 220）
 - [ ] D34 物理仿真 / 有限元
 - [ ] D35 信号处理 / DSP
 - [ ] D36 计算几何 / CAD

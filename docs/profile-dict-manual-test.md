@@ -793,3 +793,93 @@
 | `gaojingjuhe` | `告警聚合` | `base + ai.mlops` | Top5 出现目标词 |
 | `heguijiancha` | `合规检查` | `base + ai.mlops` | Top5 出现目标词 |
 | `moxingshengmingzhouqi` | `模型生命周期` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 43. D14 搜索引擎 / 信息检索（`data.search-ir`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + data.search-ir`
+- 边界对照：`base`（关闭 `data.search-ir`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `sousuoyinqing` | `搜索引擎` | `base + data.search-ir` | Top3 出现目标词 |
+| `daopaisuoyin` | `倒排索引` | `base + data.search-ir` | Top3 出现目标词，且优先于泛化“索引”候选 |
+| `bm25` | `BM25模型` | `base + data.search-ir` | Top3 出现目标词 |
+| `xiangliangjiansuo` | `向量检索` | `base + data.search-ir` | Top5 出现目标词，排序稳定 |
+| `ndcg` | `NDCG指标` | `base + data.search-ir` | Top5 出现目标词 |
+| `daopaisuoyin` | `倒排索引` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 44. D15 编译器 / 解释器（`engineering.compiler-interpreter`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + engineering.compiler-interpreter`
+- 边界对照：`base`（关闭 `engineering.compiler-interpreter`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `bianyiqi` | `编译器` | `base + engineering.compiler-interpreter` | Top3 出现目标词 |
+| `cifafenxi` | `词法分析` | `base + engineering.compiler-interpreter` | Top5 出现目标词，排序稳定 |
+| `jingtaidanfuzhi` | `静态单赋值` | `base + engineering.compiler-interpreter` | Top5 出现目标词 |
+| `zijietimajieshiqi` | `字节码解释器` | `base + engineering.compiler-interpreter` | Top5 出现目标词 |
+| `lajihuishoupingzhang` | `垃圾回收屏障` | `base + engineering.compiler-interpreter` | Top5 出现目标词 |
+| `cifafenxi` | `词法分析` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 45. D16 编程语言理论（PLT）（`engineering.plt`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + engineering.plt`
+- 边界对照：`base`（关闭 `engineering.plt`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `bianchengyuyanlilun` | `编程语言理论` | `base + engineering.plt` | Top3 出现目标词 |
+| `leixingtuiduan` | `类型推断` | `base + engineering.plt` | Top5 出现目标词，排序稳定 |
+| `lambda` | `Lambda演算` | `base + engineering.plt` | Top5 出现目标词 |
+| `debuluyinsuoyin` | `德布鲁因索引` | `base + engineering.plt` | Top5 出现目标词 |
+| `chouxiangjieshi` | `抽象解释` | `base + engineering.plt` | Top5 出现目标词 |
+| `leixingtuiduan` | `类型推断` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 46. D25 图形学 / 渲染（`client.graphics-rendering`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + client.graphics-rendering`
+- 边界对照：`base`（关闭 `client.graphics-rendering`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xuanranguanxian` | `渲染管线` | `base + client.graphics-rendering` | Top3 出现目标词 |
+| `wulijichuxuanran` | `物理基础渲染` | `base + client.graphics-rendering` | Top5 出现目标词，排序稳定 |
+| `pingmukongjianhuanjingguangzhebi` | `屏幕空间环境光遮蔽` | `base + client.graphics-rendering` | Top5 出现目标词 |
+| `shuangsiyuanshumengpi` | `双四元数蒙皮` | `base + client.graphics-rendering` | Top5 出现目标词 |
+| `guohuizhirelitu` | `过绘制热力图` | `base + client.graphics-rendering` | Top5 出现目标词 |
+| `xuanranguanxian` | `渲染管线` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 47. D32 强化学习（`ai.reinforcement-learning`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.reinforcement-learning`
+- 边界对照：`base`（关闭 `ai.reinforcement-learning`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `qianghuaxuexi` | `强化学习` | `base + ai.reinforcement-learning` | Top3 出现目标词 |
+| `maerkefujueceguocheng` | `马尔可夫决策过程` | `base + ai.reinforcement-learning` | Top5 出现目标词，排序稳定 |
+| `shuangyanshishenduquedingxingceletidu` | `双延迟深度确定性策略梯度` | `base + ai.reinforcement-learning` | Top5 出现目标词 |
+| `qmix` | `QMIX算法` | `base + ai.reinforcement-learning` | Top5 出现目标词 |
+| `renleifankuiqianghuaxuexi` | `人类反馈强化学习` | `base + ai.reinforcement-learning` | Top5 出现目标词 |
+| `qianghuaxuexi` | `强化学习` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 48. D33 数值计算 / 科学计算（`science.scientific-computing`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + science.scientific-computing`
+- 边界对照：`base`（关闭 `science.scientific-computing`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `shuzhijifen` | `数值积分` | `base + science.scientific-computing` | Top3 出现目标词 |
+| `gongetidufa` | `共轭梯度法` | `base + science.scientific-computing` | Top5 出现目标词，排序稳定 |
+| `youxianyuanfa` | `有限元法` | `base + science.scientific-computing` | Top5 出现目标词 |
+| `mcmccaiyang` | `MCMC采样` | `base + science.scientific-computing` | Top5 出现目标词 |
+| `cfltiaojian` | `CFL条件` | `base + science.scientific-computing` | Top5 出现目标词 |
+| `shuzhijifen` | `数值积分` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
