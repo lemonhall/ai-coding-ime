@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=72`，`DOING=0`，`SEEDED=0`，`TODO=2`
+- `DONE=74`，`DOING=0`，`SEEDED=0`，`TODO=0`
 
 ---
 
@@ -156,8 +156,8 @@
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
 | D72 | 数据隐私与合规 | `compliance.data-privacy` | 200-500 | DONE (`compliance.data-privacy`, 220) |
-| D73 | 信息安全合规 | `compliance.infosec` | 200-500 | TODO |
-| D74 | 行业监管（中国特色） | `compliance.cn-regulation` | 200-500 | TODO |
+| D73 | 信息安全合规 | `compliance.infosec` | 200-500 | DONE (`compliance.infosec`, 267) |
+| D74 | 行业监管（中国特色） | `compliance.cn-regulation` | 200-500 | DONE (`compliance.cn-regulation`, 266) |
 
 ---
 

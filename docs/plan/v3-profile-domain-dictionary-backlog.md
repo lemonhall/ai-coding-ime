@@ -13,10 +13,10 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 72 / 74
+- DONE: 74 / 74
 - SEEDED: 0 / 74
-- TODO: 2 / 74
-- 当前优先：完成 Wave 15 剩余领域（D73-D74）。
+- TODO: 0 / 74
+- 当前优先：维护已完成 74 个领域词库的回归与调词质量。
 
 ## Scope
 
@@ -157,8 +157,8 @@
 
 - [x] D70 出行 / 地图 / LBS（DONE: `industry.mobility-lbs`, 220）
 - [x] D72 数据隐私与合规（DONE: `compliance.data-privacy`, 220）
-- [ ] D73 信息安全合规
-- [ ] D74 行业监管（中国特色）
+- [x] D73 信息安全合规（DONE: `compliance.infosec`, 267）
+- [x] D74 行业监管（中国特色）（DONE: `compliance.cn-regulation`, 266）
 
 ## 风险与约束
 

@@ -1357,3 +1357,35 @@
 | `qubiaoshihua` | `去标识化` | `base + compliance.data-privacy` | Top5 出现目标词 |
 | `kuajingshujuchuanshu` | `跨境数据传输` | `base + compliance.data-privacy` | Top5 出现目标词 |
 | `shujufenleifenji` | `数据分类分级` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 79. D73 信息安全合规（`compliance.infosec`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + compliance.infosec`
+- 边界对照：`base`（关闭 `compliance.infosec`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `lingxinrenfangwen` | `零信任访问` | `base + compliance.infosec` | Top3 出现目标词 |
+| `dengjibaohucepin` | `等级保护测评` | `base + compliance.infosec` | Top5 出现目标词 |
+| `duoyinzurenzheng` | `多因素认证` | `base + compliance.infosec` | Top5 出现目标词，不被无关词压制 |
+| `louandongguanliliucheng` | `漏洞管理流程` | `base + compliance.infosec` | Top5 出现目标词 |
+| `yingjixiangyingyuan` | `应急响应预案` | `base + compliance.infosec` | Top5 出现目标词 |
+| `shenjizhuizongguanli` | `审计追踪管理` | `base + compliance.infosec` | Top5 出现目标词 |
+| `lingxinrenfangwen` | `零信任访问` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 80. D74 行业监管（中国特色）（`compliance.cn-regulation`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + compliance.cn-regulation`
+- 边界对照：`base`（关闭 `compliance.cn-regulation`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `shujuanquanfa` | `数据安全法` | `base + compliance.cn-regulation` | Top3 出现目标词 |
+| `gerenxinxibaohufa` | `个人信息保护法` | `base + compliance.cn-regulation` | Top5 出现目标词 |
+| `shujuchujinganquanpinggu` | `数据出境安全评估` | `base + compliance.cn-regulation` | Top5 出现目标词，不被无关词压制 |
+| `suanfabeianzhidu` | `算法备案制度` | `base + compliance.cn-regulation` | Top5 出现目标词 |
+| `wangluoanquanshencha` | `网络安全审查` | `base + compliance.cn-regulation` | Top5 出现目标词 |
+| `shuangsuijiyigongkai` | `双随机一公开` | `base + compliance.cn-regulation` | Top5 出现目标词 |
+| `shujuanquanfa` | `数据安全法` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |

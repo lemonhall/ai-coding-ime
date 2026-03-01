@@ -103,7 +103,9 @@ object ProfileDictionaryCatalog {
         ProfileCatalogEntry(profileId = "industry.proptech", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "industry.mobility-lbs", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "industry.saas-subscription", defaultEnabled = false),
-        ProfileCatalogEntry(profileId = "compliance.data-privacy", defaultEnabled = false)
+        ProfileCatalogEntry(profileId = "compliance.data-privacy", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "compliance.infosec", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "compliance.cn-regulation", defaultEnabled = false)
     )
 
     fun assetFileName(profileId: String): String = "$PROFILE_PREFIX.$profileId.txt"
