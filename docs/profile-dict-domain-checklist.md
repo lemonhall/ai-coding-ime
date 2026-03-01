@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=66`，`DOING=0`，`SEEDED=0`，`TODO=8`
+- `DONE=72`，`DOING=0`，`SEEDED=0`，`TODO=2`
 
 ---
 
@@ -145,17 +145,17 @@
 |---|---|---|---|---|
 | D65 | 金融科技（FinTech） | `industry.fintech` | 200-500 | DONE (`industry.fintech`, 220) |
 | D66 | 保险科技（InsurTech） | `industry.insurtech` | 200-500 | DONE (`industry.insurtech`, 220) |
-| D67 | 医疗健康（HealthTech） | `industry.healthtech` | 200-500 | TODO |
-| D68 | 教育科技（EdTech） | `industry.edtech` | 200-500 | TODO |
-| D69 | 房产 / PropTech | `industry.proptech` | 200-500 | TODO |
-| D70 | 出行 / 地图 / LBS | `industry.mobility-lbs` | 200-500 | TODO |
-| D71 | SaaS / 订阅制商业 | `industry.saas-subscription` | 200-500 | TODO |
+| D67 | 医疗健康（HealthTech） | `industry.healthtech` | 200-500 | DONE (`industry.healthtech`, 220) |
+| D68 | 教育科技（EdTech） | `industry.edtech` | 200-500 | DONE (`industry.edtech`, 220) |
+| D69 | 房产 / PropTech | `industry.proptech` | 200-500 | DONE (`industry.proptech`, 220) |
+| D70 | 出行 / 地图 / LBS | `industry.mobility-lbs` | 200-500 | DONE (`industry.mobility-lbs`, 220) |
+| D71 | SaaS / 订阅制商业 | `industry.saas-subscription` | 200-500 | DONE (`industry.saas-subscription`, 220) |
 
 ## M. 合规 / 治理 / 标准
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D72 | 数据隐私与合规 | `compliance.data-privacy` | 200-500 | TODO |
+| D72 | 数据隐私与合规 | `compliance.data-privacy` | 200-500 | DONE (`compliance.data-privacy`, 220) |
 | D73 | 信息安全合规 | `compliance.infosec` | 200-500 | TODO |
 | D74 | 行业监管（中国特色） | `compliance.cn-regulation` | 200-500 | TODO |
 

@@ -13,10 +13,10 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 66 / 74
+- DONE: 72 / 74
 - SEEDED: 0 / 74
-- TODO: 8 / 74
-- 当前优先：按 wave 顺序推进剩余 TODO 领域。
+- TODO: 2 / 74
+- 当前优先：完成 Wave 15 剩余领域（D73-D74）。
 
 ## Scope
 
@@ -143,20 +143,20 @@
 - [x] D61 内容 / 社区运营（DONE: `product.content-community-ops`, 220）
 - [x] D62 SEO / SEM / ASO（DONE: `product.seo-sem-aso`, 220）
 - [x] D64 A/B测试 / 实验平台（DONE: `product.ab-testing`, 220）
-- [ ] D71 SaaS / 订阅制商业
+- [x] D71 SaaS / 订阅制商业（DONE: `industry.saas-subscription`, 220）
 
 ### Wave 14：垂直行业
 
 - [x] D65 金融科技（FinTech）（DONE: `industry.fintech`, 220）
 - [x] D66 保险科技（InsurTech）（DONE: `industry.insurtech`, 220）
-- [ ] D67 医疗健康（HealthTech）
-- [ ] D68 教育科技（EdTech）
-- [ ] D69 房产 / PropTech
+- [x] D67 医疗健康（HealthTech）（DONE: `industry.healthtech`, 220）
+- [x] D68 教育科技（EdTech）（DONE: `industry.edtech`, 220）
+- [x] D69 房产 / PropTech（DONE: `industry.proptech`, 220）
 
 ### Wave 15：垂直与合规
 
-- [ ] D70 出行 / 地图 / LBS
-- [ ] D72 数据隐私与合规
+- [x] D70 出行 / 地图 / LBS（DONE: `industry.mobility-lbs`, 220）
+- [x] D72 数据隐私与合规（DONE: `compliance.data-privacy`, 220）
 - [ ] D73 信息安全合规
 - [ ] D74 行业监管（中国特色）
 

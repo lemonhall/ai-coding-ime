@@ -1261,3 +1261,99 @@
 | `jingsuanzhunbeijin` | `精算准备金` | `base + industry.insurtech` | Top5 出现目标词 |
 | `chelianwangdingjia` | `车联网定价` | `base + industry.insurtech` | Top5 出现目标词 |
 | `hebao` | `核保` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 73. D67 医疗健康（HealthTech）（`industry.healthtech`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.healthtech`
+- 边界对照：`base`（关闭 `industry.healthtech`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `dianzibingli` | `电子病历` | `base + industry.healthtech` | Top3 出现目标词 |
+| `linchuanglujing` | `临床路径` | `base + industry.healthtech` | Top5 出现目标词 |
+| `yibaozhinengshenhe` | `医保智能审核` | `base + industry.healthtech` | Top5 出现目标词 |
+| `manbingguanli` | `慢病管理` | `base + industry.healthtech` | Top5 出现目标词 |
+| `yongyaohelixingshenhe` | `用药合理性审核` | `base + industry.healthtech` | Top5 出现目标词 |
+| `yingxiangxinxixitong` | `影像信息系统` | `base + industry.healthtech` | Top5 出现目标词 |
+| `dianzibingli` | `电子病历` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 74. D68 教育科技（EdTech）（`industry.edtech`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.edtech`
+- 边界对照：`base`（关闭 `industry.edtech`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xuexiguanlixitong` | `学习管理系统` | `base + industry.edtech` | Top3 出现目标词 |
+| `xuexijindukanban` | `学习进度看板` | `base + industry.edtech` | Top5 出现目标词 |
+| `zhinengpaike` | `智能排课` | `base + industry.edtech` | Top5 出现目标词 |
+| `tikuguanli` | `题库管理` | `base + industry.edtech` | Top5 出现目标词 |
+| `qiepinggaojing` | `切屏告警` | `base + industry.edtech` | Top5 出现目标词 |
+| `xueqingzhenduan` | `学情诊断` | `base + industry.edtech` | Top5 出现目标词 |
+| `xuexiguanlixitong` | `学习管理系统` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 75. D69 房产 / PropTech（`industry.proptech`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.proptech`
+- 边界对照：`base`（关闭 `industry.proptech`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `fangyuancaiji` | `房源采集` | `base + industry.proptech` | Top3 出现目标词 |
+| `jiaoyicuohe` | `交易撮合` | `base + industry.proptech` | Top5 出现目标词 |
+| `zaixianqianyue` | `在线签约` | `base + industry.proptech` | Top5 出现目标词 |
+| `zijinjianguan` | `资金监管` | `base + industry.proptech` | Top5 出现目标词 |
+| `wuyejiaofei` | `物业缴费` | `base + industry.proptech` | Top5 出现目标词 |
+| `yuanqurelitu` | `园区热力图` | `base + industry.proptech` | Top5 出现目标词 |
+| `fangyuancaiji` | `房源采集` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 76. D70 出行 / 地图 / LBS（`industry.mobility-lbs`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.mobility-lbs`
+- 边界对照：`base`（关闭 `industry.mobility-lbs`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `weizhifuwu` | `位置服务` | `base + industry.mobility-lbs` | Top3 出现目标词 |
+| `lujingguihua` | `路径规划` | `base + industry.mobility-lbs` | Top5 出现目标词 |
+| `wangyuechepaidan` | `网约车派单` | `base + industry.mobility-lbs` | Top5 出现目标词 |
+| `dianziweilan` | `电子围栏` | `base + industry.mobility-lbs` | Top5 出现目标词 |
+| `yujidaodashijian` | `预计到达时间` | `base + industry.mobility-lbs` | Top5 出现目标词 |
+| `dongtaigaidao` | `动态改道` | `base + industry.mobility-lbs` | Top5 出现目标词 |
+| `weizhifuwu` | `位置服务` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 77. D71 SaaS / 订阅制商业（`industry.saas-subscription`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + industry.saas-subscription`
+- 边界对照：`base`（关闭 `industry.saas-subscription`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `dingyuetaocan` | `订阅套餐` | `base + industry.saas-subscription` | Top3 出现目标词 |
+| `anliangjifei` | `按量计费` | `base + industry.saas-subscription` | Top5 出现目标词 |
+| `zidongxufei` | `自动续费` | `base + industry.saas-subscription` | Top5 出现目标词 |
+| `duozuhujiagou` | `多租户架构` | `base + industry.saas-subscription` | Top5 出现目标词 |
+| `zuoxikuorong` | `座席扩容` | `base + industry.saas-subscription` | Top5 出现目标词 |
+| `heguishenji` | `合规审计` | `base + industry.saas-subscription` | Top5 出现目标词 |
+| `dingyuetaocan` | `订阅套餐` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 78. D72 数据隐私与合规（`compliance.data-privacy`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + compliance.data-privacy`
+- 边界对照：`base`（关闭 `compliance.data-privacy`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `shujufenleifenji` | `数据分类分级` | `base + compliance.data-privacy` | Top3 出现目标词 |
+| `zuixiaobiyao` | `最小必要` | `base + compliance.data-privacy` | Top5 出现目标词 |
+| `tongyiguanlipingtai` | `同意管理平台` | `base + compliance.data-privacy` | Top5 出现目标词 |
+| `shujubaohuyingxiangpinggu` | `数据保护影响评估` | `base + compliance.data-privacy` | Top5 出现目标词 |
+| `qubiaoshihua` | `去标识化` | `base + compliance.data-privacy` | Top5 出现目标词 |
+| `kuajingshujuchuanshu` | `跨境数据传输` | `base + compliance.data-privacy` | Top5 出现目标词 |
+| `shujufenleifenji` | `数据分类分级` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |

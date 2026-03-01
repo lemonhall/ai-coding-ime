@@ -97,7 +97,13 @@ object ProfileDictionaryCatalog {
         ProfileCatalogEntry(profileId = "product.analytics-bi", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "product.ab-testing", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "industry.fintech", defaultEnabled = false),
-        ProfileCatalogEntry(profileId = "industry.insurtech", defaultEnabled = false)
+        ProfileCatalogEntry(profileId = "industry.insurtech", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "industry.healthtech", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "industry.edtech", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "industry.proptech", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "industry.mobility-lbs", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "industry.saas-subscription", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "compliance.data-privacy", defaultEnabled = false)
     )
 
     fun assetFileName(profileId: String): String = "$PROFILE_PREFIX.$profileId.txt"
