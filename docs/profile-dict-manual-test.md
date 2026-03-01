@@ -547,3 +547,249 @@
 | `xunisiyouyun` | `虚拟私有云` | `base + infra.iac` | Top5 出现目标词 |
 | `duojiqunfabu` | `多集群发布` | `base + infra.iac` | Top5 出现目标词 |
 | `jichusheshijidaima` | `基础设施即代码` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 27. D01 计算机体系结构 / CPU设计（`hardware.cpu-architecture`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + hardware.cpu-architecture`
+- 边界对照：`base`（关闭 `hardware.cpu-architecture`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `jisuanjitixijiegou` | `计算机体系结构` | `base + hardware.cpu-architecture` | Top3 出现目标词 |
+| `zhilingjijiagou` | `指令集架构` | `base + hardware.cpu-architecture` | Top5 出现目标词，排序稳定 |
+| `weitixijiegou` | `微体系结构` | `base + hardware.cpu-architecture` | Top5 出现目标词 |
+| `pianshangxitong` | `片上系统` | `base + hardware.cpu-architecture` | Top5 出现目标词，不被无关词压制 |
+| `meizhouqizhilingshu` | `每周期指令数` | `base + hardware.cpu-architecture` | Top5 出现目标词 |
+| `zhilingjijiagou` | `指令集架构` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 28. D02 嵌入式系统 / IoT（`hardware.embedded-iot`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + hardware.embedded-iot`
+- 边界对照：`base`（关闭 `hardware.embedded-iot`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `digonghaochuanganqi` | `低功耗传感器` | `base + hardware.embedded-iot` | Top3 出现目标词 |
+| `digonghaowangguan` | `低功耗网关` | `base + hardware.embedded-iot` | Top5 出现目标词，排序稳定 |
+| `bianyuanjisuanjiedian` | `边缘计算节点` | `base + hardware.embedded-iot` | Top5 出现目标词 |
+| `wuxianchuanganqi` | `无线传感器` | `base + hardware.embedded-iot` | Top5 出现目标词，不被无关词压制 |
+| `digonghaoguanlixitong` | `低功耗管理系统` | `base + hardware.embedded-iot` | Top5 出现目标词 |
+| `digonghaochuanganqi` | `低功耗传感器` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 29. D03 操作系统内核（`hardware.os-kernel`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + hardware.os-kernel`
+- 边界对照：`base`（关闭 `hardware.os-kernel`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `neihe` | `内核` | `base + hardware.os-kernel` | Top3 出现目标词 |
+| `xitongdiaoyong` | `系统调用` | `base + hardware.os-kernel` | Top5 出现目标词，排序稳定 |
+| `zhongduanxiangliang` | `中断向量` | `base + hardware.os-kernel` | Top5 出现目标词 |
+| `shangxiawenqiehuan` | `上下文切换` | `base + hardware.os-kernel` | Top5 出现目标词，不被无关词压制 |
+| `quanjumiaoshufubiao` | `全局描述符表` | `base + hardware.os-kernel` | Top5 出现目标词 |
+| `xitongdiaoyong` | `系统调用` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 30. D04 驱动与硬件抽象（`hardware.driver-hal`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + hardware.driver-hal`
+- 边界对照：`base`（关闭 `hardware.driver-hal`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `qudongchouxiang` | `驱动抽象` | `base + hardware.driver-hal` | Top3 出现目标词 |
+| `yingjianchouxiang` | `硬件抽象` | `base + hardware.driver-hal` | Top5 出现目标词，排序稳定 |
+| `pingtaishebei` | `平台设备` | `base + hardware.driver-hal` | Top5 出现目标词 |
+| `zifushebei` | `字符设备` | `base + hardware.driver-hal` | Top5 出现目标词，不被无关词压制 |
+| `shebeibangding` | `设备绑定` | `base + hardware.driver-hal` | Top5 出现目标词 |
+| `qudongchouxiang` | `驱动抽象` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 31. D05 FPGA / 硬件描述语言（`hardware.fpga-hdl`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + hardware.fpga-hdl`
+- 边界对照：`base`（关闭 `hardware.fpga-hdl`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xianchangkebianchengmenzhenlie` | `现场可编程门阵列` | `base + hardware.fpga-hdl` | Top3 出现目标词 |
+| `yingjianmiaoshuyuyan` | `硬件描述语言` | `base + hardware.fpga-hdl` | Top5 出现目标词，排序稳定 |
+| `jicunqichuanshuji` | `寄存器传输级` | `base + hardware.fpga-hdl` | Top5 出现目标词 |
+| `bujubuxian` | `布局布线` | `base + hardware.fpga-hdl` | Top5 出现目标词，不被无关词压制 |
+| `shizhongyujiaocha` | `时钟域交叉` | `base + hardware.fpga-hdl` | Top5 出现目标词 |
+| `yingjianmiaoshuyuyan` | `硬件描述语言` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 32. D06 计算机网络 / 协议栈（`network.protocols`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + network.protocols`
+- 边界对照：`base`（关闭 `network.protocols`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xieyizhan` | `协议栈` | `base + network.protocols` | Top3 出现目标词 |
+| `qicengmoxing` | `七层模型` | `base + network.protocols` | Top5 出现目标词，排序稳定 |
+| `wangluoceng` | `网络层` | `base + network.protocols` | Top5 出现目标词 |
+| `chuanshuceng` | `传输层` | `base + network.protocols` | Top5 出现目标词，不被无关词压制 |
+| `fenpianchongzu` | `分片重组` | `base + network.protocols` | Top5 出现目标词 |
+| `xieyizhan` | `协议栈` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 33. D09 网络安全 / 密码学（`network.security-crypto`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + network.security-crypto`
+- 边界对照：`base`（关闭 `network.security-crypto`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `wangluoanquan` | `网络安全` | `base + network.security-crypto` | Top3 出现目标词 |
+| `mimaxue` | `密码学` | `base + network.security-crypto` | Top5 出现目标词，排序稳定 |
+| `duichenjiami` | `对称加密` | `base + network.security-crypto` | Top5 出现目标词 |
+| `feiduichenjiami` | `非对称加密` | `base + network.security-crypto` | Top5 出现目标词，不被无关词压制 |
+| `duandaoduanjiami` | `端到端加密` | `base + network.security-crypto` | Top5 出现目标词 |
+| `wangluoanquan` | `网络安全` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 34. D10 分布式系统（`network.distributed-systems`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + network.distributed-systems`
+- 边界对照：`base`（关闭 `network.distributed-systems`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `fenbushixitong` | `分布式系统` | `base + network.distributed-systems` | Top3 出现目标词 |
+| `xianxingyizhixing` | `线性一致性` | `base + network.distributed-systems` | Top5 出现目标词，排序稳定 |
+| `zuizhongyizhixing` | `最终一致性` | `base + network.distributed-systems` | Top5 出现目标词 |
+| `zhucongfuzhi` | `主从复制` | `base + network.distributed-systems` | Top5 出现目标词，不被无关词压制 |
+| `fuzhiyanchi` | `复制延迟` | `base + network.distributed-systems` | Top5 出现目标词 |
+| `fenbushixitong` | `分布式系统` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 35. D12 NoSQL / NewSQL（`data.nosql-newsql`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + data.nosql-newsql`
+- 边界对照：`base`（关闭 `data.nosql-newsql`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `feiguanxishujuku` | `非关系数据库` | `base + data.nosql-newsql` | Top3 出现目标词 |
+| `jianzhishujuku` | `键值数据库` | `base + data.nosql-newsql` | Top5 出现目标词，排序稳定 |
+| `wendangshujuku` | `文档数据库` | `base + data.nosql-newsql` | Top5 出现目标词 |
+| `liezushujuku` | `列族数据库` | `base + data.nosql-newsql` | Top5 出现目标词，不被无关词压制 |
+| `yunyuanshengshujuku` | `云原生数据库` | `base + data.nosql-newsql` | Top5 出现目标词 |
+| `feiguanxishujuku` | `非关系数据库` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 36. D13 数据工程 / ETL / 大数据（`data.engineering-etl`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + data.engineering-etl`
+- 边界对照：`base`（关闭 `data.engineering-etl`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `shujugongcheng` | `数据工程` | `base + data.engineering-etl` | Top3 出现目标词 |
+| `shujuguandao` | `数据管道` | `base + data.engineering-etl` | Top5 出现目标词，排序稳定 |
+| `shujucaiji` | `数据采集` | `base + data.engineering-etl` | Top5 出现目标词 |
+| `biangengbuhu` | `变更捕获` | `base + data.engineering-etl` | Top5 出现目标词，不被无关词压制 |
+| `shujutongbu` | `数据同步` | `base + data.engineering-etl` | Top5 出现目标词 |
+| `shujugongcheng` | `数据工程` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 37. D26 经典机器学习（`ai.classic-ml`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.classic-ml`
+- 边界对照：`base`（关闭 `ai.classic-ml`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `jianduxuexi` | `监督学习` | `base + ai.classic-ml` | Top3 出现目标词 |
+| `luojihuigui` | `逻辑回归` | `base + ai.classic-ml` | Top3 出现目标词 |
+| `tezhenggongcheng` | `特征工程` | `base + ai.classic-ml` | Top5 出现目标词 |
+| `jiaochayanzheng` | `交叉验证` | `base + ai.classic-ml` | Top5 出现目标词 |
+| `zhuchengfenfenxi` | `主成分分析` | `base + ai.classic-ml` | Top5 出现目标词 |
+| `hunxiaojuzhen` | `混淆矩阵` | `base + ai.classic-ml` | Top5 出现目标词 |
+| `jianduxuexi` | `监督学习` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 38. D27 深度学习 / 神经网络（`ai.deep-learning`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.deep-learning`
+- 边界对照：`base`（关闭 `ai.deep-learning`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `shenduxuexi` | `深度学习` | `base + ai.deep-learning` | Top3 出现目标词 |
+| `juanjishenjingwangluo` | `卷积神经网络` | `base + ai.deep-learning` | Top3 出现目标词 |
+| `hunhejingduxunlian` | `混合精度训练` | `base + ai.deep-learning` | Top5 出现目标词 |
+| `zishiyingjuguji` | `自适应矩估计` | `base + ai.deep-learning` | Top5 出现目标词 |
+| `duikangxunlian` | `对抗训练` | `base + ai.deep-learning` | Top5 出现目标词 |
+| `lianghuaganzhixunlian` | `量化感知训练` | `base + ai.deep-learning` | Top5 出现目标词 |
+| `shenduxuexi` | `深度学习` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 39. D28 NLP / 大语言模型（`ai.nlp-llm`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.nlp-llm`
+- 边界对照：`base`（关闭 `ai.nlp-llm`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `ziranyuyanchuli` | `自然语言处理` | `base + ai.nlp-llm` | Top3 出现目标词 |
+| `zhilingweitiao` | `指令微调` | `base + ai.nlp-llm` | Top5 出现目标词 |
+| `jiansuozengqiangshengcheng` | `检索增强生成` | `base + ai.nlp-llm` | Top5 出现目标词 |
+| `renleifankuiqianghuaxuexi` | `人类反馈强化学习` | `base + ai.nlp-llm` | Top5 出现目标词 |
+| `tishizhuru` | `提示注入` | `base + ai.nlp-llm` | Top5 出现目标词 |
+| `changshangxiawenpingce` | `长上下文评测` | `base + ai.nlp-llm` | Top5 出现目标词 |
+| `zhilingweitiao` | `指令微调` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 40. D29 计算机视觉（`ai.computer-vision`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.computer-vision`
+- 边界对照：`base`（关闭 `ai.computer-vision`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `mubiaojiance` | `目标检测` | `base + ai.computer-vision` | Top3 出现目标词 |
+| `yuyifenge` | `语义分割` | `base + ai.computer-vision` | Top5 出现目标词 |
+| `guangliuguji` | `光流估计` | `base + ai.computer-vision` | Top5 出现目标词 |
+| `juanjishenjingwangluo` | `卷积神经网络` | `base + ai.computer-vision` | Top5 出现目标词 |
+| `pingjunjingdujunzhi` | `平均精度均值` | `base + ai.computer-vision` | Top5 出现目标词 |
+| `lianghuaganzhixunlian` | `量化感知训练` | `base + ai.computer-vision` | Top5 出现目标词 |
+| `mubiaojiance` | `目标检测` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 41. D30 推荐系统（`ai.recommender-systems`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.recommender-systems`
+- 边界对照：`base`（关闭 `ai.recommender-systems`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `xietongguolvzhaohui` | `协同过滤召回` | `base + ai.recommender-systems` | Top3 出现目标词 |
+| `cupaidafenmoxing` | `粗排打分模型` | `base + ai.recommender-systems` | Top5 出现目标词 |
+| `jingpaizhuyiliwangluo` | `精排注意力网络` | `base + ai.recommender-systems` | Top5 出现目标词 |
+| `zaixianshiyanpingtai` | `在线实验平台` | `base + ai.recommender-systems` | Top5 出现目标词 |
+| `lengqidongtansuochi` | `冷启动探索池` | `base + ai.recommender-systems` | Top5 出现目标词 |
+| `fanzuobizhaohui` | `反作弊召回` | `base + ai.recommender-systems` | Top5 出现目标词 |
+| `xietongguolvzhaohui` | `协同过滤召回` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 42. D31 MLOps / 模型工程（`ai.mlops`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + ai.mlops`
+- 边界对照：`base`（关闭 `ai.mlops`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `moxingshengmingzhouqi` | `模型生命周期` | `base + ai.mlops` | Top3 出现目标词 |
+| `hunhejingduxunlian` | `混合精度训练` | `base + ai.mlops` | Top5 出现目标词 |
+| `tezhengpiaoyijiance` | `特征漂移检测` | `base + ai.mlops` | Top5 出现目标词 |
+| `jinsiquefabu` | `金丝雀发布` | `base + ai.mlops` | Top5 出现目标词 |
+| `gaojingjuhe` | `告警聚合` | `base + ai.mlops` | Top5 出现目标词 |
+| `heguijiancha` | `合规检查` | `base + ai.mlops` | Top5 出现目标词 |
+| `moxingshengmingzhouqi` | `模型生命周期` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |

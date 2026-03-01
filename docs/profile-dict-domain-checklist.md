@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=20`，`SEEDED=0`，`TODO=54`
+- `DONE=36`，`DOING=0`，`SEEDED=0`，`TODO=38`
 
 ---
 
@@ -24,29 +24,29 @@
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D01 | 计算机体系结构 / CPU设计 | `hardware.cpu-architecture` | 200-500 | TODO |
-| D02 | 嵌入式系统 / IoT | `hardware.embedded-iot` | 200-500 | TODO |
-| D03 | 操作系统内核 | `hardware.os-kernel` | 200-500 | TODO |
-| D04 | 驱动与硬件抽象 | `hardware.driver-hal` | 200-500 | TODO |
-| D05 | FPGA / 硬件描述语言 | `hardware.fpga-hdl` | 200-500 | TODO |
+| D01 | 计算机体系结构 / CPU设计 | `hardware.cpu-architecture` | 200-500 | DONE (`hardware.cpu-architecture`, 220) |
+| D02 | 嵌入式系统 / IoT | `hardware.embedded-iot` | 200-500 | DONE (`hardware.embedded-iot`, 220) |
+| D03 | 操作系统内核 | `hardware.os-kernel` | 200-500 | DONE (`hardware.os-kernel`, 220) |
+| D04 | 驱动与硬件抽象 | `hardware.driver-hal` | 200-500 | DONE (`hardware.driver-hal`, 220) |
+| D05 | FPGA / 硬件描述语言 | `hardware.fpga-hdl` | 200-500 | DONE (`hardware.fpga-hdl`, 220) |
 
 ## B. 网络与通信
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D06 | 计算机网络 / 协议栈 | `network.protocols` | 200-500 | TODO |
+| D06 | 计算机网络 / 协议栈 | `network.protocols` | 200-500 | DONE (`network.protocols`, 220) |
 | D07 | Web后端 / API设计 | `network.web-backend-api` | 200-500 | DONE (`network.web-backend-api`, 356) |
 | D08 | Web前端 | `network.web-frontend` | 200-500 | DONE (`frontend`, 378) |
-| D09 | 网络安全 / 密码学 | `network.security-crypto` | 200-500 | TODO |
-| D10 | 分布式系统 | `network.distributed-systems` | 200-500 | TODO |
+| D09 | 网络安全 / 密码学 | `network.security-crypto` | 200-500 | DONE (`network.security-crypto`, 220) |
+| D10 | 分布式系统 | `network.distributed-systems` | 200-500 | DONE (`network.distributed-systems`, 220) |
 
 ## C. 数据与存储
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
 | D11 | 关系型数据库 | `data.relational-db` | 200-500 | DONE (`data.relational-db`, 360) |
-| D12 | NoSQL / NewSQL | `data.nosql-newsql` | 200-500 | TODO |
-| D13 | 数据工程 / ETL / 大数据 | `data.engineering-etl` | 200-500 | TODO |
+| D12 | NoSQL / NewSQL | `data.nosql-newsql` | 200-500 | DONE (`data.nosql-newsql`, 220) |
+| D13 | 数据工程 / ETL / 大数据 | `data.engineering-etl` | 200-500 | DONE (`data.engineering-etl`, 220) |
 | D14 | 搜索引擎 / 信息检索 | `data.search-ir` | 200-500 | TODO |
 
 ## D. 编程语言与工程
@@ -74,12 +74,12 @@
 
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
-| D26 | 经典机器学习 | `ai.classic-ml` | 200-500 | TODO |
-| D27 | 深度学习 / 神经网络 | `ai.deep-learning` | 200-500 | TODO |
-| D28 | NLP / 大语言模型 | `ai.nlp-llm` | 200-500 | TODO |
-| D29 | 计算机视觉 | `ai.computer-vision` | 200-500 | TODO |
-| D30 | 推荐系统 | `ai.recommender-systems` | 200-500 | TODO |
-| D31 | MLOps / 模型工程 | `ai.mlops` | 200-500 | TODO |
+| D26 | 经典机器学习 | `ai.classic-ml` | 200-500 | DONE (`ai.classic-ml`, 220) |
+| D27 | 深度学习 / 神经网络 | `ai.deep-learning` | 200-500 | DONE (`ai.deep-learning`, 220) |
+| D28 | NLP / 大语言模型 | `ai.nlp-llm` | 200-500 | DONE (`ai.nlp-llm`, 220) |
+| D29 | 计算机视觉 | `ai.computer-vision` | 200-500 | DONE (`ai.computer-vision`, 220) |
+| D30 | 推荐系统 | `ai.recommender-systems` | 200-500 | DONE (`ai.recommender-systems`, 220) |
+| D31 | MLOps / 模型工程 | `ai.mlops` | 200-500 | DONE (`ai.mlops`, 220) |
 | D32 | 强化学习 | `ai.reinforcement-learning` | 200-500 | TODO |
 
 ## G. 科学计算与仿真

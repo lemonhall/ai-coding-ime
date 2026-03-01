@@ -13,9 +13,9 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 20 / 74
+- DONE: 36 / 74
 - SEEDED: 0 / 74
-- TODO: 54 / 74
+- TODO: 38 / 74
 - 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
@@ -55,7 +55,7 @@
 - [x] D19 版本控制 / 协作（DONE: `engineering.vcs-collaboration`, 250）
 - [x] D21 包管理 / 构建系统（DONE: `engineering.package-build`, 270）
 - [ ] D11 关系型数据库
-- [ ] D12 NoSQL / NewSQL
+- [x] D12 NoSQL / NewSQL（DONE: `data.nosql-newsql`, 220）
 
 ### Wave 3：基础设施与平台
 
@@ -67,31 +67,31 @@
 
 ### Wave 4：系统底层
 
-- [ ] D01 计算机体系结构 / CPU设计
-- [ ] D02 嵌入式系统 / IoT
-- [ ] D03 操作系统内核
-- [ ] D04 驱动与硬件抽象
-- [ ] D05 FPGA / 硬件描述语言
+- [x] D01 计算机体系结构 / CPU设计（DONE: `hardware.cpu-architecture`, 220）
+- [x] D02 嵌入式系统 / IoT（DONE: `hardware.embedded-iot`, 220）
+- [x] D03 操作系统内核（DONE: `hardware.os-kernel`, 220）
+- [x] D04 驱动与硬件抽象（DONE: `hardware.driver-hal`, 220）
+- [x] D05 FPGA / 硬件描述语言（DONE: `hardware.fpga-hdl`, 220）
 
 ### Wave 5：网络与安全
 
-- [ ] D06 计算机网络 / 协议栈
-- [ ] D09 网络安全 / 密码学
-- [ ] D10 分布式系统
+- [x] D06 计算机网络 / 协议栈（DONE: `network.protocols`, 220）
+- [x] D09 网络安全 / 密码学（DONE: `network.security-crypto`, 220）
+- [x] D10 分布式系统（DONE: `network.distributed-systems`, 220）
 - [ ] D14 搜索引擎 / 信息检索
-- [ ] D13 数据工程 / ETL / 大数据
+- [x] D13 数据工程 / ETL / 大数据（DONE: `data.engineering-etl`, 220）
 
 ### Wave 6：AI 核心
 
-- [ ] D26 经典机器学习
-- [ ] D27 深度学习 / 神经网络
-- [ ] D28 NLP / 大语言模型
-- [ ] D29 计算机视觉
-- [ ] D30 推荐系统
+- [x] D26 经典机器学习（DONE: `ai.classic-ml`, 220）
+- [x] D27 深度学习 / 神经网络（DONE: `ai.deep-learning`, 220）
+- [x] D28 NLP / 大语言模型（DONE: `ai.nlp-llm`, 220）
+- [x] D29 计算机视觉（DONE: `ai.computer-vision`, 220）
+- [x] D30 推荐系统（DONE: `ai.recommender-systems`, 220）
 
 ### Wave 7：AI 工程化
 
-- [ ] D31 MLOps / 模型工程
+- [x] D31 MLOps / 模型工程（DONE: `ai.mlops`, 220）
 - [ ] D32 强化学习
 - [ ] D15 编译器 / 解释器
 - [ ] D16 编程语言理论（PLT）
