@@ -205,6 +205,10 @@ class Fcitx(private val context: Context) : FcitxAPI, FcitxLifecycleOwner {
 
     private companion object JNI {
 
+        private const val FIRST_RUN_PREFERRED_IME = "pinyin"
+        private const val FIRST_RUN_PUNCTUATION_ADDON = "punctuation"
+        private const val FIRST_RUN_PUNCTUATION_ENABLED_OPTION = "Enabled"
+
         /**
          * called from native-lib
          */
@@ -399,6 +403,27 @@ class Fcitx(private val context: Context) : FcitxAPI, FcitxLifecycleOwner {
         // will be called in fcitx main thread
         private fun onFirstRun() {
             Timber.i("onFirstRun")
+            val enabled = listInputMethods()?.map { it.uniqueName }
+            if (enabled != null) {
+                val reordered = InputMethodOrder.prioritize(enabled, FIRST_RUN_PREFERRED_IME)
+                if (reordered != enabled) {
+                    setEnabledInputMethods(reordered.toTypedArray())
+                    Timber.i("onFirstRun: moved %s to first", FIRST_RUN_PREFERRED_IME)
+                }
+            }
+
+            val punctuationConfig = getFcitxAddonConfig(FIRST_RUN_PUNCTUATION_ADDON) ?: return
+            val cfg = punctuationConfig.findByName("cfg") ?: return
+            if (
+                AddonConfigDefaults.setBooleanOption(
+                    punctuationConfig,
+                    option = FIRST_RUN_PUNCTUATION_ENABLED_OPTION,
+                    value = false
+                )
+            ) {
+                setFcitxAddonConfig(FIRST_RUN_PUNCTUATION_ADDON, cfg)
+                Timber.i("onFirstRun: set punctuation default to half width")
+            }
         }
 
         /**
