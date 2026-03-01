@@ -46,6 +46,11 @@ object ProfileDictionaryCatalog {
         ProfileCatalogEntry(profileId = "client.graphics-rendering", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "domain.editor-ide-tooling", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "domain.blockchain-web3", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "domain.audio-video-streaming", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "domain.gis", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "domain.robotics-ros", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "domain.data-visualization", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "domain.lowcode-dsl-config", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "infra.cloud-iaas", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "infra.containers-orchestration", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "infra.mq-event-streaming", defaultEnabled = false),
@@ -79,6 +84,7 @@ object ProfileDictionaryCatalog {
         ProfileCatalogEntry(profileId = "science.quantum-computing", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "business.crm", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "business.erp", defaultEnabled = false),
+        ProfileCatalogEntry(profileId = "business.finance-payments", defaultEnabled = false),
         ProfileCatalogEntry(profileId = "business.hrm", defaultEnabled = false)
     )
 

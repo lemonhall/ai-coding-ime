@@ -979,3 +979,93 @@
 | `kualianqiao` | `跨链桥` | `base + domain.blockchain-web3` | Top5 出现目标词 |
 | `keyanzhengpingzheng` | `可验证凭证` | `base + domain.blockchain-web3` | Top5 出现目标词 |
 | `qukuailian` | `区块链` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 55. D45 音视频处理 / 流媒体（`domain.audio-video-streaming`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + domain.audio-video-streaming`
+- 边界对照：`base`（关闭 `domain.audio-video-streaming`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `yinpinbianma` | `音频编码` | `base + domain.audio-video-streaming` | Top3 出现目标词 |
+| `yinhuatongbu` | `音画同步` | `base + domain.audio-video-streaming` | Top5 出现目标词，不被泛词“同步”抢位 |
+| `shishizhuanma` | `实时转码` | `base + domain.audio-video-streaming` | Top5 出现目标词，且与“离线转码”区分明确 |
+| `diyanchizhibo` | `低延迟直播` | `base + domain.audio-video-streaming` | Top5 出现目标词 |
+| `neirongfenfawangluo` | `内容分发网络` | `base + domain.audio-video-streaming` | Top5 出现目标词，相关 CDN 词条可见 |
+| `yinpinbianma` | `音频编码` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 56. D46 GIS / 地理信息（`domain.gis`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + domain.gis`
+- 边界对照：`base`（关闭 `domain.gis`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `kongjianfenxi` | `空间分析` | `base + domain.gis` | Top3 出现目标词 |
+| `gaosikelvge` | `高斯克吕格` | `base + domain.gis` | Top5 出现目标词 |
+| `kelijinchazhi` | `克里金插值` | `base + domain.gis` | Top5 出现目标词 |
+| `zhengsheyingxiang` | `正射影像` | `base + domain.gis` | Top5 出现目标词 |
+| `wangluoditufuwu` | `网络地图服务` | `base + domain.gis` | Top5 出现目标词 |
+| `kongjianfenxi` | `空间分析` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 57. D47 机器人 / ROS（`domain.robotics-ros`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + domain.robotics-ros`
+- 边界对照：`base`（关闭 `domain.robotics-ros`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `jiqirencaozuoxitongjiedian` | `机器人操作系统节点` | `base + domain.robotics-ros` | Top3 出现目标词 |
+| `zuobiaobianhuanpeizhi` | `坐标变换配置` | `base + domain.robotics-ros` | Top5 出现目标词 |
+| `tongbudingweijiantuliucheng` | `同步定位建图流程` | `base + domain.robotics-ros` | Top5 出现目标词 |
+| `jiguangleidajiekou` | `激光雷达接口` | `base + domain.robotics-ros` | Top5 出现目标词 |
+| `jixiebikongzhifangan` | `机械臂控制方案` | `base + domain.robotics-ros` | Top5 出现目标词 |
+| `jiqirencaozuoxitongjiedian` | `机器人操作系统节点` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 58. D49 数据可视化（`domain.data-visualization`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + domain.data-visualization`
+- 边界对照：`base`（关闭 `domain.data-visualization`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `relitu` | `热力图` | `base + domain.data-visualization` | Top3 出现目标词 |
+| `pingxingzuobiaotu` | `平行坐标图` | `base + domain.data-visualization` | Top5 出现目标词 |
+| `fenjishetuse` | `分级设色图` | `base + domain.data-visualization` | Top5 出现目标词 |
+| `liandonggaoliang` | `联动高亮` | `base + domain.data-visualization` | Top5 出现目标词 |
+| `yichangdianjiancetu` | `异常点检测图` | `base + domain.data-visualization` | Top5 出现目标词 |
+| `relitu` | `热力图` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 59. D50 低代码 / DSL / 配置语言（`domain.lowcode-dsl-config`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + domain.lowcode-dsl-config`
+- 边界对照：`base`（关闭 `domain.lowcode-dsl-config`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `didaimapingtai` | `低代码平台` | `base + domain.lowcode-dsl-config` | Top3 出现目标词 |
+| `chouxiangyufashu` | `抽象语法树` | `base + domain.lowcode-dsl-config` | Top5 出现目标词 |
+| `peizhihebing` | `配置合并` | `base + domain.lowcode-dsl-config` | Top5 出现目标词 |
+| `guizeshejiqi` | `规则设计器` | `base + domain.lowcode-dsl-config` | Top5 出现目标词 |
+| `zifuchuanchazhi` | `字符串插值` | `base + domain.lowcode-dsl-config` | Top5 出现目标词 |
+| `didaimapingtai` | `低代码平台` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |
+
+## 60. D54 财务 / 支付 / 结算（`business.finance-payments`）专项回归 Query（2026-03-01）
+
+激活组合说明：
+- 正向命中：`base + business.finance-payments`
+- 边界对照：`base`（关闭 `business.finance-payments`）
+
+| Query | 目标词条 | 激活 profile | 期望 |
+|---|---|---|---|
+| `jiesuangize` | `结算规则` | `base + business.finance-payments` | Top3 出现目标词 |
+| `qingsuanhuizhi` | `清算回执` | `base + business.finance-payments` | Top5 出现目标词 |
+| `yingshouhexiao` | `应收核销` | `base + business.finance-payments` | Top5 出现目标词 |
+| `fapiaogouxuan` | `发票勾选` | `base + business.finance-payments` | Top5 出现目标词 |
+| `jufushensu` | `拒付申诉` | `base + business.finance-payments` | Top5 出现目标词 |
+| `jiesuangize` | `结算规则` | `base` | 目标词较开启领域 profile 时明显后移（不应强前移） |

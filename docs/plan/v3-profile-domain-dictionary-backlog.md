@@ -13,9 +13,9 @@
 
 ## Progress Snapshot（as of 2026-03-01）
 
-- DONE: 48 / 74
+- DONE: 54 / 74
 - SEEDED: 0 / 74
-- TODO: 26 / 74
+- TODO: 20 / 74
 - 当前优先：按 wave 顺序推进剩余 TODO 领域。
 
 ## Scope
@@ -102,8 +102,8 @@
 - [x] D23 桌面应用 / 跨平台GUI（DONE: `client.desktop-cross-platform`, 270）
 - [x] D24 游戏开发（DONE: `client.game-dev`, 300）
 - [x] D25 图形学 / 渲染（DONE: `client.graphics-rendering`, 220）
-- [ ] D49 数据可视化
-- [ ] D45 音视频处理 / 流媒体
+- [x] D49 数据可视化（DONE: `domain.data-visualization`, 220）
+- [x] D45 音视频处理 / 流媒体（DONE: `domain.audio-video-streaming`, 220）
 
 ### Wave 9：科学计算
 
@@ -117,15 +117,15 @@
 
 - [x] D38 量子计算（DONE: `science.quantum-computing`, 220）
 - [x] D44 区块链 / Web3（DONE: `domain.blockchain-web3`, 220）
-- [ ] D46 GIS / 地理信息
-- [ ] D47 机器人 / ROS
-- [ ] D50 低代码 / DSL / 配置语言
+- [x] D46 GIS / 地理信息（DONE: `domain.gis`, 220）
+- [x] D47 机器人 / ROS（DONE: `domain.robotics-ros`, 220）
+- [x] D50 低代码 / DSL / 配置语言（DONE: `domain.lowcode-dsl-config`, 220）
 
 ### Wave 11：企业软件（核心业务流）
 
 - [ ] D51 ERP / 企业资源计划（SEEDED -> 200-500）
 - [x] D53 HRM / 人力资源系统（DONE: `business.hrm`, 300）
-- [ ] D54 财务 / 支付 / 结算
+- [x] D54 财务 / 支付 / 结算（DONE: `business.finance-payments`, 220）
 - [ ] D55 供应链 / 物流 / WMS
 - [ ] D56 电商平台
 

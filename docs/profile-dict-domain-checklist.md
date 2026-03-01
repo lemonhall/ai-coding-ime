@@ -16,7 +16,7 @@
 - `SEEDED`：已有种子词库（<200 词），需扩展到 200-500
 
 进度快照（2026-03-01）：
-- `DONE=48`，`DOING=0`，`SEEDED=0`，`TODO=26`
+- `DONE=54`，`DOING=0`，`SEEDED=0`，`TODO=20`
 
 ---
 
@@ -108,12 +108,12 @@
 | ID | 子领域 | 建议 profile slug | 词数目标 | 状态 |
 |---|---|---|---|---|
 | D44 | 区块链 / Web3 | `domain.blockchain-web3` | 200-500 | DONE (`domain.blockchain-web3`, 220) |
-| D45 | 音视频处理 / 流媒体 | `domain.audio-video-streaming` | 200-500 | TODO |
-| D46 | GIS / 地理信息 | `domain.gis` | 200-500 | TODO |
-| D47 | 机器人 / ROS | `domain.robotics-ros` | 200-500 | TODO |
+| D45 | 音视频处理 / 流媒体 | `domain.audio-video-streaming` | 200-500 | DONE (`domain.audio-video-streaming`, 220) |
+| D46 | GIS / 地理信息 | `domain.gis` | 200-500 | DONE (`domain.gis`, 220) |
+| D47 | 机器人 / ROS | `domain.robotics-ros` | 200-500 | DONE (`domain.robotics-ros`, 220) |
 | D48 | 编辑器 / IDE / 开发者工具 | `domain.editor-ide-tooling` | 200-500 | DONE (`domain.editor-ide-tooling`, 272) |
-| D49 | 数据可视化 | `domain.data-visualization` | 200-500 | TODO |
-| D50 | 低代码 / DSL / 配置语言 | `domain.lowcode-dsl-config` | 200-500 | TODO |
+| D49 | 数据可视化 | `domain.data-visualization` | 200-500 | DONE (`domain.data-visualization`, 220) |
+| D50 | 低代码 / DSL / 配置语言 | `domain.lowcode-dsl-config` | 200-500 | DONE (`domain.lowcode-dsl-config`, 220) |
 
 ## J. 企业软件与业务系统
 
@@ -122,7 +122,7 @@
 | D51 | ERP / 企业资源计划 | `business.erp` | 200-500 | DONE (`business.erp`, 338) |
 | D52 | CRM / 客户关系管理 | `business.crm` | 200-500 | DONE (`business.crm`, 300) |
 | D53 | HRM / 人力资源系统 | `business.hrm` | 200-500 | DONE (`business.hrm`, 300) |
-| D54 | 财务 / 支付 / 结算 | `business.finance-payments` | 200-500 | TODO |
+| D54 | 财务 / 支付 / 结算 | `business.finance-payments` | 200-500 | DONE (`business.finance-payments`, 220) |
 | D55 | 供应链 / 物流 / WMS | `business.supply-chain-logistics-wms` | 200-500 | TODO |
 | D56 | 电商平台 | `business.ecommerce-platform` | 200-500 | TODO |
 | D57 | OA / 协同办公 / 工作流 | `business.oa-workflow` | 200-500 | TODO |
